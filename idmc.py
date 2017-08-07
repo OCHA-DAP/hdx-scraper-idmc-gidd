@@ -25,7 +25,7 @@ def get_countriesdata(base_url, downloader):
     return jsonresponse['results']
 
 
-def generate_dataset(base_url, downloader, countrydata, endpoints):
+def generate_dataset_and_showcase(base_url, downloader, countrydata, endpoints):
     """Parse json of the form:
     {
     },
@@ -44,8 +44,9 @@ def generate_dataset(base_url, downloader, countrydata, endpoints):
         dataset.add_country_location(countryiso)
     except HDXError as e:
         logger.exception('%s has a problem! %s' % (countryname, e))
-        return None
-    dataset.add_tags(['population', 'displacement', 'idmc'])
+        return None, None
+    tags = ['population', 'displacement', 'idmc']
+    dataset.add_tags(tags)
 
     earliest_year = 10000
     latest_year = 0
@@ -73,4 +74,13 @@ def generate_dataset(base_url, downloader, countrydata, endpoints):
         }
         dataset.add_update_resource(resource)
     dataset.set_dataset_year_range(earliest_year, latest_year)
-    return dataset
+
+    showcase = Showcase({
+        'name': '%s-showcase' % slugified_name,
+        'title': 'IDMC %s Summary Page' % countryname,
+        'notes': 'Click the image on the right to go to the IDMC summary page for the %s dataset' % countryname,
+        'url': 'http://www.internal-displacement.org/countries/%s/' % countryname,
+        'image_url': 'http://www.internal-displacement.org/themes/idmc-flat/img/logo.png'
+    })
+    showcase.add_tags(tags)
+    return dataset, showcase

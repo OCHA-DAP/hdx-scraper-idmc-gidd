@@ -8,7 +8,7 @@ from os.path import join
 
 import pytest
 from hdx.hdx_configuration import Configuration
-from idmc import generate_dataset, get_countriesdata
+from idmc import generate_dataset_and_showcase, get_countriesdata
 
 
 class TestIDMC:
@@ -55,11 +55,16 @@ class TestIDMC:
 
     def test_generate_dataset(self, configuration, downloader):
         base_url = Configuration.read()['base_url']
-        dataset = generate_dataset(base_url, downloader, TestIDMC.countrydata, Configuration.read()['endpoints'])
+        dataset, showcase = generate_dataset_and_showcase(base_url, downloader, TestIDMC.countrydata, Configuration.read()['endpoints'])
         assert dataset == {'name': 'idmc-data-for-afghanistan', 'title': 'IDMC data for Afghanistan', 'groups': [{'name': 'afg'}],
                            'tags': [{'name': 'population'}, {'name': 'displacement'}, {'name': 'idmc'}],
                            'data_update_frequency': '1', 'dataset_date': '01/01/2008-12/31/2016'}
         resources = dataset.get_resources()
         assert resources == [{'format': 'json', 'name': 'aggregated_disaster_data',
                               'url': 'http://lala/aggregated/disaster_data?iso3=AFG&ci=123', 'description': 'Aggregated disaster data'}]
+        assert showcase == {'name': 'idmc-data-for-afghanistan-showcase', 'url': 'http://www.internal-displacement.org/countries/Afghanistan/',
+                            'tags': [{'name': 'population'}, {'name': 'displacement'}, {'name': 'idmc'}],
+                            'image_url': 'http://www.internal-displacement.org/themes/idmc-flat/img/logo.png',
+                            'notes': 'Click the image on the right to go to the IDMC summary page for the Afghanistan dataset',
+                            'title': 'IDMC Afghanistan Summary Page'}
 

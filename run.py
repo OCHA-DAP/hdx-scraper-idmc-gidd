@@ -11,7 +11,7 @@ import sys
 from hdx.hdx_configuration import Configuration
 from hdx.utilities.downloader import Download
 
-from idmc import generate_dataset, get_countriesdata
+from idmc import generate_dataset_and_showcase, get_countriesdata
 
 from hdx.facades.hdx_scraperwiki import facade
 
@@ -26,10 +26,12 @@ def main():
     countriesdata = get_countriesdata(base_url, downloader)
     logger.info('Number of datasets to upload: %d' % len(countriesdata))
     for countrydata in countriesdata:
-        dataset = generate_dataset(base_url, downloader, countrydata, Configuration.read()['endpoints'])
+        dataset, showcase = generate_dataset_and_showcase(base_url, downloader, countrydata, Configuration.read()['endpoints'])
         if dataset:
             dataset.update_from_yaml()
             dataset.create_in_hdx()
+            showcase.create_in_hdx()
+            showcase.add_dataset(dataset)
             sys.exit(0)
 
 if __name__ == '__main__':
