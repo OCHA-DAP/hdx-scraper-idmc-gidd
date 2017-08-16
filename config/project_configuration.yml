@@ -1,14 +1,8 @@
 # Collector specific configuration
 base_url: "https://api.idmcdb.org/api/"
 endpoints:
-  - "overview"
   - "conflict_data"
   - "disaster_data"
   - "displacement_data"
-  - "aggregated/disaster_data"
-  - "strata_data"
-  - "figure_analysis"
-  - "confidence_assessment"
-  - "disaster_events"
 
 

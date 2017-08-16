@@ -38,6 +38,8 @@ def generate_dataset_and_showcase(base_url, downloader, countrydata, endpoints):
         'name': slugified_name,
         'title': title
     })
+    dataset.set_maintainer('196196be-6037-4488-8b71-d786adf4c081')
+    dataset.set_organization('hdx')
     dataset.set_expected_update_frequency('Every day')
     countryiso = countrydata['iso3']
     try:

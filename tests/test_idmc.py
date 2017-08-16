@@ -58,7 +58,9 @@ class TestIDMC:
         dataset, showcase = generate_dataset_and_showcase(base_url, downloader, TestIDMC.countrydata, Configuration.read()['endpoints'])
         assert dataset == {'name': 'idmc-data-for-afghanistan', 'title': 'IDMC data for Afghanistan', 'groups': [{'name': 'afg'}],
                            'tags': [{'name': 'population'}, {'name': 'displacement'}, {'name': 'idmc'}],
-                           'data_update_frequency': '1', 'dataset_date': '01/01/2008-12/31/2016'}
+                           'data_update_frequency': '1', 'dataset_date': '01/01/2008-12/31/2016',
+                           'maintainer': '196196be-6037-4488-8b71-d786adf4c081', 'owner_org': 'hdx'}
+
         resources = dataset.get_resources()
         assert resources == [{'format': 'json', 'name': 'aggregated_disaster_data',
                               'url': 'http://lala/aggregated/disaster_data?iso3=AFG&ci=123', 'description': 'Aggregated disaster data'}]
