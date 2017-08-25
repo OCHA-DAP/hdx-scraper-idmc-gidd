@@ -1,7 +1,11 @@
 # Collector specific configuration
 base_url: "http://lala/"
 endpoints:
-  - "aggregated/disaster_data"
+  - "conflict_data"
+tags:
+  - "population"
+  - "displacement"
+  - "idmc"
 
 
 

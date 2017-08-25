@@ -8,7 +8,7 @@ from os.path import join
 
 import pytest
 from hdx.hdx_configuration import Configuration
-from idmc import generate_dataset_and_showcase, get_countriesdata
+from idmc import generate_country_dataset_and_showcase, get_countriesdata, generate_indicator_datasets_and_showcase
 
 
 class TestIDMC:
@@ -33,17 +33,35 @@ class TestIDMC:
                     def fn():
                         return {'results': [TestIDMC.countrydata]}
                     response.json = fn
-                elif url == 'http://lala/aggregated/disaster_data?iso3=AFG':
+                elif url == 'http://lala/conflict_data':
                     def fn():
-                        return {'results': [{'iso3': 'AFG', 'new_displacements': 3430, 'year': 2008},
-                                            {'iso3': 'AFG', 'new_displacements': 28435, 'year': 2009},
-                                            {'iso3': 'AFG', 'new_displacements': 71000, 'year': 2010},
-                                            {'iso3': 'AFG', 'new_displacements': 3000, 'year': 2011},
-                                            {'iso3': 'AFG', 'new_displacements': 29519, 'year': 2012},
-                                            {'iso3': 'AFG', 'new_displacements': 15170, 'year': 2013},
-                                            {'iso3': 'AFG', 'new_displacements': 13125, 'year': 2014},
-                                            {'iso3': 'AFG', 'new_displacements': 70948, 'year': 2015},
-                                            {'iso3': 'AFG', 'new_displacements': 7394, 'year': 2016}]}
+                        return {'results': [{'iso3': 'AFG', 'geo_name': 'Afghanistan', 'iso': 'AF',
+                                             'stock_displacement': 297000, 'stock_displacement_source': 'IDMC',
+                                             'new_displacements': 0, 'year': 2009, 'new_displacements_source': 'IDMC'},
+                                            {'iso3': 'CIV', 'geo_name': "Cote d'Ivoire", 'iso': 'CI',
+                                             'stock_displacement': 303150, 'stock_displacement_source': 'IDMC',
+                                             'new_displacements': 3150, 'year': 2015,
+                                             'new_displacements_source': 'IDMC'},
+                                            {'iso3': 'COG', 'geo_name': 'Congo, Rep', 'iso': 'CG',
+                                             'stock_displacement': 7800, 'stock_displacement_source': 'IDMC',
+                                             'new_displacements': 0, 'year': 2015, 'new_displacements_source': 'IDMC'}]}
+
+                    response.json = fn
+                    response.url = '%s&ci=123' % url
+                    return response
+                elif url == 'http://lala/conflict_data?iso3=AFG':
+                    def fn():
+                        return {'results': [{'iso3': 'AFG', 'geo_name': 'Afghanistan', 'iso': 'AF',
+                                             'stock_displacement': 297000, 'stock_displacement_source': 'IDMC',
+                                             'new_displacements': 0, 'year': 2009, 'new_displacements_source': 'IDMC'},
+                                            {'iso3': 'AFG', 'geo_name': 'Afghanistan', 'iso': 'AF',
+                                             'stock_displacement': 492000, 'stock_displacement_source': 'IDMC',
+                                             'new_displacements': 100400, 'year': 2012,
+                                             'new_displacements_source': 'IDMC'},
+                                            {'iso3': 'AFG', 'geo_name': 'Afghanistan', 'iso': 'AF',
+                                             'stock_displacement': 1174306, 'stock_displacement_source': 'IDMC',
+                                             'new_displacements': 335409, 'year': 2015,
+                                             'new_displacements_source': 'IDMC'}]}
                     response.json = fn
                     response.url = '%s&ci=123' % url
                 return response
@@ -53,20 +71,39 @@ class TestIDMC:
         countriesdata = get_countriesdata('http://haha/', downloader)
         assert countriesdata == [TestIDMC.countrydata]
 
-    def test_generate_dataset(self, configuration, downloader):
+    def test_generate_country_dataset_and_showcase(self, configuration, downloader):
         base_url = Configuration.read()['base_url']
-        dataset, showcase = generate_dataset_and_showcase(base_url, downloader, TestIDMC.countrydata, Configuration.read()['endpoints'])
-        assert dataset == {'name': 'idmc-data-for-afghanistan', 'title': 'IDMC data for Afghanistan', 'groups': [{'name': 'afg'}],
+        dataset, showcase = generate_country_dataset_and_showcase(base_url, downloader, TestIDMC.countrydata, Configuration.read()['endpoints'], Configuration.read()['tags'])
+        assert dataset == {'name': 'idmc-data-for-afghanistan', 'title': 'IDMC data for Afghanistan',
+                           'groups': [{'name': 'afg'}], 'maintainer': '196196be-6037-4488-8b71-d786adf4c081',
+                           'dataset_date': '01/01/2009-12/31/2015',
                            'tags': [{'name': 'population'}, {'name': 'displacement'}, {'name': 'idmc'}],
-                           'data_update_frequency': '1', 'dataset_date': '01/01/2008-12/31/2016',
-                           'maintainer': '196196be-6037-4488-8b71-d786adf4c081', 'owner_org': 'hdx'}
+                           'data_update_frequency': '1', 'owner_org': 'hdx'}
 
         resources = dataset.get_resources()
-        assert resources == [{'format': 'json', 'name': 'aggregated_disaster_data',
-                              'url': 'http://lala/aggregated/disaster_data?iso3=AFG&ci=123', 'description': 'Aggregated disaster data'}]
-        assert showcase == {'name': 'idmc-data-for-afghanistan-showcase', 'url': 'http://www.internal-displacement.org/countries/Afghanistan/',
-                            'tags': [{'name': 'population'}, {'name': 'displacement'}, {'name': 'idmc'}],
-                            'image_url': 'http://www.internal-displacement.org/themes/idmc-flat/img/logo.png',
+        assert resources == [{'format': 'json', 'url': 'http://lala/conflict_data?iso3=AFG&ci=123',
+                              'name': 'conflict_data', 'description': 'Conflict data'}]
+        assert showcase == {'tags': [{'name': 'population'}, {'name': 'displacement'}, {'name': 'idmc'}],
                             'notes': 'Click the image on the right to go to the IDMC summary page for the Afghanistan dataset',
-                            'title': 'IDMC Afghanistan Summary Page'}
+                            'image_url': 'http://www.internal-displacement.org/themes/idmc-flat/img/logo.png',
+                            'url': 'http://www.internal-displacement.org/countries/Afghanistan/',
+                            'title': 'IDMC Afghanistan Summary Page', 'name': 'idmc-data-for-afghanistan-showcase'}
+
+    def test_generate_indicator_datasets_and_showcase(self, configuration, downloader):
+        base_url = Configuration.read()['base_url']
+        datasets, showcase = generate_indicator_datasets_and_showcase(base_url, downloader, Configuration.read()['endpoints'], Configuration.read()['tags'])
+        assert datasets == [{'title': 'IDMC Conflict data', 'groups': [{'name': 'world'}],
+                             'dataset_date': '01/01/2009-12/31/2015',
+                             'maintainer': '196196be-6037-4488-8b71-d786adf4c081', 'data_update_frequency': '1',
+                             'tags': [{'name': 'population'}, {'name': 'displacement'}, {'name': 'idmc'}],
+                             'name': 'idmc-conflict-data', 'owner_org': 'hdx'}]
+        resources = datasets[0].get_resources()
+        assert resources == [{'description': 'Conflict data', 'format': 'json', 'name': 'conflict_data',
+                              'url': 'http://lala/conflict_data&ci=123'}]
+        assert showcase == {'tags': [{'name': 'population'}, {'name': 'displacement'}, {'name': 'idmc'}],
+                            'url': 'http://www.internal-displacement.org/global-report/grid2017/',
+                            'name': 'idmc-global-report-on-internal-displacement',
+                            'title': 'IDMC Global Report on Internal Displacement',
+                            'notes': 'Click the image on the right to go to the IDMC Global Report on Internal Displacement',
+                            'image_url': 'http://www.internal-displacement.org/themes/idmc-flat/img/logo.png'}
 

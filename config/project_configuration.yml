@@ -4,5 +4,9 @@ endpoints:
   - "conflict_data"
   - "disaster_data"
   - "displacement_data"
+tags:
+  - "population"
+  - "displacement"
+  - "idmc"
 
 
