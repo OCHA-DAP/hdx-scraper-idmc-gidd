@@ -99,7 +99,7 @@ def generate_country_dataset_and_showcase(base_url, downloader, indicator_datase
     countryname = countrydata['geo_name']
     indicator_datasets_list = indicator_datasets.values()
     title = extract_list_from_list_of_dict(indicator_datasets_list, 'title')
-    dataset = get_dataset(get_matching_text(title, end_characters=' ').strip(), tags,
+    dataset = get_dataset('%s - %s' % (countryname, get_matching_text(title, end_characters=' ').strip()), tags,
                           'IDMC IDP data for %s' % countryname)
     countryiso = countrydata['iso3']
     try:

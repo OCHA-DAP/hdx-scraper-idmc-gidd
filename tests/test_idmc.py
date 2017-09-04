@@ -105,7 +105,7 @@ class TestIDMC:
                             'notes': 'Click the image on the right to go to the IDMC Global Report on Internal Displacement',
                             'image_url': 'http://www.internal-displacement.org/themes/idmc-flat/img/logo.png'}
         dataset, showcase = generate_country_dataset_and_showcase(base_url, downloader, datasets, TestIDMC.countrydata, Configuration.read()['endpoints'], Configuration.read()['tags'])
-        assert dataset == {'name': 'idmc-idp-data-for-afghanistan', 'title': 'Internally displaced persons - IDPs (people displaced by conflict and violence)',
+        assert dataset == {'name': 'idmc-idp-data-for-afghanistan', 'title': 'Afghanistan - Internally displaced persons - IDPs (people displaced by conflict and violence)',
                            'groups': [{'name': 'afg'}], 'maintainer': '196196be-6037-4488-8b71-d786adf4c081',
                            'dataset_date': '01/01/2009-12/31/2015',
                            'tags': [{'name': 'population'}, {'name': 'displacement'}, {'name': 'idmc'}],
