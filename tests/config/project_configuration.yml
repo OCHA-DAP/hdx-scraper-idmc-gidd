@@ -1,7 +1,8 @@
 # Collector specific configuration
 base_url: "http://lala/"
 endpoints:
-  - "conflict_data"
+endpoints:
+  conflict_data: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRubZgyjd7Az7Vgaxb5lWFpjojmjYZRlcVaVqYBEuEmpIojnuVn0nJG6DAJUaIzn0NdVhAkQuBw5t8q/pub?gid=2096291259&single=true&output=csv"
 tags:
   - "population"
   - "displacement"

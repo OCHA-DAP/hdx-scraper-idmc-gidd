@@ -3,9 +3,7 @@ maintainer: "mcarans"
 maintainer_email: "rans@un.org"
 license_id: "cc-by-igo"
 subnational: 1  # has to be 0 or 1
-notes: "Contains data from IDMC's [data portal](https://github.com/idmc-labs/IDMC-Platform-API/wiki) covering various indicators (one per resource)."
-caveats: ""
-methodology: "Registry"
+methodology: "Other"
 dataset_source: "IDMC"
 package_creator: "mcarans"
 private: False  # has to be True or False

@@ -7,13 +7,13 @@ IDMC:
 Reads IDMC JSON and creates datasets.
 
 """
-
 import logging
 
 from hdx.data.dataset import Dataset
 from hdx.data.hdxobject import HDXError
 from hdx.data.showcase import Showcase
-from hdx.utilities.location import Location
+from hdx.utilities.dictandlist import extract_list_from_list_of_dict
+from hdx.utilities.text import get_matching_then_nonmatching_text, get_matching_text
 from slugify import slugify
 
 logger = logging.getLogger(__name__)
@@ -25,25 +25,22 @@ def get_countriesdata(base_url, downloader):
     return jsonresponse['results']
 
 
-def get_title(endpoint):
-    description = endpoint.split('_')
-    description[0] = '%s%s' % (description[0][0].upper(), description[0][1:])
-    return ' '.join(description)
-
-
-def get_resource(endpoint, url):
+def get_resource(endpoint, description, url):
     resource = {
         'name': endpoint,
         'format': 'json',
         'url': url,
-        'description': get_title(endpoint)
+        'description': description
     }
     return resource
 
 
-def get_dataset(title, tags):
+def get_dataset(title, tags, name=None):
     logger.info('Creating dataset: %s' % title)
-    slugified_name = slugify(title).lower()
+    if name is None:
+        slugified_name = slugify(title).lower()
+    else:
+        slugified_name = slugify(name).lower()
     dataset = Dataset({
         'name': slugified_name,
         'title': title
@@ -57,10 +54,15 @@ def get_dataset(title, tags):
 
 
 def generate_indicator_datasets_and_showcase(base_url, downloader, endpoints, tags):
-    datasets = list()
-    for endpoint in endpoints:
-        title = 'IDMC %s' % get_title(endpoint)
+    datasets = dict()
+    for endpoint in endpoints.keys():
+        metadata = downloader.download_csv_key_value(endpoints[endpoint])
+        name = metadata['Indicator Name']
+        title = name
         dataset = get_dataset(title, tags)
+        dataset['notes'] = "%s\n\nContains data from IDMC's [data portal](https://github.com/idmc-labs/IDMC-Platform-API/wiki)." % metadata['Long definition']
+        dataset['methodology_other'] = metadata['Statistical concept and methodology']
+        dataset['caveats'] = metadata['Limitations and exceptions']
         dataset.add_other_location('world')
         url = '%s%s' % (base_url, endpoint)
         response = downloader.download(url)
@@ -76,9 +78,9 @@ def generate_indicator_datasets_and_showcase(base_url, downloader, endpoints, ta
             if year < earliest_year:
                 earliest_year = year
 
-        dataset.add_update_resource(get_resource(endpoint, response.url))
+        dataset.add_update_resource(get_resource(endpoint, name, response.url))
         dataset.set_dataset_year_range(earliest_year, latest_year)
-        datasets.append(dataset)
+        datasets[endpoint] = dataset
 
     title = 'IDMC Global Report on Internal Displacement'
     slugified_name = slugify(title).lower()
@@ -93,24 +95,35 @@ def generate_indicator_datasets_and_showcase(base_url, downloader, endpoints, ta
     return datasets, showcase
 
 
-def generate_country_dataset_and_showcase(base_url, downloader, countrydata, endpoints, tags):
+def generate_country_dataset_and_showcase(base_url, downloader, indicator_datasets, countrydata, endpoints, tags):
     countryname = countrydata['geo_name']
-    title = 'IDMC data for %s' % countryname
-    dataset = get_dataset(title, tags)
+    indicator_datasets_list = indicator_datasets.values()
+    title = extract_list_from_list_of_dict(indicator_datasets_list, 'title')
+    dataset = get_dataset(get_matching_text(title, end_characters=' ').strip(), tags,
+                          'IDMC IDP data for %s' % countryname)
     countryiso = countrydata['iso3']
     try:
         dataset.add_country_location(countryiso)
     except HDXError as e:
         logger.exception('%s has a problem! %s' % (countryname, e))
         return None, None
+    description = extract_list_from_list_of_dict(indicator_datasets_list, 'notes')
+    dataset['notes'] = get_matching_then_nonmatching_text(description, separator='\n\n', ignore='\n')
+    methodology = extract_list_from_list_of_dict(indicator_datasets_list, 'methodology_other')
+    dataset['methodology_other'] = get_matching_then_nonmatching_text(methodology)
+    caveats = extract_list_from_list_of_dict(indicator_datasets_list, 'caveats')
+    dataset['caveats'] = get_matching_then_nonmatching_text(caveats)
 
     earliest_year = 10000
     latest_year = 0
-    for endpoint in endpoints:
+    for endpoint in endpoints.keys():
         url = '%s%s?iso3=%s' % (base_url, endpoint, countryiso)
         response = downloader.download(url)
         json = response.json()
-        for result in json['results']:
+        results = json['results']
+        if results is None:
+            continue
+        for result in results:
             year = result.get('year')
             if year is None:
                 continue
@@ -119,7 +132,9 @@ def generate_country_dataset_and_showcase(base_url, downloader, countrydata, end
             if year < earliest_year:
                 earliest_year = year
 
-        dataset.add_update_resource(get_resource(endpoint, response.url))
+        dataset.add_update_resource(get_resource(endpoint,
+                                                 indicator_datasets[endpoint].get_resources()[0]['description'],
+                                                 response.url))
     dataset.set_dataset_year_range(earliest_year, latest_year)
 
     showcase = Showcase({

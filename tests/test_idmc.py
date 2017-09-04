@@ -65,45 +65,63 @@ class TestIDMC:
                     response.json = fn
                     response.url = '%s&ci=123' % url
                 return response
+
+            @staticmethod
+            def download_csv_key_value(url):
+                if url == 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRubZgyjd7Az7Vgaxb5lWFpjojmjYZRlcVaVqYBEuEmpIojnuVn0nJG6DAJUaIzn0NdVhAkQuBw5t8q/pub?gid=2096291259&single=true&output=csv':
+                    return {
+                        'Indicator Name': 'Internally displaced persons - IDPs (people displaced by conflict and violence)',
+                        'Long definition': 'Description',
+                        'Statistical concept and methodology': 'Methodology',
+                        'Limitations and exceptions': 'Caveats'
+                    }
+
         return Download()
 
     def test_get_countriesdata(self, downloader):
         countriesdata = get_countriesdata('http://haha/', downloader)
         assert countriesdata == [TestIDMC.countrydata]
 
-    def test_generate_country_dataset_and_showcase(self, configuration, downloader):
-        base_url = Configuration.read()['base_url']
-        dataset, showcase = generate_country_dataset_and_showcase(base_url, downloader, TestIDMC.countrydata, Configuration.read()['endpoints'], Configuration.read()['tags'])
-        assert dataset == {'name': 'idmc-data-for-afghanistan', 'title': 'IDMC data for Afghanistan',
-                           'groups': [{'name': 'afg'}], 'maintainer': '196196be-6037-4488-8b71-d786adf4c081',
-                           'dataset_date': '01/01/2009-12/31/2015',
-                           'tags': [{'name': 'population'}, {'name': 'displacement'}, {'name': 'idmc'}],
-                           'data_update_frequency': '1', 'owner_org': 'hdx'}
-
-        resources = dataset.get_resources()
-        assert resources == [{'format': 'json', 'url': 'http://lala/conflict_data?iso3=AFG&ci=123',
-                              'name': 'conflict_data', 'description': 'Conflict data'}]
-        assert showcase == {'tags': [{'name': 'population'}, {'name': 'displacement'}, {'name': 'idmc'}],
-                            'notes': 'Click the image on the right to go to the IDMC summary page for the Afghanistan dataset',
-                            'image_url': 'http://www.internal-displacement.org/themes/idmc-flat/img/logo.png',
-                            'url': 'http://www.internal-displacement.org/countries/Afghanistan/',
-                            'title': 'IDMC Afghanistan Summary Page', 'name': 'idmc-data-for-afghanistan-showcase'}
-
-    def test_generate_indicator_datasets_and_showcase(self, configuration, downloader):
+    def test_generate_datasets_and_showcase(self, configuration, downloader):
         base_url = Configuration.read()['base_url']
         datasets, showcase = generate_indicator_datasets_and_showcase(base_url, downloader, Configuration.read()['endpoints'], Configuration.read()['tags'])
-        assert datasets == [{'title': 'IDMC Conflict data', 'groups': [{'name': 'world'}],
-                             'dataset_date': '01/01/2009-12/31/2015',
-                             'maintainer': '196196be-6037-4488-8b71-d786adf4c081', 'data_update_frequency': '1',
-                             'tags': [{'name': 'population'}, {'name': 'displacement'}, {'name': 'idmc'}],
-                             'name': 'idmc-conflict-data', 'owner_org': 'hdx'}]
-        resources = datasets[0].get_resources()
-        assert resources == [{'description': 'Conflict data', 'format': 'json', 'name': 'conflict_data',
-                              'url': 'http://lala/conflict_data&ci=123'}]
+        assert datasets == {'conflict_data': {'title': 'Internally displaced persons - IDPs (people displaced by conflict and violence)',
+                            'groups': [{'name': 'world'}],
+                            'dataset_date': '01/01/2009-12/31/2015',
+                            'maintainer': '196196be-6037-4488-8b71-d786adf4c081', 'data_update_frequency': '1',
+                         'tags': [{'name': 'population'}, {'name': 'displacement'}, {'name': 'idmc'}],
+                             'name': 'internally-displaced-persons-idps-people-displaced-by-conflict-and-violence',
+                             'notes': "Description\n\nContains data from IDMC's [data portal](https://github.com/idmc-labs/IDMC-Platform-API/wiki).",
+                             'methodology_other': 'Methodology',
+                             'caveats': 'Caveats',
+                             'owner_org': 'hdx'}}
+        resources = datasets['conflict_data'].get_resources()
+        assert resources == [{'description': 'Internally displaced persons - IDPs (people displaced by conflict and violence)',
+                              'format': 'json', 'name': 'conflict_data', 'url': 'http://lala/conflict_data&ci=123'}]
         assert showcase == {'tags': [{'name': 'population'}, {'name': 'displacement'}, {'name': 'idmc'}],
                             'url': 'http://www.internal-displacement.org/global-report/grid2017/',
                             'name': 'idmc-global-report-on-internal-displacement',
                             'title': 'IDMC Global Report on Internal Displacement',
                             'notes': 'Click the image on the right to go to the IDMC Global Report on Internal Displacement',
                             'image_url': 'http://www.internal-displacement.org/themes/idmc-flat/img/logo.png'}
+        dataset, showcase = generate_country_dataset_and_showcase(base_url, downloader, datasets, TestIDMC.countrydata, Configuration.read()['endpoints'], Configuration.read()['tags'])
+        assert dataset == {'name': 'idmc-idp-data-for-afghanistan', 'title': 'Internally displaced persons - IDPs (people displaced by conflict and violence)',
+                           'groups': [{'name': 'afg'}], 'maintainer': '196196be-6037-4488-8b71-d786adf4c081',
+                           'dataset_date': '01/01/2009-12/31/2015',
+                           'tags': [{'name': 'population'}, {'name': 'displacement'}, {'name': 'idmc'}],
+                           'data_update_frequency': '1',
+                           'notes': "Description\n\nContains data from IDMC's [data portal](https://github.com/idmc-labs/IDMC-Platform-API/wiki).",
+                           'methodology_other': 'Methodology',
+                           'caveats': 'Caveats',
+                           'owner_org': 'hdx'}
+
+        resources = dataset.get_resources()
+        assert resources == [{'format': 'json', 'url': 'http://lala/conflict_data?iso3=AFG&ci=123',
+                              'name': 'conflict_data',
+                              'description': 'Internally displaced persons - IDPs (people displaced by conflict and violence)'}]
+        assert showcase == {'tags': [{'name': 'population'}, {'name': 'displacement'}, {'name': 'idmc'}],
+                            'notes': 'Click the image on the right to go to the IDMC summary page for the Afghanistan dataset',
+                            'image_url': 'http://www.internal-displacement.org/themes/idmc-flat/img/logo.png',
+                            'url': 'http://www.internal-displacement.org/countries/Afghanistan/',
+                            'title': 'IDMC Afghanistan Summary Page', 'name': 'idmc-idp-data-for-afghanistan-showcase'}
 

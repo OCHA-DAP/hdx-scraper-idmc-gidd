@@ -1,9 +1,9 @@
 # Collector specific configuration
 base_url: "https://api.idmcdb.org/api/"
 endpoints:
-  - "conflict_data"
-  - "disaster_data"
-  - "displacement_data"
+  conflict_data: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRubZgyjd7Az7Vgaxb5lWFpjojmjYZRlcVaVqYBEuEmpIojnuVn0nJG6DAJUaIzn0NdVhAkQuBw5t8q/pub?gid=2096291259&single=true&output=csv"
+  disaster_data: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRubZgyjd7Az7Vgaxb5lWFpjojmjYZRlcVaVqYBEuEmpIojnuVn0nJG6DAJUaIzn0NdVhAkQuBw5t8q/pub?gid=0&single=true&output=csv"
+  displacement_data: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRubZgyjd7Az7Vgaxb5lWFpjojmjYZRlcVaVqYBEuEmpIojnuVn0nJG6DAJUaIzn0NdVhAkQuBw5t8q/pub?gid=1851894393&single=true&output=csv"
 tags:
   - "population"
   - "displacement"
