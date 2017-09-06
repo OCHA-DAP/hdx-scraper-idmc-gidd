@@ -46,7 +46,7 @@ def get_dataset(title, tags, name=None):
         'title': title
     })
     dataset.set_maintainer('196196be-6037-4488-8b71-d786adf4c081')
-    dataset.set_organization('hdx')
+    dataset.set_organization('647d9d8c-4cac-4c33-b639-649aad1c2893')
     dataset.set_expected_update_frequency('Every day')
     tags = ['population', 'displacement', 'idmc']
     dataset.add_tags(tags)
