@@ -8,6 +8,8 @@ from os.path import join
 
 import pytest
 from hdx.hdx_configuration import Configuration
+from hdx.hdx_locations import Locations
+
 from idmc import generate_country_dataset_and_showcase, get_countriesdata, generate_indicator_datasets_and_showcase
 
 
@@ -17,7 +19,8 @@ class TestIDMC:
     @pytest.fixture(scope='function')
     def configuration(self):
         Configuration._create(hdx_read_only=True,
-                             project_config_yaml=join('tests', 'config', 'project_configuration.yml'))
+                              project_config_yaml=join('tests', 'config', 'project_configuration.yml'))
+        Locations.set_validlocations([{'name': 'afg', 'title': 'Afghanistan'}, {'name': 'world', 'title': 'World'}])
 
     @pytest.fixture(scope='function')
     def downloader(self):
