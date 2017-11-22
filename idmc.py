@@ -47,7 +47,7 @@ def get_dataset(title, tags, name=None):
     })
     dataset.set_maintainer('196196be-6037-4488-8b71-d786adf4c081')
     dataset.set_organization('647d9d8c-4cac-4c33-b639-649aad1c2893')
-    dataset.set_expected_update_frequency('Every day')
+    dataset.set_expected_update_frequency('Every year')
     tags = ['population', 'displacement', 'idmc']
     dataset.add_tags(tags)
     return dataset
@@ -141,7 +141,7 @@ def generate_country_dataset_and_showcase(base_url, downloader, indicator_datase
         'name': '%s-showcase' % dataset['name'],
         'title': 'IDMC %s Summary Page' % countryname,
         'notes': 'Click the image on the right to go to the IDMC summary page for the %s dataset' % countryname,
-        'url': 'http://www.internal-displacement.org/countries/%s/' % countryname,
+        'url': 'http://www.internal-displacement.org/countries/%s/' % countryname.replace(' ', '-'),
         'image_url': 'http://www.internal-displacement.org/themes/idmc-flat/img/logo.png'
     })
     showcase.add_tags(tags)
