@@ -70,7 +70,7 @@ class TestIDMC:
                 return response
 
             @staticmethod
-            def download_csv_key_value(url):
+            def download_tabular_key_value(url):
                 if url == 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRubZgyjd7Az7Vgaxb5lWFpjojmjYZRlcVaVqYBEuEmpIojnuVn0nJG6DAJUaIzn0NdVhAkQuBw5t8q/pub?gid=2096291259&single=true&output=csv':
                     return {
                         'Indicator Name': 'Internally displaced persons - IDPs (people displaced by conflict and violence)',

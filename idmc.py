@@ -56,7 +56,7 @@ def get_dataset(title, tags, name=None):
 def generate_indicator_datasets_and_showcase(base_url, downloader, endpoints, tags):
     datasets = dict()
     for endpoint in endpoints.keys():
-        metadata = downloader.download_csv_key_value(endpoints[endpoint])
+        metadata = downloader.download_tabular_key_value(endpoints[endpoint])
         name = metadata['Indicator Name']
         title = name
         dataset = get_dataset(title, tags)
