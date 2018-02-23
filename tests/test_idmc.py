@@ -18,7 +18,7 @@ class TestIDMC:
 
     @pytest.fixture(scope='function')
     def configuration(self):
-        Configuration._create(hdx_read_only=True,
+        Configuration._create(hdx_read_only=True, user_agent='test',
                               project_config_yaml=join('tests', 'config', 'project_configuration.yml'))
         Locations.set_validlocations([{'name': 'afg', 'title': 'Afghanistan'}, {'name': 'world', 'title': 'World'}])
 
