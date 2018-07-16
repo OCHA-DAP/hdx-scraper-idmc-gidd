@@ -92,12 +92,13 @@ class TestIDMC:
                             'groups': [{'name': 'world'}],
                             'dataset_date': '01/01/2009-12/31/2015',
                             'maintainer': '196196be-6037-4488-8b71-d786adf4c081', 'data_update_frequency': '365',
-                         'tags': [{'name': 'population'}, {'name': 'displacement'}, {'name': 'idmc'}],
-                             'name': 'internally-displaced-persons-idps-people-displaced-by-conflict-and-violence',
-                             'notes': "Description\n\nContains data from IDMC's [data portal](https://github.com/idmc-labs/IDMC-Platform-API/wiki).",
-                             'methodology_other': 'Methodology',
-                             'caveats': 'Caveats',
-                             'owner_org': '647d9d8c-4cac-4c33-b639-649aad1c2893'}}
+                            'tags': [{'name': 'population'}, {'name': 'displacement'}, {'name': 'idmc'}],
+                            'name': 'internally-displaced-persons-idps-people-displaced-by-conflict-and-violence',
+                            'notes': "Description\n\nContains data from IDMC's [data portal](https://github.com/idmc-labs/IDMC-Platform-API/wiki).",
+                            'methodology_other': 'Methodology',
+                            'caveats': 'Caveats',
+                            'owner_org': '647d9d8c-4cac-4c33-b639-649aad1c2893',
+                            'subnational': '0'}}
         resources = datasets['conflict_data'].get_resources()
         assert resources == [{'description': 'Internally displaced persons - IDPs (people displaced by conflict and violence)',
                               'format': 'json', 'name': 'conflict_data', 'url': 'http://lala/conflict_data&ci=123'}]
@@ -116,7 +117,8 @@ class TestIDMC:
                            'notes': "Description\n\nContains data from IDMC's [data portal](https://github.com/idmc-labs/IDMC-Platform-API/wiki).",
                            'methodology_other': 'Methodology',
                            'caveats': 'Caveats',
-                           'owner_org': '647d9d8c-4cac-4c33-b639-649aad1c2893'}
+                           'owner_org': '647d9d8c-4cac-4c33-b639-649aad1c2893',
+                           'subnational': '0'}
 
         resources = dataset.get_resources()
         assert resources == [{'format': 'json', 'url': 'http://lala/conflict_data?iso3=AFG&ci=123',
