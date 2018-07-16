@@ -40,7 +40,7 @@ def main():
             dataset, showcase = generate_country_dataset_and_showcase(base_url, downloader, datasets, countrydata, endpoints, tags)
             if dataset:
                 dataset.update_from_yaml()
-                dataset.create_in_hdx(remove_additional_resources=True, hxlupdate=False)
+                dataset.create_in_hdx(remove_additional_resources=True, hxl_update=False)
                 showcase.create_in_hdx()
                 showcase.add_dataset(dataset)
 
