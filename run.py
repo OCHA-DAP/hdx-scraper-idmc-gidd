@@ -19,12 +19,14 @@ from hdx.facades.hdx_scraperwiki import facade
 
 logger = logging.getLogger(__name__)
 
+lookup = 'hdxscraper-idmc'
+
 
 def main():
     """Generate dataset and create it in HDX"""
 
     base_url = Configuration.read()['base_url']
-    with Download(extra_params_yaml=join(expanduser("~"), 'idmc.yml')) as downloader:
+    with Download(extra_params_yaml=join(expanduser('~'), '.extraparams.yml'), extra_params_lookup=lookup) as downloader:
         endpoints = Configuration.read()['endpoints']
         tags = Configuration.read()['tags']
         datasets, showcase = generate_indicator_datasets_and_showcase(base_url, downloader, endpoints, tags)
@@ -46,5 +48,5 @@ def main():
 
 
 if __name__ == '__main__':
-    facade(main, hdx_site='feature', user_agent_config_yaml=join(expanduser('~'), '.useragents.yml'), user_agent_lookup='hdxscraper-idmc', project_config_yaml=join('config', 'project_configuration.yml'))
+    facade(main, hdx_site='feature', user_agent_config_yaml=join(expanduser('~'), '.useragents.yml'), user_agent_lookup=lookup, project_config_yaml=join('config', 'project_configuration.yml'))
 
