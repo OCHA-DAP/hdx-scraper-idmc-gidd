@@ -1,5 +1,5 @@
 ### Collector for IDMC's Datasets
-[![Build Status](https://travis-ci.org/OCHA-DAP/hdxscraper-idmc.svg?branch=master&ts=1)](https://travis-ci.org/OCHA-DAP/hdxscraper-idmc) [![Coverage Status](https://coveralls.io/repos/github/OCHA-DAP/hdxscraper-idmc/badge.svg?branch=master&ts=1)](https://coveralls.io/github/OCHA-DAP/hdxscraper-idmc?branch=master)
+[![Build Status](https://travis-ci.org/OCHA-DAP/hdx-scraper-idmc.svg?branch=master&ts=1)](https://travis-ci.org/OCHA-DAP/hdx-scraper-idmc) [![Coverage Status](https://coveralls.io/repos/github/OCHA-DAP/hdx-scraper-idmc/badge.svg?branch=master&ts=1)](https://coveralls.io/github/OCHA-DAP/hdx-scraper-idmc?branch=master)
 
 ### Usage
 python run.py
