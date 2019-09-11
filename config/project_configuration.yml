@@ -1,12 +1,14 @@
 # Collector specific configuration
-base_url: "https://api.idmcdb.org/api/"
+displacement_url: "https://api.idmcdb.org/api/displacement_data/xlsx?ci=IDMCWSHSOLO009&filename=idmc_displacement_all_dataset.xlsx"
+disaster_url: "https://api.idmcdb.org/api/disaster_data/xlsx?ci=IDMCWSHSOLO009&filename=idmc_disaster_all_dataset.xlsx"
 endpoints:
-  conflict_data: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRubZgyjd7Az7Vgaxb5lWFpjojmjYZRlcVaVqYBEuEmpIojnuVn0nJG6DAJUaIzn0NdVhAkQuBw5t8q/pub?gid=2096291259&single=true&output=csv"
+#  conflict_data: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRubZgyjd7Az7Vgaxb5lWFpjojmjYZRlcVaVqYBEuEmpIojnuVn0nJG6DAJUaIzn0NdVhAkQuBw5t8q/pub?gid=2096291259&single=true&output=csv"
+  displacement_data: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRubZgyjd7Az7Vgaxb5lWFpjojmjYZRlcVaVqYBEuEmpIojnuVn0nJG6DAJUaIzn0NdVhAkQuBw5t8q/pub?gid=66420666&single=true&output=csv"
   disaster_data: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRubZgyjd7Az7Vgaxb5lWFpjojmjYZRlcVaVqYBEuEmpIojnuVn0nJG6DAJUaIzn0NdVhAkQuBw5t8q/pub?gid=0&single=true&output=csv"
-  displacement_data: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRubZgyjd7Az7Vgaxb5lWFpjojmjYZRlcVaVqYBEuEmpIojnuVn0nJG6DAJUaIzn0NdVhAkQuBw5t8q/pub?gid=1851894393&single=true&output=csv"
 tags:
-  - "population"
+  - "hxl"
   - "displacement"
-  - "idmc"
+  - "internally displaced persons - idp"
+  - "violence and conflict"
 
 

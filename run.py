@@ -9,13 +9,11 @@ from os.path import join, expanduser
 
 from hdx.hdx_configuration import Configuration
 from hdx.utilities.downloader import Download
+from hdx.utilities.path import temp_dir
 
-from idmc import generate_indicator_datasets_and_showcase, generate_country_dataset_and_showcase, get_countriesdata
+from idmc import generate_indicator_datasets_and_showcase, generate_country_dataset_and_showcase, generate_resource_view
 
-from hdx.facades import logging_kwargs
-logging_kwargs['smtp_config_yaml'] = join('config', 'smtp_configuration.yml')
-
-from hdx.facades.hdx_scraperwiki import facade
+from hdx.facades.simple import facade
 
 logger = logging.getLogger(__name__)
 
@@ -25,26 +23,35 @@ lookup = 'hdx-scraper-idmc'
 def main():
     """Generate dataset and create it in HDX"""
 
-    base_url = Configuration.read()['base_url']
-    with Download(extra_params_yaml=join(expanduser('~'), '.extraparams.yml'), extra_params_lookup=lookup) as downloader:
-        endpoints = Configuration.read()['endpoints']
-        tags = Configuration.read()['tags']
-        datasets, showcase = generate_indicator_datasets_and_showcase(base_url, downloader, endpoints, tags)
-        showcase.create_in_hdx()
-        for dataset in datasets.values():
-            dataset.update_from_yaml()
-            dataset.create_in_hdx(remove_additional_resources=True, hxl_update=False)
-            showcase.add_dataset(dataset)
-
-        countriesdata = get_countriesdata(base_url, downloader)
-        logger.info('Number of datasets to upload: %d' % len(countriesdata))
-        for countrydata in countriesdata:
-            dataset, showcase = generate_country_dataset_and_showcase(base_url, downloader, datasets, countrydata, endpoints, tags)
-            if dataset:
+    with temp_dir('idmc') as folder:
+        with Download(extra_params_yaml=join(expanduser('~'), '.extraparams.yml'), extra_params_lookup=lookup) as downloader:
+            displacement_url = Configuration.read()['displacement_url']
+            disaster_url = Configuration.read()['disaster_url']
+            endpoints = Configuration.read()['endpoints']
+            tags = Configuration.read()['tags']
+            datasets, showcase, headersdata, countriesdata = generate_indicator_datasets_and_showcase(displacement_url, disaster_url, downloader, folder, endpoints, tags)
+            showcase.create_in_hdx()
+            for endpoint in datasets:
+                dataset = datasets[endpoint]
                 dataset.update_from_yaml()
                 dataset.create_in_hdx(remove_additional_resources=True, hxl_update=False)
-                showcase.create_in_hdx()
+                if endpoint == 'disaster_data':
+                    path = join('config', 'hdx_resource_view_static_disaster.yml')
+                else:
+                    path = None
+                resource_view = generate_resource_view(dataset, path)
+                resource_view.create_in_hdx()
                 showcase.add_dataset(dataset)
+
+            for countryiso in countriesdata:
+                dataset, showcase = generate_country_dataset_and_showcase(folder, headersdata, countryiso, countriesdata[countryiso], datasets, tags)
+                if dataset:
+                    dataset.update_from_yaml()
+                    dataset.create_in_hdx(remove_additional_resources=True, hxl_update=False)
+                    resource_view = generate_resource_view(dataset)
+                    resource_view.create_in_hdx()
+                    showcase.create_in_hdx()
+                    showcase.add_dataset(dataset)
 
 
 if __name__ == '__main__':
