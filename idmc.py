@@ -7,6 +7,7 @@ IDMC:
 Reads IDMC HXLated csvs and creates datasets.
 
 """
+import json
 import logging
 from os.path import join
 
@@ -125,7 +126,7 @@ def generate_country_dataset_and_showcase(folder, headersdata, countryiso, count
         dataset.add_country_location(countryiso)
     except HDXError as e:
         logger.exception('%s has a problem! %s' % (countryname, e))
-        return None, None
+        return None, None, None
     description = extract_list_from_list_of_dict(indicator_datasets_list, 'notes')
     dataset['notes'] = get_matching_then_nonmatching_text(description, separator='\n\n', ignore='\n')
     methodology = extract_list_from_list_of_dict(indicator_datasets_list, 'methodology_other')
@@ -135,6 +136,7 @@ def generate_country_dataset_and_showcase(folder, headersdata, countryiso, count
 
     earliest_year = 10000
     latest_year = 0
+    empty_col = [True, True, True]
     for endpoint in countrydata:
         data = countrydata[endpoint]
         earliest_year = 10000
@@ -147,6 +149,15 @@ def generate_country_dataset_and_showcase(folder, headersdata, countryiso, count
                 newrow.append(row.get(hxltag))
             rows.append(newrow)
             year = row.get('#date+year')
+            conflict_stock = row.get('#affected+idps+ind+stock+conflict')
+            if conflict_stock:
+                empty_col[0] = False
+            conflict_new = row.get('#affected+idps+ind+newdisp+conflict')
+            if conflict_new:
+                empty_col[1] = False
+            disaster_new = row.get('#affected+idps+ind+newdisp+disaster')
+            if disaster_new:
+                empty_col[2] = False
             if year is None:
                 continue
             if year > latest_year:
@@ -170,13 +181,20 @@ def generate_country_dataset_and_showcase(folder, headersdata, countryiso, count
         'image_url': 'http://www.internal-displacement.org/sites/default/files/logo_0.png'
     })
     showcase.add_tags(tags)
-    return dataset, showcase
+    return dataset, showcase, empty_col
 
 
-def generate_resource_view(dataset, path=None):
+def generate_resource_view(dataset, path=None, empty_col=None):
     resourceview = ResourceView({'resource_id': dataset.get_resource(quickchart_resourceno)['id']})
     if path:
         resourceview.update_from_yaml(path=path)
     else:
         resourceview.update_from_yaml()
+    if empty_col is not None:
+        hxl_preview_config = json.loads(resourceview['hxl_preview_config'])
+        for i, empty in reversed(list(enumerate(empty_col))):
+            if empty:
+                del hxl_preview_config['bites'][i]
+        resourceview['hxl_preview_config'] = json.dumps(hxl_preview_config)
+
     return resourceview

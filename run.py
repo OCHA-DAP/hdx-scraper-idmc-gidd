@@ -39,16 +39,19 @@ def main():
                     path = join('config', 'hdx_resource_view_static_disaster.yml')
                 else:
                     path = None
-                resource_view = generate_resource_view(dataset, path)
+                resource_view = generate_resource_view(dataset, path=path)
                 resource_view.create_in_hdx()
                 showcase.add_dataset(dataset)
 
             for countryiso in countriesdata:
-                dataset, showcase = generate_country_dataset_and_showcase(folder, headersdata, countryiso, countriesdata[countryiso], datasets, tags)
+                dataset, showcase, empty_col = generate_country_dataset_and_showcase(folder, headersdata, countryiso, countriesdata[countryiso], datasets, tags)
                 if dataset:
                     dataset.update_from_yaml()
                     dataset.create_in_hdx(remove_additional_resources=True, hxl_update=False)
-                    resource_view = generate_resource_view(dataset)
+                    resources = dataset.get_resources()
+                    resource_ids = [x['id'] for x in sorted(resources, key=lambda x: len(x['name']), reverse=True)]
+                    dataset.reorder_resources(resource_ids, hxl_update=False)
+                    resource_view = generate_resource_view(dataset, empty_col=empty_col)
                     resource_view.create_in_hdx()
                     showcase.create_in_hdx()
                     showcase.add_dataset(dataset)
