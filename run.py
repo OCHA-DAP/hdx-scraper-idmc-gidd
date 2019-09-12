@@ -53,8 +53,9 @@ def main():
                     dataset.reorder_resources(resource_ids, hxl_update=False)
                     resource_view = generate_resource_view(dataset, empty_col=empty_col)
                     resource_view.create_in_hdx()
-                    showcase.create_in_hdx()
-                    showcase.add_dataset(dataset)
+                    if showcase:
+                        showcase.create_in_hdx()
+                        showcase.add_dataset(dataset)
 
 
 if __name__ == '__main__':
