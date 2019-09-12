@@ -1,7 +1,7 @@
 ### Collector for IDMC's Datasets
 [![Build Status](https://travis-ci.org/OCHA-DAP/hdx-scraper-idmc.svg?branch=master&ts=1)](https://travis-ci.org/OCHA-DAP/hdx-scraper-idmc) [![Coverage Status](https://coveralls.io/repos/github/OCHA-DAP/hdx-scraper-idmc/badge.svg?branch=master&ts=1)](https://coveralls.io/github/OCHA-DAP/hdx-scraper-idmc?branch=master)
 
-This script connects to the [IDMC API](https://api.idmcdb.org/) and extracts data for 3 endpoints country by country creating a dataset per country in HDX. It makes in the order of 1000 reads from IDMC and 1000 read/writes (API calls) to HDX in a one hour period. It does not create temporary files as it puts urls into HDX. It is run every year. 
+This script connects to the [IDMC API](https://api.idmcdb.org/) and extracts data for 2 endpoints country by country creating a dataset per country in HDX. It makes 2 reads from IDMC and 1000 read/writes (API calls) to HDX in a one hour period. It creates around 500 temporary files each a few Kb which it uploads into HDX. It is run every year.
 
 
 ### Usage
