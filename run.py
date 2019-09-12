@@ -44,7 +44,7 @@ def main():
                 showcase.add_dataset(dataset)
 
             for countryiso in countriesdata:
-                dataset, showcase, empty_col = generate_country_dataset_and_showcase(folder, headersdata, countryiso, countriesdata[countryiso], datasets, tags)
+                dataset, showcase, empty_col = generate_country_dataset_and_showcase(downloader, folder, headersdata, countryiso, countriesdata[countryiso], datasets, tags)
                 if dataset:
                     dataset.update_from_yaml()
                     dataset.create_in_hdx(remove_additional_resources=True, hxl_update=False)

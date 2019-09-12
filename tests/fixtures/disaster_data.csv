@@ -1,0 +1,8 @@
+ISO3,Name,Year,Start Date,Event Name,Hazard Category,Hazard Type,New Displacements
+#country+code,#country+name,#date+year,#date+start,#description,#crisis+category,#crisis+type,#affected+idps+ind+newdisp+disaster
+AB9,Abyei Area,2018,2018-07-01,Abyie: Flood - 01/07/2018,Weather related,Flood,2
+AFG,Afghanistan,2008,2008-01-01,,Weather related,Extreme temperature,
+AFG,Afghanistan,2013,2013-02-01,"Ghor, Badakhastan, Hiratn, Kundus, Parwan floods and landslides",Weather related,Flood,8880
+AFG,Afghanistan,2018,2018-04-29,Afghanistan: Flash flood - Bamyan - 29/04/2018 (IOM event),Weather related,Flood,7
+TZA,Tanzania,2011,2011-01-01,,Weather related,Flood,10000
+TZA,Tanzania,2012,2012-01-01,,Weather related,Flood,10000

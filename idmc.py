@@ -19,7 +19,8 @@ from hdx.data.resource_view import ResourceView
 from hdx.data.showcase import Showcase
 from hdx.location.country import Country
 from hdx.utilities.dictandlist import extract_list_from_list_of_dict, dict_of_lists_add, write_list_to_csv
-from hdx.utilities.text import get_matching_then_nonmatching_text, get_matching_text
+from hdx.utilities.downloader import DownloadError
+from hdx.utilities.text import get_matching_then_nonmatching_text
 from slugify import slugify
 
 logger = logging.getLogger(__name__)
@@ -116,7 +117,7 @@ def generate_indicator_datasets_and_showcase(displacement_url, disaster_url, dow
     return datasets, showcase, headersdata, countriesdata
 
 
-def generate_country_dataset_and_showcase(folder, headersdata, countryiso, countrydata, indicator_datasets, tags):
+def generate_country_dataset_and_showcase(downloader, folder, headersdata, countryiso, countrydata, indicator_datasets, tags):
     indicator_datasets_list = indicator_datasets.values()
     title = extract_list_from_list_of_dict(indicator_datasets_list, 'title')
     countryname = Country.get_country_name_from_iso3(countryiso)
@@ -172,12 +173,21 @@ def generate_country_dataset_and_showcase(folder, headersdata, countryiso, count
         dataset.add_update_resource(resource)
     dataset.set_quickchart_resource(quickchart_resourceno)
     dataset.set_dataset_year_range(earliest_year, latest_year)
-
+    url = 'http://www.internal-displacement.org/countries/%s/' % countryname.replace(' ', '-')
+    try:
+        downloader.setup(url)
+    except DownloadError:
+        altname = Country.get_country_info_from_iso3(countryiso)['#country+alt+i_en+name+v_unterm']
+        url = 'http://www.internal-displacement.org/countries/%s/' % altname
+        try:
+            downloader.setup(url)
+        except DownloadError:
+            return dataset, None, empty_col
     showcase = Showcase({
         'name': '%s-showcase' % dataset['name'],
         'title': 'IDMC %s Summary Page' % countryname,
         'notes': 'Click the image on the right to go to the IDMC summary page for the %s dataset' % countryname,
-        'url': 'http://www.internal-displacement.org/countries/%s/' % countryname.replace(' ', '-'),
+        'url': url,
         'image_url': 'http://www.internal-displacement.org/sites/default/files/logo_0.png'
     })
     showcase.add_tags(tags)
