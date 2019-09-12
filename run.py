@@ -24,7 +24,7 @@ def main():
     """Generate dataset and create it in HDX"""
 
     with temp_dir('idmc') as folder:
-        with Download(extra_params_yaml=join(expanduser('~'), '.extraparams.yml'), extra_params_lookup=lookup) as downloader:
+        with Download() as downloader:
             displacement_url = Configuration.read()['displacement_url']
             disaster_url = Configuration.read()['disaster_url']
             endpoints = Configuration.read()['endpoints']
