@@ -1,0 +1,4 @@
+ISO3,Name,Year,Conflict Stock Displacement,Conflict New Displacements,Disaster New Displacements
+#country+code,#country+name,#date+year,#affected+idps+ind+stock+conflict,#affected+idps+ind+newdisp+conflict,#affected+idps+ind+newdisp+disaster
+TZA,Tanzania,2011,,,22000
+TZA,Tanzania,2012,,,10000

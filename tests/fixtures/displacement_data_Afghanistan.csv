@@ -1,0 +1,5 @@
+ISO3,Name,Year,Conflict Stock Displacement,Conflict New Displacements,Disaster New Displacements
+#country+code,#country+name,#date+year,#affected+idps+ind+stock+conflict,#affected+idps+ind+newdisp+conflict,#affected+idps+ind+newdisp+disaster
+AFG,Afghanistan,2008,,,3400
+AFG,Afghanistan,2013,631000,124000,15000
+AFG,Afghanistan,2018,2598000,372000,435000

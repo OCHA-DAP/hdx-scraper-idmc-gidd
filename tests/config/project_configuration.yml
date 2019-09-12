@@ -1,12 +1,11 @@
 # Collector specific configuration
-base_url: "http://lala/"
+displacement_url: "https://dada"
+disaster_url: "https://wawa"
 endpoints:
-endpoints:
-  conflict_data: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRubZgyjd7Az7Vgaxb5lWFpjojmjYZRlcVaVqYBEuEmpIojnuVn0nJG6DAJUaIzn0NdVhAkQuBw5t8q/pub?gid=2096291259&single=true&output=csv"
+  displacement_data: "https://lala"
+  disaster_data: "https://haha"
 tags:
-  - "population"
+  - "hxl"
   - "displacement"
-  - "idmc"
-
-
-
+  - "internally displaced persons - idp"
+  - "violence and conflict"
