@@ -11,7 +11,7 @@ from hdx.hdx_configuration import Configuration
 from hdx.utilities.downloader import Download
 from hdx.utilities.path import temp_dir
 
-from idmc import generate_indicator_datasets_and_showcase, generate_country_dataset_and_showcase, generate_resource_view
+from idmc import generate_indicator_datasets_and_showcase, generate_country_dataset_and_showcase
 
 from hdx.facades.simple import facade
 
@@ -36,26 +36,20 @@ def main():
                 dataset.update_from_yaml()
                 dataset.create_in_hdx(remove_additional_resources=True, hxl_update=False)
                 if endpoint == 'disaster_data':
-                    path = join('config', 'hdx_resource_view_static_disaster.yml')
+                    dataset.generate_resource_view(join('config', 'hdx_resource_view_static_disaster.yml'))
                 else:
-                    path = None
-                resource_view = generate_resource_view(dataset, path=path)
-                resource_view.create_in_hdx()
+                    dataset.generate_resource_view()
                 showcase.add_dataset(dataset)
 
             for countryiso in countriesdata:
-                dataset, showcase, empty_col = generate_country_dataset_and_showcase(downloader, folder, headersdata, countryiso, countriesdata[countryiso], datasets, tags)
+                dataset, showcase, bites_disabled = generate_country_dataset_and_showcase(downloader, folder, headersdata, countryiso, countriesdata[countryiso], datasets, tags)
                 if dataset:
                     dataset.update_from_yaml()
                     dataset.create_in_hdx(remove_additional_resources=True, hxl_update=False)
                     resources = dataset.get_resources()
                     resource_ids = [x['id'] for x in sorted(resources, key=lambda x: len(x['name']), reverse=True)]
                     dataset.reorder_resources(resource_ids, hxl_update=False)
-                    resource_view = generate_resource_view(dataset, empty_col=empty_col)
-                    resource_view.create_in_hdx()
-                    if showcase:
-                        showcase.create_in_hdx()
-                        showcase.add_dataset(dataset)
+                    dataset.generate_resource_view(bites_disabled=bites_disabled)
 
 
 if __name__ == '__main__':

@@ -7,7 +7,6 @@ IDMC:
 Reads IDMC HXLated csvs and creates datasets.
 
 """
-import json
 import logging
 from os.path import join
 
@@ -15,7 +14,6 @@ import hxl
 from hdx.data.dataset import Dataset
 from hdx.data.hdxobject import HDXError
 from hdx.data.resource import Resource
-from hdx.data.resource_view import ResourceView
 from hdx.data.showcase import Showcase
 from hdx.location.country import Country
 from hdx.utilities.dictandlist import extract_list_from_list_of_dict, dict_of_lists_add, write_list_to_csv
@@ -24,7 +22,6 @@ from hdx.utilities.text import get_matching_then_nonmatching_text
 from slugify import slugify
 
 logger = logging.getLogger(__name__)
-quickchart_resourceno = 0
 extension = 'csv'
 
 
@@ -101,7 +98,6 @@ def generate_indicator_datasets_and_showcase(displacement_url, disaster_url, dow
         resource.set_file_to_upload(path)
         dataset.add_update_resource(resource)
         dataset.set_dataset_year_range(earliest_year, latest_year)
-        dataset.set_quickchart_resource(quickchart_resourceno)
         datasets[endpoint] = dataset
 
     title = 'IDMC Global Report on Internal Displacement'
@@ -137,7 +133,7 @@ def generate_country_dataset_and_showcase(downloader, folder, headersdata, count
 
     earliest_year = 10000
     latest_year = 0
-    empty_col = [True, True, True]
+    bites_disabled = [True, True, True]
     for endpoint in countrydata:
         data = countrydata[endpoint]
         earliest_year = 10000
@@ -152,13 +148,13 @@ def generate_country_dataset_and_showcase(downloader, folder, headersdata, count
             year = row.get('#date+year')
             conflict_stock = row.get('#affected+idps+ind+stock+conflict')
             if conflict_stock:
-                empty_col[0] = False
+                bites_disabled[0] = False
             conflict_new = row.get('#affected+idps+ind+newdisp+conflict')
             if conflict_new:
-                empty_col[1] = False
+                bites_disabled[1] = False
             disaster_new = row.get('#affected+idps+ind+newdisp+disaster')
             if disaster_new:
-                empty_col[2] = False
+                bites_disabled[2] = False
             if year is None:
                 continue
             if year > latest_year:
@@ -171,7 +167,6 @@ def generate_country_dataset_and_showcase(downloader, folder, headersdata, count
         write_list_to_csv(rows, path)
         resource.set_file_to_upload(path)
         dataset.add_update_resource(resource)
-    dataset.set_quickchart_resource(quickchart_resourceno)
     dataset.set_dataset_year_range(earliest_year, latest_year)
     url = 'http://www.internal-displacement.org/countries/%s/' % countryname.replace(' ', '-')
     try:
@@ -182,7 +177,7 @@ def generate_country_dataset_and_showcase(downloader, folder, headersdata, count
         try:
             downloader.setup(url)
         except DownloadError:
-            return dataset, None, empty_col
+            return dataset, None, bites_disabled
     showcase = Showcase({
         'name': '%s-showcase' % dataset['name'],
         'title': 'IDMC %s Summary Page' % countryname,
@@ -191,20 +186,4 @@ def generate_country_dataset_and_showcase(downloader, folder, headersdata, count
         'image_url': 'http://www.internal-displacement.org/sites/default/files/logo_0.png'
     })
     showcase.add_tags(tags)
-    return dataset, showcase, empty_col
-
-
-def generate_resource_view(dataset, path=None, empty_col=None):
-    resourceview = ResourceView({'resource_id': dataset.get_resource(quickchart_resourceno)['id']})
-    if path:
-        resourceview.update_from_yaml(path=path)
-    else:
-        resourceview.update_from_yaml()
-    if empty_col is not None:
-        hxl_preview_config = json.loads(resourceview['hxl_preview_config'])
-        for i, empty in reversed(list(enumerate(empty_col))):
-            if empty:
-                del hxl_preview_config['bites'][i]
-        resourceview['hxl_preview_config'] = json.dumps(hxl_preview_config)
-
-    return resourceview
+    return dataset, showcase, bites_disabled
