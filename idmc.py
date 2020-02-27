@@ -22,17 +22,13 @@ from hdx.utilities.text import get_matching_then_nonmatching_text
 from slugify import slugify
 
 logger = logging.getLogger(__name__)
-extension = 'csv'
 
 
 def get_resource(endpoint, description):
-    resource = {
+    {
         'name': endpoint,
-        'format': extension,
         'description': description
     }
-    return Resource(resource)
-
 
 def get_dataset(title, tags, name):
     logger.info('Creating dataset: %s' % title)
@@ -72,8 +68,7 @@ def generate_indicator_datasets_and_showcase(displacement_url, disaster_url, dow
         headers = data.headers
         hxltags = data.display_tags
         headersdata[endpoint] = headers, hxltags
-        earliest_year = 10000
-        latest_year = 0
+        years = set()
         rows = [headers, hxltags]
         for row in data:
             newrow = list()
@@ -87,17 +82,14 @@ def generate_indicator_datasets_and_showcase(displacement_url, disaster_url, dow
             year = row.get('#date+year')
             if year is None:
                 continue
-            if year > latest_year:
-                latest_year = year
-            if year < earliest_year:
-                earliest_year = year
+            years.add(year)
 
-        resource = get_resource(endpoint, name)
-        path = join(folder, '%s.%s' % (endpoint, extension))
-        write_list_to_csv(rows, path)
-        resource.set_file_to_upload(path)
-        dataset.add_update_resource(resource)
-        dataset.set_dataset_year_range(earliest_year, latest_year)
+        resourcedata = {'name': endpoint, 'description': name}
+        filename = '%s.csv' % endpoint
+        dataset.generate_resource_from_rows(folder, filename, rows, resourcedata)
+
+        years = sorted(list(years))
+        dataset.set_dataset_year_range(years[0], years[-1])
         datasets[endpoint] = dataset
 
     title = 'IDMC Global Report on Internal Displacement'
@@ -131,13 +123,10 @@ def generate_country_dataset_and_showcase(downloader, folder, headersdata, count
     caveats = extract_list_from_list_of_dict(indicator_datasets_list, 'caveats')
     dataset['caveats'] = get_matching_then_nonmatching_text(caveats)
 
-    earliest_year = 10000
-    latest_year = 0
+    years = set()
     bites_disabled = [True, True, True]
     for endpoint in countrydata:
         data = countrydata[endpoint]
-        earliest_year = 10000
-        latest_year = 0
         headers, hxltags = headersdata[endpoint]
         rows = [headers, hxltags]
         for row in data:
@@ -157,17 +146,13 @@ def generate_country_dataset_and_showcase(downloader, folder, headersdata, count
                 bites_disabled[2] = False
             if year is None:
                 continue
-            if year > latest_year:
-                latest_year = year
-            if year < earliest_year:
-                earliest_year = year
+            years.add(year)
         name = indicator_datasets[endpoint].get_resources()[0]['description']
-        resource = get_resource(endpoint, '%s for %s' % (name, countryname))
-        path = join(folder, '%s_%s.%s' % (endpoint, countryname, extension))
-        write_list_to_csv(rows, path)
-        resource.set_file_to_upload(path)
-        dataset.add_update_resource(resource)
-    dataset.set_dataset_year_range(earliest_year, latest_year)
+        resourcedata = {'name': endpoint, 'description': '%s for %s' % (name, countryname)}
+        filename = '%s_%s.csv' % (endpoint, countryname)
+        dataset.generate_resource_from_rows(folder, filename, rows, resourcedata)
+    years = sorted(list(years))
+    dataset.set_dataset_year_range(years[0], years[-1])
     url = 'http://www.internal-displacement.org/countries/%s/' % countryname.replace(' ', '-')
     try:
         downloader.setup(url)

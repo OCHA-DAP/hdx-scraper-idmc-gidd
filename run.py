@@ -34,7 +34,7 @@ def main():
             for endpoint in datasets:
                 dataset = datasets[endpoint]
                 dataset.update_from_yaml()
-                dataset.create_in_hdx(remove_additional_resources=True, hxl_update=False)
+                dataset.create_in_hdx(remove_additional_resources=True, hxl_update=False, updated_by_script='HDX Scraper: IDMC')
                 if endpoint == 'disaster_data':
                     dataset.generate_resource_view(join('config', 'hdx_resource_view_static_disaster.yml'))
                 else:
@@ -45,7 +45,7 @@ def main():
                 dataset, showcase, bites_disabled = generate_country_dataset_and_showcase(downloader, folder, headersdata, countryiso, countriesdata[countryiso], datasets, tags)
                 if dataset:
                     dataset.update_from_yaml()
-                    dataset.create_in_hdx(remove_additional_resources=True, hxl_update=False)
+                    dataset.create_in_hdx(remove_additional_resources=True, hxl_update=False, updated_by_script='HDX Scraper: IDMC')
                     resources = dataset.get_resources()
                     resource_ids = [x['id'] for x in sorted(resources, key=lambda x: len(x['name']), reverse=True)]
                     dataset.reorder_resources(resource_ids, hxl_update=False)
