@@ -8,12 +8,10 @@ Reads IDMC HXLated csvs and creates datasets.
 
 """
 import logging
-from os.path import join
 
 import hxl
 from hdx.data.dataset import Dataset
 from hdx.data.hdxobject import HDXError
-from hdx.data.resource import Resource
 from hdx.data.showcase import Showcase
 from hdx.location.country import Country
 from hdx.utilities.dictandlist import extract_list_from_list_of_dict, dict_of_lists_add, write_list_to_csv
