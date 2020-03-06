@@ -28,6 +28,7 @@ def get_resource(endpoint, description):
         'description': description
     }
 
+
 def get_dataset(title, tags, name):
     logger.info('Creating dataset: %s' % title)
     dataset = Dataset({
