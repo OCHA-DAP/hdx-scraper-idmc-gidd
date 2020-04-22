@@ -14,19 +14,12 @@ from hdx.data.dataset import Dataset
 from hdx.data.hdxobject import HDXError
 from hdx.data.showcase import Showcase
 from hdx.location.country import Country
-from hdx.utilities.dictandlist import extract_list_from_list_of_dict, dict_of_lists_add, write_list_to_csv
+from hdx.utilities.dictandlist import extract_list_from_list_of_dict, dict_of_lists_add
 from hdx.utilities.downloader import DownloadError
 from hdx.utilities.text import get_matching_then_nonmatching_text
 from slugify import slugify
 
 logger = logging.getLogger(__name__)
-
-
-def get_resource(endpoint, description):
-    {
-        'name': endpoint,
-        'description': description
-    }
 
 
 def get_dataset(title, tags, name):
@@ -37,18 +30,18 @@ def get_dataset(title, tags, name):
     })
     dataset.set_maintainer('196196be-6037-4488-8b71-d786adf4c081')
     dataset.set_organization('647d9d8c-4cac-4c33-b639-649aad1c2893')
-    dataset.set_expected_update_frequency('As needed')
+    dataset.set_expected_update_frequency('Every day')
     dataset.set_subnational(False)
     dataset.add_tags(tags)
     return dataset
 
 
-def generate_indicator_datasets_and_showcase(displacement_url, disaster_url, downloader, folder, endpoints, tags):
+def generate_indicator_datasets_and_showcase(downloader, folder, indicators, tags):
     datasets = dict()
     countriesdata = dict()
     headersdata = dict()
-    for endpoint in endpoints:
-        metadata = downloader.download_tabular_key_value(endpoints[endpoint])
+    for indicator in indicators:
+        metadata = downloader.download_tabular_key_value(indicator['spreadsheet'])
         name = metadata['Indicator Name']
         title = name
         dataset = get_dataset(title, tags, 'idmc-%s' % name)
@@ -56,17 +49,13 @@ def generate_indicator_datasets_and_showcase(displacement_url, disaster_url, dow
         dataset['methodology_other'] = metadata['Statistical concept and methodology']
         dataset['caveats'] = metadata['Limitations and exceptions']
         dataset.add_other_location('world')
-        if endpoint == 'disaster_data':
-            url = disaster_url
-        elif endpoint == 'displacement_data':
-            url = displacement_url
-        else:
-            raise ValueError('Invalid endpoint %s!' % endpoint)
-        path = downloader.download_file(url, folder, '%s.xlsx' % endpoint)
+        url = indicator['url']
+        name = indicator['name']
+        path = downloader.download_file(url, folder, '%s.xlsx' % name)
         data = hxl.data(path, allow_local=True)
         headers = data.headers
         hxltags = data.display_tags
-        headersdata[endpoint] = headers, hxltags
+        headersdata[name] = headers, hxltags
         years = set()
         rows = [headers, hxltags]
         for row in data:
@@ -76,20 +65,20 @@ def generate_indicator_datasets_and_showcase(displacement_url, disaster_url, dow
             rows.append(newrow)
             iso3 = row.get('#country+code')
             epcountrydata = countriesdata.get(iso3, dict())
-            dict_of_lists_add(epcountrydata, endpoint, row)
+            dict_of_lists_add(epcountrydata, name, row)
             countriesdata[iso3] = epcountrydata
             year = row.get('#date+year')
             if year is None:
                 continue
             years.add(year)
 
-        resourcedata = {'name': endpoint, 'description': name}
-        filename = '%s.csv' % endpoint
+        resourcedata = {'name': name, 'description': title}
+        filename = '%s.csv' % name
         dataset.generate_resource_from_rows(folder, filename, rows, resourcedata)
 
         years = sorted(list(years))
         dataset.set_dataset_year_range(years[0], years[-1])
-        datasets[endpoint] = dataset
+        datasets[name] = dataset
 
     title = 'IDMC Global Report on Internal Displacement'
     slugified_name = slugify(title).lower()

@@ -1,9 +1,13 @@
-# Collector specific configuration
-displacement_url: "https://dada"
-disaster_url: "https://wawa"
-endpoints:
-  displacement_data: "https://lala"
-  disaster_data: "https://haha"
+  # Collector specific configuration
+indicators:
+  - name: "displacement_data"
+    url: "https://dada"
+    spreadsheet: "https://lala"
+    resourceview: "hdx_resource_view_static.yml"
+  - name: "disaster_data"
+    url: "https://wawa"
+    spreadsheet: "https://haha"
+    resourceview: "hdx_resource_view_static_disaster.yml"
 tags:
   - "hxl"
   - "displacement"

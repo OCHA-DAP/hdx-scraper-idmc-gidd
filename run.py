@@ -9,7 +9,7 @@ from os.path import join, expanduser
 
 from hdx.hdx_configuration import Configuration
 from hdx.utilities.downloader import Download
-from hdx.utilities.path import temp_dir
+from hdx.utilities.path import temp_dir, multiple_progress_storing_tempdir, get_temp_dir
 
 from idmc import generate_indicator_datasets_and_showcase, generate_country_dataset_and_showcase
 
@@ -23,33 +23,41 @@ lookup = 'hdx-scraper-idmc'
 def main():
     """Generate dataset and create it in HDX"""
 
-    with temp_dir('idmc') as folder:
-        with Download() as downloader:
-            displacement_url = Configuration.read()['displacement_url']
-            disaster_url = Configuration.read()['disaster_url']
-            endpoints = Configuration.read()['endpoints']
-            tags = Configuration.read()['tags']
-            datasets, showcase, headersdata, countriesdata = generate_indicator_datasets_and_showcase(displacement_url, disaster_url, downloader, folder, endpoints, tags)
-            showcase.create_in_hdx()
-            for endpoint in datasets:
-                dataset = datasets[endpoint]
-                dataset.update_from_yaml()
-                dataset.create_in_hdx(remove_additional_resources=True, hxl_update=False, updated_by_script='HDX Scraper: IDMC')
-                if endpoint == 'disaster_data':
-                    dataset.generate_resource_view(join('config', 'hdx_resource_view_static_disaster.yml'))
-                else:
-                    dataset.generate_resource_view()
-                showcase.add_dataset(dataset)
+    with Download() as downloader:
+        indicators = Configuration.read()['indicators']
+        tags = Configuration.read()['tags']
+        folder = get_temp_dir('IDMC')
+        datasets, showcase, headersdata, countriesdata = generate_indicator_datasets_and_showcase(downloader, folder, indicators, tags)
+        showcase_not_added = True
+        countries = [{'iso3': x} for x in sorted(countriesdata)]
 
-            for countryiso in countriesdata:
-                dataset, showcase, bites_disabled = generate_country_dataset_and_showcase(downloader, folder, headersdata, countryiso, countriesdata[countryiso], datasets, tags)
+        logger.info('Number of indicator datasets to upload: %d' % len(indicators))
+        logger.info('Number of country datasets to upload: %d' % len(countries))
+        for i, info, nextdict in multiple_progress_storing_tempdir('IDMC', [indicators, countries],
+                                                                   ['name', 'iso3']):
+            folder = info['folder']
+            batch = info['batch']
+            if i == 0:
+                if showcase_not_added:
+                    showcase.create_in_hdx()
+                    showcase_not_added = False
+                dataset = datasets[nextdict['name']]
+                dataset.update_from_yaml()
+                dataset.generate_resource_view(join('config', nextdict['resourceview']))
+                dataset.create_in_hdx(remove_additional_resources=True, hxl_update=False, updated_by_script='HDX Scraper: IDMC', batch=batch)
+                showcase.add_dataset(dataset)
+            else:
+                countryiso = nextdict['iso3']
+                countrydata = countriesdata[countryiso]
+                dataset, showcase, bites_disabled = \
+                    generate_country_dataset_and_showcase(downloader, folder, headersdata, countryiso, countrydata, datasets, tags)
                 if dataset:
                     dataset.update_from_yaml()
-                    dataset.create_in_hdx(remove_additional_resources=True, hxl_update=False, updated_by_script='HDX Scraper: IDMC')
+                    dataset.generate_resource_view(bites_disabled=bites_disabled)
+                    dataset.create_in_hdx(remove_additional_resources=True, hxl_update=False, updated_by_script='HDX Scraper: IDMC', batch=batch)
                     resources = dataset.get_resources()
                     resource_ids = [x['id'] for x in sorted(resources, key=lambda x: len(x['name']), reverse=True)]
                     dataset.reorder_resources(resource_ids, hxl_update=False)
-                    dataset.generate_resource_view(bites_disabled=bites_disabled)
 
 
 if __name__ == '__main__':
