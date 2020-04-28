@@ -20,7 +20,7 @@ from idmc import generate_indicator_datasets_and_showcase, generate_country_data
 
 class TestIDMC:
     afg_dataset = {'name': 'idmc-idp-data-for-afghanistan', 'title': 'Afghanistan - Internally displaced persons - IDPs', 'maintainer': '196196be-6037-4488-8b71-d786adf4c081',
-                   'owner_org': '647d9d8c-4cac-4c33-b639-649aad1c2893', 'data_update_frequency': '1', 'subnational': '0',
+                   'owner_org': '647d9d8c-4cac-4c33-b639-649aad1c2893', 'data_update_frequency': '365', 'subnational': '0',
                    'tags': [{'name': 'hxl', 'vocabulary_id': '4e61d464-4943-4e97-973a-84673c1aaa87'}, {'name': 'displacement', 'vocabulary_id': '4e61d464-4943-4e97-973a-84673c1aaa87'},
                    {'name': 'internally displaced persons - idp', 'vocabulary_id': '4e61d464-4943-4e97-973a-84673c1aaa87'}, {'name': 'violence and conflict', 'vocabulary_id': '4e61d464-4943-4e97-973a-84673c1aaa87'}],
                    'groups': [{'name': 'afg'}], 'notes': "Description\n\nContains data from IDMC's [Global Internal Displacement Database](http://www.internal-displacement.org/database/displacement-data).",
@@ -83,7 +83,7 @@ class TestIDMC:
             datasets, showcase, headersdata, countriesdata = generate_indicator_datasets_and_showcase(downloader, folder, indicators, tags)
             assert datasets == {'displacement_data': {'name': 'idmc-internally-displaced-persons-idps', 'title': 'Internally displaced persons - IDPs',
                                                       'maintainer': '196196be-6037-4488-8b71-d786adf4c081', 'owner_org': '647d9d8c-4cac-4c33-b639-649aad1c2893',
-                                                      'data_update_frequency': '1', 'subnational': '0',
+                                                      'data_update_frequency': '365', 'subnational': '0',
                                                       'tags': [{'name': 'hxl', 'vocabulary_id': '4e61d464-4943-4e97-973a-84673c1aaa87'}, {'name': 'displacement', 'vocabulary_id': '4e61d464-4943-4e97-973a-84673c1aaa87'},
                                                                {'name': 'internally displaced persons - idp', 'vocabulary_id': '4e61d464-4943-4e97-973a-84673c1aaa87'},
                                                                {'name': 'violence and conflict', 'vocabulary_id': '4e61d464-4943-4e97-973a-84673c1aaa87'}],
@@ -91,7 +91,7 @@ class TestIDMC:
                                                       'methodology_other': 'Methodology', 'caveats': 'Caveats', 'groups': [{'name': 'world'}], 'dataset_date': '01/01/2008-12/31/2018'},
                                 'disaster_data': {'name': 'idmc-internally-displaced-persons-idps-new-displacement-associated-with-disasters', 'title': 'Internally displaced persons - IDPs (new displacement associated with disasters)',
                                                   'maintainer': '196196be-6037-4488-8b71-d786adf4c081', 'owner_org': '647d9d8c-4cac-4c33-b639-649aad1c2893',
-                                                  'data_update_frequency': '1', 'subnational': '0',
+                                                  'data_update_frequency': '365', 'subnational': '0',
                                                   'tags': [{'name': 'hxl', 'vocabulary_id': '4e61d464-4943-4e97-973a-84673c1aaa87'}, {'name': 'displacement', 'vocabulary_id': '4e61d464-4943-4e97-973a-84673c1aaa87'},
                                                            {'name': 'internally displaced persons - idp', 'vocabulary_id': '4e61d464-4943-4e97-973a-84673c1aaa87'},
                                                            {'name': 'violence and conflict', 'vocabulary_id': '4e61d464-4943-4e97-973a-84673c1aaa87'}],
@@ -140,7 +140,7 @@ class TestIDMC:
 
             dataset, showcase, disables_bites = generate_country_dataset_and_showcase(downloader, folder, headersdata, 'TZA', countriesdata['TZA'], datasets, tags)
             assert dataset == {'name': 'idmc-idp-data-for-united-republic-of-tanzania', 'title': 'United Republic of Tanzania - Internally displaced persons - IDPs', 'maintainer': '196196be-6037-4488-8b71-d786adf4c081',
-                               'owner_org': '647d9d8c-4cac-4c33-b639-649aad1c2893', 'data_update_frequency': '1', 'subnational': '0',
+                               'owner_org': '647d9d8c-4cac-4c33-b639-649aad1c2893', 'data_update_frequency': '365', 'subnational': '0',
                                'tags': [{'name': 'hxl', 'vocabulary_id': '4e61d464-4943-4e97-973a-84673c1aaa87'}, {'name': 'displacement', 'vocabulary_id': '4e61d464-4943-4e97-973a-84673c1aaa87'},
                                         {'name': 'internally displaced persons - idp', 'vocabulary_id': '4e61d464-4943-4e97-973a-84673c1aaa87'}, {'name': 'violence and conflict', 'vocabulary_id': '4e61d464-4943-4e97-973a-84673c1aaa87'}],
                                'groups': [{'name': 'tza'}], 'notes': "Description\n\nContains data from IDMC's [Global Internal Displacement Database](http://www.internal-displacement.org/database/displacement-data).",
