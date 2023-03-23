@@ -22,7 +22,7 @@ from idmc import (
 class TestIDMC:
     afg_dataset = {
         "name": "idmc-idp-data-for-afghanistan",
-        "title": "Afghanistan - Internally displaced persons - IDPs",
+        "title": "Afghanistan - internally displaced persons-idps",
         "maintainer": "196196be-6037-4488-8b71-d786adf4c081",
         "owner_org": "647d9d8c-4cac-4c33-b639-649aad1c2893",
         "data_update_frequency": "365",
@@ -34,11 +34,11 @@ class TestIDMC:
                 "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
             },
             {
-                "name": "internally displaced persons - idp",
+                "name": "internally displaced persons-idp",
                 "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
             },
             {
-                "name": "violence and conflict",
+                "name": "conflict-violence",
                 "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
             },
         ],
@@ -46,18 +46,18 @@ class TestIDMC:
         "notes": "Description\n\nContains data from IDMC's [Global Internal Displacement Database](http://www.internal-displacement.org/database/displacement-data).",
         "methodology_other": "",
         "caveats": "",
-        "dataset_date": "[2008-01-01T00:00:00 TO 2018-12-31T00:00:00]",
+        "dataset_date": "[2008-01-01T00:00:00 TO 2018-12-31T23:59:59]",
     }
     afg_resources = [
         {
-            "description": "Internally displaced persons - IDPs for Afghanistan",
+            "description": "internally displaced persons-idps for Afghanistan",
             "format": "csv",
             "name": "displacement_data",
             "resource_type": "file.upload",
             "url_type": "upload",
         },
         {
-            "description": "Internally displaced persons - IDPs (new displacement associated with disasters) for Afghanistan",
+            "description": "internally displaced persons-idps (new displacement associated with disasters) for Afghanistan",
             "format": "csv",
             "name": "disaster_data",
             "resource_type": "file.upload",
@@ -84,9 +84,9 @@ class TestIDMC:
         Vocabulary._approved_vocabulary = {
             "tags": [
                 {"name": "hxl"},
-                {"name": "violence and conflict"},
+                {"name": "conflict-violence"},
                 {"name": "displacement"},
-                {"name": "internally displaced persons - idp"},
+                {"name": "internally displaced persons-idp"},
             ],
             "id": "4e61d464-4943-4e97-973a-84673c1aaa87",
             "name": "approved",
@@ -99,14 +99,14 @@ class TestIDMC:
             def download_tabular_key_value(url):
                 if url == "https://lala":
                     return {
-                        "Indicator Name": "Internally displaced persons - IDPs",
+                        "Indicator Name": "internally displaced persons-idps",
                         "Long definition": "Description",
                         "Statistical concept and methodology": "Methodology",
                         "Limitations and exceptions": "Caveats",
                     }
                 elif url == "https://haha":
                     return {
-                        "Indicator Name": "Internally displaced persons - IDPs (new displacement associated with disasters)",
+                        "Indicator Name": "internally displaced persons-idps (new displacement associated with disasters)",
                         "Long definition": "Description",
                         "Statistical concept and methodology": "Methodology",
                         "Limitations and exceptions": "Caveats",
@@ -148,7 +148,7 @@ class TestIDMC:
             assert datasets == {
                 "displacement_data": {
                     "name": "idmc-internally-displaced-persons-idps",
-                    "title": "Internally displaced persons - IDPs",
+                    "title": "internally displaced persons-idps",
                     "maintainer": "196196be-6037-4488-8b71-d786adf4c081",
                     "owner_org": "647d9d8c-4cac-4c33-b639-649aad1c2893",
                     "data_update_frequency": "365",
@@ -163,11 +163,11 @@ class TestIDMC:
                             "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
                         },
                         {
-                            "name": "internally displaced persons - idp",
+                            "name": "internally displaced persons-idp",
                             "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
                         },
                         {
-                            "name": "violence and conflict",
+                            "name": "conflict-violence",
                             "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
                         },
                     ],
@@ -175,11 +175,11 @@ class TestIDMC:
                     "methodology_other": "Methodology",
                     "caveats": "Caveats",
                     "groups": [{"name": "world"}],
-                    "dataset_date": "[2008-01-01T00:00:00 TO 2018-12-31T00:00:00]",
+                    "dataset_date": "[2008-01-01T00:00:00 TO 2018-12-31T23:59:59]",
                 },
                 "disaster_data": {
                     "name": "idmc-internally-displaced-persons-idps-new-displacement-associated-with-disasters",
-                    "title": "Internally displaced persons - IDPs (new displacement associated with disasters)",
+                    "title": "internally displaced persons-idps (new displacement associated with disasters)",
                     "maintainer": "196196be-6037-4488-8b71-d786adf4c081",
                     "owner_org": "647d9d8c-4cac-4c33-b639-649aad1c2893",
                     "data_update_frequency": "365",
@@ -194,11 +194,11 @@ class TestIDMC:
                             "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
                         },
                         {
-                            "name": "internally displaced persons - idp",
+                            "name": "internally displaced persons-idp",
                             "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
                         },
                         {
-                            "name": "violence and conflict",
+                            "name": "conflict-violence",
                             "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
                         },
                     ],
@@ -206,13 +206,13 @@ class TestIDMC:
                     "methodology_other": "Methodology",
                     "caveats": "Caveats",
                     "groups": [{"name": "world"}],
-                    "dataset_date": "[2008-01-01T00:00:00 TO 2018-12-31T00:00:00]",
+                    "dataset_date": "[2008-01-01T00:00:00 TO 2018-12-31T23:59:59]",
                 },
             }
             resources = datasets["displacement_data"].get_resources()
             assert resources == [
                 {
-                    "description": "Internally displaced persons - IDPs",
+                    "description": "internally displaced persons-idps",
                     "format": "csv",
                     "name": "displacement_data",
                     "resource_type": "file.upload",
@@ -232,7 +232,7 @@ class TestIDMC:
 
             assert resources == [
                 {
-                    "description": "Internally displaced persons - IDPs (new displacement associated with disasters)",
+                    "description": "internally displaced persons-idps (new displacement associated with disasters)",
                     "format": "csv",
                     "name": "disaster_data",
                     "resource_type": "file.upload",
@@ -253,11 +253,11 @@ class TestIDMC:
                         "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
                     },
                     {
-                        "name": "internally displaced persons - idp",
+                        "name": "internally displaced persons-idp",
                         "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
                     },
                     {
-                        "name": "violence and conflict",
+                        "name": "conflict-violence",
                         "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
                     },
                 ],
@@ -278,14 +278,14 @@ class TestIDMC:
             resources = dataset.get_resources()
             assert resources == [
                 {
-                    "description": "Internally displaced persons - IDPs for Afghanistan",
+                    "description": "internally displaced persons-idps for Afghanistan",
                     "format": "csv",
                     "name": "displacement_data",
                     "resource_type": "file.upload",
                     "url_type": "upload",
                 },
                 {
-                    "description": "Internally displaced persons - IDPs (new displacement associated with disasters) for Afghanistan",
+                    "description": "internally displaced persons-idps (new displacement associated with disasters) for Afghanistan",
                     "format": "csv",
                     "name": "disaster_data",
                     "resource_type": "file.upload",
@@ -317,11 +317,11 @@ class TestIDMC:
                         "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
                     },
                     {
-                        "name": "internally displaced persons - idp",
+                        "name": "internally displaced persons-idp",
                         "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
                     },
                     {
-                        "name": "violence and conflict",
+                        "name": "conflict-violence",
                         "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
                     },
                 ],
@@ -339,7 +339,7 @@ class TestIDMC:
             )
             assert dataset == {
                 "name": "idmc-idp-data-for-united-republic-of-tanzania",
-                "title": "United Republic of Tanzania - Internally displaced persons - IDPs",
+                "title": "United Republic of Tanzania - internally displaced persons-idps",
                 "maintainer": "196196be-6037-4488-8b71-d786adf4c081",
                 "owner_org": "647d9d8c-4cac-4c33-b639-649aad1c2893",
                 "data_update_frequency": "365",
@@ -354,11 +354,11 @@ class TestIDMC:
                         "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
                     },
                     {
-                        "name": "internally displaced persons - idp",
+                        "name": "internally displaced persons-idp",
                         "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
                     },
                     {
-                        "name": "violence and conflict",
+                        "name": "conflict-violence",
                         "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
                     },
                 ],
@@ -366,19 +366,19 @@ class TestIDMC:
                 "notes": "Description\n\nContains data from IDMC's [Global Internal Displacement Database](http://www.internal-displacement.org/database/displacement-data).",
                 "methodology_other": "",
                 "caveats": "",
-                "dataset_date": "[2011-01-01T00:00:00 TO 2012-12-31T00:00:00]",
+                "dataset_date": "[2011-01-01T00:00:00 TO 2012-12-31T23:59:59]",
             }
             resources = dataset.get_resources()
             assert resources == [
                 {
-                    "description": "Internally displaced persons - IDPs for United Republic of Tanzania",
+                    "description": "internally displaced persons-idps for United Republic of Tanzania",
                     "format": "csv",
                     "name": "displacement_data",
                     "resource_type": "file.upload",
                     "url_type": "upload",
                 },
                 {
-                    "description": "Internally displaced persons - IDPs (new displacement associated with disasters) for United Republic of Tanzania",
+                    "description": "internally displaced persons-idps (new displacement associated with disasters) for United Republic of Tanzania",
                     "format": "csv",
                     "name": "disaster_data",
                     "resource_type": "file.upload",
@@ -410,11 +410,11 @@ class TestIDMC:
                         "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
                     },
                     {
-                        "name": "internally displaced persons - idp",
+                        "name": "internally displaced persons-idp",
                         "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
                     },
                     {
-                        "name": "violence and conflict",
+                        "name": "conflict-violence",
                         "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
                     },
                 ],

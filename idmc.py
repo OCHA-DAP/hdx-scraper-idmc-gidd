@@ -16,6 +16,7 @@ from hdx.location.country import Country
 from hdx.utilities.dictandlist import dict_of_lists_add, extract_list_from_list_of_dict
 from hdx.utilities.downloader import DownloadError
 from hdx.utilities.text import get_matching_then_nonmatching_text
+from hxl import InputOptions
 from slugify import slugify
 
 logger = logging.getLogger(__name__)
@@ -50,7 +51,7 @@ def generate_indicator_datasets_and_showcase(downloader, folder, indicators, tag
         url = indicator["url"]
         name = indicator["name"]
         path = downloader.download_file(url, folder=folder, filename=f"{name}.xlsx")
-        data = hxl.data(path, allow_local=True)
+        data = hxl.data(path, InputOptions(allow_local=True))
         headers = data.headers
         hxltags = data.display_tags
         headersdata[name] = headers, hxltags
@@ -75,7 +76,7 @@ def generate_indicator_datasets_and_showcase(downloader, folder, indicators, tag
         dataset.generate_resource_from_rows(folder, filename, rows, resourcedata)
 
         years = sorted(years)
-        dataset.set_dataset_year_range(years[0], years[-1])
+        dataset.set_reference_period_year_range(years[0], years[-1])
         datasets[name] = dataset
 
     title = "IDMC Global Report on Internal Displacement"
@@ -150,19 +151,23 @@ def generate_country_dataset_and_showcase(
         filename = f"{endpoint}_{countryname}.csv"
         dataset.generate_resource_from_rows(folder, filename, rows, resourcedata)
     years = sorted(years)
-    dataset.set_dataset_year_range(years[0], years[-1])
+    dataset.set_reference_period_year_range(years[0], years[-1])
     url = f"http://www.internal-displacement.org/countries/{countryname.replace(' ', '-')}/"
     try:
         downloader.setup(url)
     except DownloadError:
-        altname = Country.get_country_info_from_iso3(countryiso)[
-            "#country+alt+i_en+name+v_unterm"
-        ]
+        countryinfo = Country.get_country_info_from_iso3(countryiso)
+        altname = countryinfo["#country+alt+i_en+name+v_unterm"]
         url = f"http://www.internal-displacement.org/countries/{altname}/"
         try:
             downloader.setup(url)
         except DownloadError:
-            return dataset, None, bites_disabled
+            altname = countryinfo["#country+name+short+v_reliefweb"]
+            url = f"http://www.internal-displacement.org/countries/{altname}/"
+            try:
+                downloader.setup(url)
+            except DownloadError:
+                return dataset, None, bites_disabled
     showcase = Showcase(
         {
             "name": f"{dataset['name']}-showcase",
