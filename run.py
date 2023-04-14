@@ -49,7 +49,7 @@ def main():
                     showcase_not_added = False
                 dataset = datasets[nextdict["name"]]
                 dataset.update_from_yaml()
-                dataset.generate_resource_view(
+                dataset.generate_quickcharts(
                     path=join("config", nextdict["resourceview"])
                 )
                 dataset.create_in_hdx(
@@ -78,7 +78,7 @@ def main():
                 )
                 if dataset:
                     dataset.update_from_yaml()
-                    dataset.generate_resource_view(bites_disabled=bites_disabled)
+                    dataset.generate_quickcharts(bites_disabled=bites_disabled)
                     dataset.create_in_hdx(
                         remove_additional_resources=True,
                         hxl_update=False,
