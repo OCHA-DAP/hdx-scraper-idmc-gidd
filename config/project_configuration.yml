@@ -1,13 +1,46 @@
 # Collector specific configuration
 indicators:
   - name: "displacement_data"
-    url: "https://api.idmcdb.org/api/displacement_data/xlsx?ci=IDMCWSHSOLO009&filename=idmc_displacement_all_dataset.xlsx"
+    url: "https://helix-tools-api.idmcdb.org/external-api/gidd/conflicts/?format=json&limit=100"
     spreadsheet: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRubZgyjd7Az7Vgaxb5lWFpjojmjYZRlcVaVqYBEuEmpIojnuVn0nJG6DAJUaIzn0NdVhAkQuBw5t8q/pub?gid=66420666&single=true&output=csv"
     resourceview: "hdx_resource_view_static.yml"
+    flatten: []
+    hxltags:
+      iso3: "#country+code"
+      country_name: "#country+name"
+      year: "#date+year"
+      new_displacement: "#affected+idps+ind+new+conflict"
+      new_displacement_rounded: ~
+      total_displacement: "#affected+idps+ind+total+conflict"
+      total_displacement_rounded: ~
   - name: "disaster_data"
-    url: "https://api.idmcdb.org/api/disaster_data/xlsx?ci=IDMCWSHSOLO009&filename=idmc_disaster_all_dataset.xlsx"
+    url: "https://helix-tools-api.idmcdb.org/external-api/gidd/disasters/?format=json&limit=100"
     spreadsheet: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRubZgyjd7Az7Vgaxb5lWFpjojmjYZRlcVaVqYBEuEmpIojnuVn0nJG6DAJUaIzn0NdVhAkQuBw5t8q/pub?gid=0&single=true&output=csv"
     resourceview: "hdx_resource_view_static_disaster.yml"
+    flatten:
+      - glide_numbers
+    hxltags:
+      iso3: "#country+code"
+      country_name: "#country+name"
+      year: "#date+year"
+      start_date: "#date+start"
+      start_date_accuracy: "#accuracy+date+start"
+      end_date: "#date+end"
+      end_date_accuracy: "#accuracy+date+end"
+      event_name: "#event+name"
+      hazard_category: "#crisis+category+code"
+      hazard_category_name: "#crisis+category+name"
+      hazard_sub_category: "#crisis+subcategory+code"
+      hazard_sub_category_name: "#crisis+subcategory+name"
+      hazard_type: "#crisis+type+code"
+      hazard_type_name: "#crisis+type+name"
+      hazard_sub_type: "#crisis+subtype+code"
+      hazard_subtype_name: "#crisis+subtype+name"
+      new_displacement: "#affected+idps+ind+new+disaster"
+      new_displacement_rounded: ~
+      total_displacement: "#affected+idps+ind+total+disaster"
+      total_displacement_rounded: ~
+      glide_numbers: "#crisis+code"
 tags:
   - "hxl"
   - "displacement"
