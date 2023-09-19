@@ -91,7 +91,7 @@ def main(save: bool = False, use_saved: bool = False) -> None:
                     resource_ids = [
                         x["id"]
                         for x in sorted(
-                            resources, key=lambda x: len(x["name"]), reverse=True
+                            resources, key=lambda x: len(x["name"])
                         )
                     ]
                     dataset.reorder_resources(resource_ids, hxl_update=False)

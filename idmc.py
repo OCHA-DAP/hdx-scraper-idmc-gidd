@@ -7,14 +7,14 @@ Reads IDMC HXLated csvs and creates datasets.
 
 """
 import logging
+from operator import itemgetter
 
 from hdx.data.dataset import Dataset
 from hdx.data.hdxobject import HDXError
 from hdx.data.showcase import Showcase
 from hdx.location.country import Country
-from hdx.utilities.dictandlist import dict_of_lists_add, extract_list_from_list_of_dict
+from hdx.utilities.dictandlist import dict_of_lists_add
 from hdx.utilities.downloader import DownloadError
-from hdx.utilities.text import get_matching_then_nonmatching_text
 from slugify import slugify
 
 logger = logging.getLogger(__name__)
@@ -52,6 +52,9 @@ class IDMC:
                 self.countries.add(countryiso)
                 self.countrymapping[countryiso] = row["country_name"]
                 row["country_name"] = Country.get_country_name_from_iso3(countryiso)
+                for key in row:
+                    if row[key] is None:
+                        row[key] = ""
                 rows.append(row)
                 dict_of_lists_add(rows_by_country, countryiso, row)
             url = json["next"]
@@ -74,20 +77,20 @@ class IDMC:
 
     def generate_indicator_datasets_and_showcase(self):
         tags = self.configuration["tags"]
+        notes_lookup = self.configuration["notes"]
+        first_part = notes_lookup["first_part"]
+        last_part = notes_lookup["last_part"]
         datasets = dict()
         for indicator in self.get_indicators():
-            metadata = self.retriever.downloader.download_tabular_key_value(indicator["spreadsheet"])
-            name = metadata["Indicator Name"]
+            name = indicator["title"]
             title = name
             dataset = self.get_dataset(title, tags, f"idmc-{name}")
-            dataset[
-                "notes"
-            ] = f"{metadata['Long definition']}\n\nContains data from IDMC's [Global Internal Displacement Database](http://www.internal-displacement.org/database/displacement-data)."
-            dataset["methodology_other"] = metadata["Statistical concept and methodology"]
-            dataset["caveats"] = metadata["Limitations and exceptions"]
-            dataset.add_other_location("world")
             key = indicator["name"]
+            notes = f"{first_part}\n\n{notes_lookup[key]}\n\n{last_part}"
+            dataset["notes"] = notes
+            dataset.add_other_location("world")
             rows = self.indicator_data[key]["rows"]
+            rows = sorted(rows, key=itemgetter(*indicator["sort"]))
             years = set()
             for row in rows:
                 year = row["year"]
@@ -117,38 +120,32 @@ class IDMC:
         showcase.add_tags(tags)
         return datasets, showcase
 
-
     def generate_country_dataset_and_showcase(self,
         countryiso, indicator_datasets
     ):
         tags = self.configuration["tags"]
-        indicator_datasets_list = indicator_datasets.values()
-        title = extract_list_from_list_of_dict(indicator_datasets_list, "title")
+        country_dataset = self.configuration["country_dataset"]
         countryname = Country.get_country_name_from_iso3(countryiso)
+        name = country_dataset["name"]
+        title = country_dataset["title"]
         dataset = self.get_dataset(
-            f"{countryname} - {title[0]}", tags, f"IDMC IDP data for {countryname}"
+            f"{countryname} - {title}", tags, f"{name}{countryiso}"
         )
         try:
             dataset.add_country_location(countryiso)
         except HDXError as e:
             logger.exception(f"{countryname} has a problem! {e}")
             return None, None, None
-        description = extract_list_from_list_of_dict(indicator_datasets_list, "notes")
-        dataset["notes"] = get_matching_then_nonmatching_text(
-            description, separator="\n\n", ignore="\n"
-        )
-        methodology = extract_list_from_list_of_dict(
-            indicator_datasets_list, "methodology_other"
-        )
-        dataset["methodology_other"] = get_matching_then_nonmatching_text(methodology)
-        caveats = extract_list_from_list_of_dict(indicator_datasets_list, "caveats")
-        dataset["caveats"] = get_matching_then_nonmatching_text(caveats)
-
+        dataset["notes"] = "\n\n".join(self.configuration["notes"].values())
         years = set()
         bites_disabled = [True, True]
         for indicator in self.get_indicators():
+            name = indicator["title"]
             key = indicator["name"]
-            rows = self.indicator_data[key]["rows_by_country"][countryiso]
+            rows = self.indicator_data[key]["rows_by_country"].get(countryiso)
+            if not rows:
+                continue
+            rows = sorted(rows, key=itemgetter(*indicator["sort"]))
             for row in rows:
                 year = row["year"]
                 years.add(year)
@@ -159,13 +156,11 @@ class IDMC:
                 if new_displacement:
                     bites_disabled[1] = False
             rows.insert(0, indicator["hxltags"])
-            metadata = self.retriever.downloader.download_tabular_key_value(indicator["spreadsheet"])
-            name = metadata["Indicator Name"]
             resourcedata = {
                 "name": name,
                 "description": f"{name} for {countryname}",
             }
-            filename = f"{key}_{countryname}.csv"
+            filename = f"{name}_{countryiso}.csv"
             dataset.generate_resource_from_rows(self.folder, filename, rows, resourcedata)
         years = sorted(years)
         dataset.set_reference_period_year_range(years[0], years[-1])
