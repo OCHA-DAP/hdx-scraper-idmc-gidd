@@ -441,7 +441,7 @@ TJK,Tajikistan,2010,2010-01-01,Month,,,Tajikistan: Earthquake - 01/01/2010,1,Geo
 TJK,Tajikistan,2010,2010-01-01,Month,,,Tajikistan: Flood - 01/01/2010,2,Weather related,3,Hydrological,10,Flood,13,,25,25,,,
 TJK,Tajikistan,2010,2010-01-01,Month,,,Tajikistan: Flood - 01/01/2010,2,Weather related,3,Hydrological,10,Flood,13,,850,850,,,
 TUR,Türkiye,2010,2010-01-01,Month,,,Türkiye: Landslide/Wet mass movement - 01/01/2010,2,Weather related,3,Hydrological,11,Mass Movement,15,,200,200,,,
-VCT,Saint Vincent and The Grenadines,2010,2010-01-01,Month,,,Hurricane tomas,2,Weather related,4,Meteorological,14,Storm,21,,100,100,,,
+VCT,Saint Vincent and the Grenadines,2010,2010-01-01,Month,,,Hurricane tomas,2,Weather related,4,Meteorological,14,Storm,21,,100,100,,,
 VEN,Venezuela (Bolivarian Republic of),2010,2010-01-01,Month,,,Venezuela: Flood - 01/01/2010,2,Weather related,3,Hydrological,10,Flood,13,,101684,102000,,,
 VNM,Viet Nam,2010,2010-01-01,Month,,,Typhoon conson (basyang),2,Weather related,4,Meteorological,14,Storm,21,,1500,1500,,,
 VNM,Viet Nam,2010,2010-01-01,Month,,,Typhoon mindulle,2,Weather related,4,Meteorological,14,Storm,21,,241705,242000,,,
@@ -857,7 +857,7 @@ IDN,Indonesia,2013,2013-02-18,Day,2013-02-01,Month,Kampar flood,2,Weather relate
 PHL,Philippines,2013,2013-02-18,Day,2013-02-21,Day,Tropical depression shanshan (local name: crising),2,Weather related,4,Meteorological,14,Storm,21,,223134,223000,,,
 IDN,Indonesia,2013,2013-02-20,Day,2013-03-01,Month,Muaro jambi flood,2,Weather related,3,Hydrological,10,Flood,13,,1135,1100,,,
 IDN,Indonesia,2013,2013-02-20,Day,2013-03-01,Month,Wonogiri flood,2,Weather related,3,Hydrological,10,Flood,13,,83,83,,,
-MKD,Republic of North Macedonia,2013,2013-02-20,Day,2013-03-01,Day,North Macedonia: Flood - 20/02/2013,2,Weather related,3,Hydrological,10,Flood,13,,1636,1600,,,
+MKD,North Macedonia,2013,2013-02-20,Day,2013-03-01,Day,North Macedonia: Flood - 20/02/2013,2,Weather related,3,Hydrological,10,Flood,13,,1636,1600,,,
 COL,Colombia,2013,2013-02-21,Day,2013-01-01,Year,Suan wildfire,2,Weather related,2,Climatological,9,Wildfire,11,,14,14,,,
 IDN,Indonesia,2013,2013-02-21,Day,2013-02-01,Month,Asahan flood,2,Weather related,3,Hydrological,10,Flood,13,,3625,3600,,,
 IDN,Indonesia,2013,2013-02-21,Day,2013-02-01,Month,Rokan hulu flood,2,Weather related,3,Hydrological,10,Flood,13,,7000,7000,,,
@@ -1406,7 +1406,7 @@ COL,Colombia,2013,2013-12-23,Day,2013-01-01,Year,Corinto flood,2,Weather related
 COL,Colombia,2013,2013-12-23,Day,2013-01-01,Year,Pradera flood,2,Weather related,3,Hydrological,10,Flood,13,,22,22,,,
 COL,Colombia,2013,2013-12-23,Day,2013-12-23,Day,Genova landslide,2,Weather related,3,Hydrological,11,Mass Movement,15,,3,3,,,
 DMA,Dominica,2013,2013-12-24,Day,2013-12-26,Day,Severe rains and high winds due to a low level trough system,2,Weather related,4,Meteorological,14,Storm,21,,18,18,,,
-VCT,Saint Vincent and The Grenadines,2013,2013-12-24,Day,2013-12-28,Day,Svg local storm,2,Weather related,4,Meteorological,14,Storm,21,,2325,2300,,,
+VCT,Saint Vincent and the Grenadines,2013,2013-12-24,Day,2013-12-28,Day,Svg local storm,2,Weather related,4,Meteorological,14,Storm,21,,2325,2300,,,
 COL,Colombia,2013,2013-12-26,Day,2013-12-26,Day,Neiva landslide,2,Weather related,3,Hydrological,11,Mass Movement,15,,3,3,,,
 LCA,Saint Lucia,2013,2013-12-28,Day,2013-12-01,Month,"Anse la raye, canaries, marc/bexon christmas storm",2,Weather related,4,Meteorological,14,Storm,21,,1200,1200,,,
 SLV,El Salvador,2013,2013-12-29,Day,2013-12-30,Day,Chaparrastique volcano,1,Geophysical,1,Geophysical,3,Volcanic activity,5,,2300,2300,,,
@@ -3154,7 +3154,7 @@ JAM,Jamaica,2016,2016-09-28,Day,2016-10-10,Day,Hurricane Matthew,2,Weather relat
 LCA,Saint Lucia,2016,2016-09-28,Day,2016-10-10,Day,Hurricane Matthew,2,Weather related,4,Meteorological,14,Storm,24,,260,260,,,
 TCA,Turks and Caicos Islands,2016,2016-09-28,Day,2016-10-10,Day,Hurricane Matthew,2,Weather related,4,Meteorological,14,Storm,24,,100,100,,,
 USA,United States of America,2016,2016-09-28,Day,2016-10-10,Day,Hurricane Matthew,2,Weather related,4,Meteorological,14,Storm,24,,875000,875000,,,
-VCT,Saint Vincent and The Grenadines,2016,2016-09-28,Day,2016-10-10,Day,Hurricane Matthew,2,Weather related,4,Meteorological,14,Storm,24,,576,580,,,
+VCT,Saint Vincent and the Grenadines,2016,2016-09-28,Day,2016-10-10,Day,Hurricane Matthew,2,Weather related,4,Meteorological,14,Storm,24,,576,580,,,
 MEX,Mexico,2016,2016-09-29,Day,2016-09-30,Day,Durango city flash flood,2,Weather related,3,Hydrological,10,Flood,13,,87,87,,,
 MEX,Mexico,2016,2016-10-01,Week,2016-10-10,Week,Mt. Colima eruption,1,Geophysical,1,Geophysical,3,Volcanic activity,5,,400,400,,,
 CAF,Central African Republic,2016,2016-10-02,Day,2016-10-07,Day,Kaga Bandoro floods,2,Weather related,3,Hydrological,10,Flood,13,,847,850,,,
@@ -3225,7 +3225,7 @@ THA,Thailand,2016,2016-11-07,Week,2016-11-13,Week,Thailand: Floods - North and N
 IDN,Indonesia,2016,2016-11-08,Day,2016-11-08,Day,Indonesia: Landslide - Temanggung - 08/11/2016,2,Weather related,3,Hydrological,11,Mass Movement,15,,4,4,,,
 IDN,Indonesia,2016,2016-11-08,Day,2016-11-21,Day,Indonesia: Floods - West Java - 08/11/2016,2,Weather related,3,Hydrological,10,Flood,13,,45292,45000,,,
 CAN,Canada,2016,2016-11-09,Week,2016-11-09,Week,British Columbia floods (November),2,Weather related,3,Hydrological,10,Flood,13,,28,28,,,
-VCT,Saint Vincent and The Grenadines,2016,2016-11-09,Day,2016-11-11,Day,Saint Vincent and Bequia Through System ,2,Weather related,3,Hydrological,10,Flood,13,,50,50,,,
+VCT,Saint Vincent and the Grenadines,2016,2016-11-09,Day,2016-11-11,Day,Saint Vincent and Bequia Through System ,2,Weather related,3,Hydrological,10,Flood,13,,50,50,,,
 ZAF,South Africa,2016,2016-11-09,Day,2016-11-11,Week,Floods in Gauteng and Ekurhuleni,2,Weather related,3,Hydrological,10,Flood,13,,2999,3000,,,
 CHN,China,2016,2016-11-09,Day,2016-11-13,Day,China: Winter Storm - Xinjiang - 09/11/2016,2,Weather related,4,Meteorological,14,Storm,25,,100,100,,,
 IDN,Indonesia,2016,2016-11-11,Day,2016-11-11,Day,Indonesia: Floods - Jakarta - 11/11/2016,2,Weather related,3,Hydrological,10,Flood,13,,55,55,,,
@@ -3830,7 +3830,7 @@ CHN,China,2017,2017-07-17,Day,2017-07-20,Day,Hubei floods (17-20 July),2,Weather
 AUS,Australia,2017,2017-07-18,Week,2017-07-18,Week,Australia :  New South Wales  fires  - 18/07/2017,2,Weather related,2,Climatological,9,Wildfire,11,,520,520,,,
 GBR,United Kingdom of Great Britain and Northern Ireland,2017,2017-07-18,Day,2017-07-18,Day,Southern England flash flood,2,Weather related,3,Hydrological,10,Flood,13,,115,120,,,
 GRD,Grenada,2017,2017-07-18,Day,2017-07-19,Day,Grenada - St Vincent and Grenadine: Tropical Storm Don - 18/07/2017,2,Weather related,4,Meteorological,14,Storm,21,,140,140,,,
-VCT,Saint Vincent and The Grenadines,2017,2017-07-18,Day,2017-07-19,Day,Grenada - St Vincent and Grenadine: Tropical Storm Don - 18/07/2017,2,Weather related,4,Meteorological,14,Storm,21,,20,20,,,
+VCT,Saint Vincent and the Grenadines,2017,2017-07-18,Day,2017-07-19,Day,Grenada - St Vincent and Grenadine: Tropical Storm Don - 18/07/2017,2,Weather related,4,Meteorological,14,Storm,21,,20,20,,,
 CHN,China,2017,2017-07-19,Day,2017-07-20,Day,China: Heilongjiang and Jilin floods - 19/07/2017,2,Weather related,3,Hydrological,10,Flood,13,,249000,249000,,,
 CHN,China,2017,2017-07-19,Day,2017-07-23,Day,China: Southwest floods (19-23 July),2,Weather related,4,Meteorological,14,Storm,21,,2300,2300,,,
 BGD,Bangladesh,2017,2017-07-19,Week,2017-08-31,Week,Bangladesh: Monsoon season - Rangpur; Rajshahi; Mymensingh; Sylhet; Chittagong; Dhaka; Khulna - 12/08/2017,2,Weather related,3,Hydrological,10,Flood,13,,436191,436000,,,FL-2017-000108-BGD
@@ -4292,7 +4292,7 @@ MYS,Malaysia,2018,2018-01-06,Day,2018-01-07,Day,Malaysia: Floods - Sarawak - 6/1
 IDN,Indonesia,2018,2018-01-07,Day,2018-01-08,Day,Indonesia: Landslide - Banjarnegara - 7/1/2018,2,Weather related,3,Hydrological,11,Mass Movement,15,,52,52,,,
 IDN,Indonesia,2018,2018-01-08,Day,2018-01-08,Day,Indonesia: Landslides - Kuningan (West Java) - 8/1/2018,2,Weather related,3,Hydrological,11,Mass Movement,14,,15,15,,,
 MWI,Malawi,2018,2018-01-08,Day,2018-01-08,Day,Malawi: Storm - Nhkotakota - 08/01/2018,2,Weather related,4,Meteorological,14,Storm,21,,1025,1000,,,
-SWZ,Kingdom of Eswatini,2018,2018-01-08,Day,2018-01-08,Day,Swaziland: Storm - Manzini - 08/01/2018,2,Weather related,4,Meteorological,14,Storm,21,,45,45,,,
+SWZ,Eswatini,2018,2018-01-08,Day,2018-01-08,Day,Swaziland: Storm - Manzini - 08/01/2018,2,Weather related,4,Meteorological,14,Storm,21,,45,45,,,
 ZWE,Zimbabwe,2018,2018-01-08,Day,2018-01-08,Day,Zimbabwe: Hailstorm - Midlands - 08/01/2018,2,Weather related,4,Meteorological,14,Storm,19,,188,190,,,
 PER,Peru,2018,2018-01-08,Day,2018-06-14,Day,Peru: flood - Lima - January 2018,2,Weather related,3,Hydrological,10,Flood,13,,403,400,,,
 IDN,Indonesia,2018,2018-01-09,Day,2018-01-09,Day,Indonesia: Landslides - Sumba Timur (Nusa Tenggara Timur) - 9/1/2018,2,Weather related,3,Hydrological,10,Flood,13,,65,65,,,
@@ -4389,7 +4389,7 @@ JPN,Japan,2018,2018-02-03,Day,2018-02-16,Day,Japan: Snowstorm - Niigata and Ishi
 ALB,Albania,2018,2018-02-04,Week,2018-02-04,Week,Albania: Flood - Tirana; Novosele; Shkodra; Vlora; Lushnja - 04/02/2018 ,2,Weather related,3,Hydrological,10,Flood,13,,83,83,,,
 IDN,Indonesia,2018,2018-02-04,Day,2018-02-04,Day,Indonesia: Landslide - Tasikmalaya (West Java) - 4/2/2018,2,Weather related,3,Hydrological,11,Mass Movement,14,,4,4,,,
 IDN,Indonesia,2018,2018-02-04,Day,2018-02-04,Day,Indonesia: Strong Wind - Ogan Ilir (Sumatra Selatan) - 4/2/2018,2,Weather related,4,Meteorological,14,Storm,21,,4,4,,,
-MKD,Republic of North Macedonia,2018,2018-02-04,Week,2018-02-04,Week,Macedonia: Flood - Skopje; Prilep; Kiveco - 04/02/2018,2,Weather related,3,Hydrological,10,Flood,13,,50,50,,,
+MKD,North Macedonia,2018,2018-02-04,Week,2018-02-04,Week,Macedonia: Flood - Skopje; Prilep; Kiveco - 04/02/2018,2,Weather related,3,Hydrological,10,Flood,13,,50,50,,,
 COD,Democratic Republic of the Congo,2018,2018-02-04,Week,2018-02-05,Week,"DRC: Wildfire - Nord Ubangi, South Ubangi - 04/02/2018",2,Weather related,2,Climatological,9,Wildfire,11,,219,220,,,
 IDN,Indonesia,2018,2018-02-04,Day,2018-02-06,Day,"Indonesia: Floods - Cirebon, Karawang, Bekasi, Kota Bekasi (West Java) - 4/2/2018",2,Weather related,3,Hydrological,10,Flood,13,,1983,2000,,,
 MMR,Myanmar,2018,2018-02-05,Day,2018-02-05,Day,Myanmar: Thunderstorm - Kyangin; Hinthada district; Ayeyarwady Region - 05/02/2018,2,Weather related,4,Meteorological,14,Storm,21,,5,5,,,
@@ -4418,7 +4418,7 @@ IDN,Indonesia,2018,2018-02-12,Day,2018-02-12,Day,Indonesia: Flood - West Halmahe
 KOR,Republic of Korea,2018,2018-02-12,Day,2018-02-12,Day,Korea: Wildfire - Gangwon - 12/02/2018,2,Weather related,2,Climatological,9,Wildfire,11,,49,49,,,
 TTO,Trinidad and Tobago,2018,2018-02-13,Day,2018-02-13,Day,Trinidad and Tobago: Devil’s Woodyard Mud Volcano - 13/02/2018,1,Geophysical,1,Geophysical,3,Volcanic activity,5,,40,40,,,
 AFG,Afghanistan,2018,2018-02-14,Day,2018-02-14,Day,"Afghanistan: Extreme temperature, Severe winter conditions / Cold Wave - Parwan - 14/02/2018 (OCHA event)",2,Weather related,4,Meteorological,13,Extreme Temperature,17,,15,15,,,
-SWZ,Kingdom of Eswatini,2018,2018-02-14,Day,2018-02-14,Day,Swaziland: Storm -  Shiselweni - 14/02/2018,2,Weather related,4,Meteorological,14,Storm,21,,6,6,,,
+SWZ,Eswatini,2018,2018-02-14,Day,2018-02-14,Day,Swaziland: Storm -  Shiselweni - 14/02/2018,2,Weather related,4,Meteorological,14,Storm,21,,6,6,,,
 AFG,Afghanistan,2018,2018-02-15,Day,2018-02-15,Day,Afghanistan: Flash flood - Takhar - 15/02/2018 (OCHA; IOM event),2,Weather related,3,Hydrological,10,Flood,13,,192,190,,,
 AFG,Afghanistan,2018,2018-02-15,Day,2018-02-15,Day,Afghanistan: Flood - Balkh - 15/02/2018 (IOM event),2,Weather related,3,Hydrological,10,Flood,13,,141,140,,,
 IDN,Indonesia,2018,2018-02-15,Day,2018-02-15,Day,Indonesia: Flood - Bima (Nusa Tenggara Barat) - 15/2/2018,2,Weather related,3,Hydrological,10,Flood,13,,11,11,,,
@@ -4449,7 +4449,7 @@ GRC,Greece,2018,2018-02-21,Day,2018-02-26,Day,Greece: Riverine Flood - Thessaly 
 AGO,Angola,2018,2018-02-21,Week,2018-03-01,Week,Angola: Flood - Luanda - 21/02/2018,2,Weather related,3,Hydrological,10,Flood,13,,2671,2700,,,
 COL,Colombia,2018,2018-02-22,Day,2018-02-22,Day,Colombia: landslide - QUindio - 22/02/2018,2,Weather related,3,Hydrological,11,Mass Movement,14,,15,15,,,
 PRY,Paraguay,2018,2018-02-22,Day,2018-02-22,Day,Paraguay: Apa river - Amambay - 22/02/2018,2,Weather related,3,Hydrological,10,Flood,13,,315,320,,,
-SWZ,Kingdom of Eswatini,2018,2018-02-22,Day,2018-02-22,Day,Swaziland: Storm - Ntfonjeni - 22/02/2018,2,Weather related,4,Meteorological,14,Storm,21,,4,4,,,
+SWZ,Eswatini,2018,2018-02-22,Day,2018-02-22,Day,Swaziland: Storm - Ntfonjeni - 22/02/2018,2,Weather related,4,Meteorological,14,Storm,21,,4,4,,,
 IDN,Indonesia,2018,2018-02-22,Day,2018-02-23,Day,"Indonesia: Flood - Jombang, Gresik, Bojonegoro (East Java) - 22/2/2018",2,Weather related,3,Hydrological,10,Flood,13,,633,630,,,
 AGO,Angola,2018,2018-02-22,Week,2018-04-23,Week,Angola: Storm - Cuanza Norte - 22/02/2018,2,Weather related,4,Meteorological,14,Storm,21,,486,490,,,
 BOL,Bolivia (Plurinational State of),2018,2018-02-23,Week,2018-02-23,Week,Bolivia: Floods - Countrywide - 23/02/2018,2,Weather related,3,Hydrological,10,Flood,13,,1287,1300,,,FL-2018-000015-BOL
@@ -4567,7 +4567,7 @@ AFG,Afghanistan,2018,2018-03-19,Day,2018-03-19,Day,Afghanistan: Flood - Ghazni -
 AGO,Angola,2018,2018-03-20,Day,2018-03-20,Day,Angola: Flash flood - Benguela - 20/03/2018,2,Weather related,3,Hydrological,10,Flood,13,,100,100,,,
 AUS,Australia,2018,2018-03-20,Week,2018-03-20,Day,Australia: Bushfire - Tathra - 20/03/2018,2,Weather related,2,Climatological,9,Wildfire,11,,700,700,,,
 MMR,Myanmar,2018,2018-03-20,Day,2018-03-20,Day,Myanmar: Storm - Kawa township; Bago district; Bago region - 20/03/2018,2,Weather related,4,Meteorological,14,Storm,21,,14,14,,,
-SWZ,Kingdom of Eswatini,2018,2018-03-20,Day,2018-03-20,Day,Swaziland: Storm - Elangeni - 20/03/2018,2,Weather related,4,Meteorological,14,Storm,21,,13,13,,,
+SWZ,Eswatini,2018,2018-03-20,Day,2018-03-20,Day,Swaziland: Storm - Elangeni - 20/03/2018,2,Weather related,4,Meteorological,14,Storm,21,,13,13,,,
 BRA,Brazil,2018,2018-03-20,Day,2018-03-22,Day,Brazil: flash flood - Sao Paulo State - 20/03/2018,2,Weather related,3,Hydrological,10,Flood,13,,1000,1000,,,
 KEN,Kenya,2018,2018-03-20,Day,2018-03-23,Day,Kenya: Flood - Kisumu - 20/03/2018,2,Weather related,3,Hydrological,10,Flood,13,,1950,2000,,,
 CAN,Canada,2018,2018-03-20,Week,2018-03-27,Week,Canada: Flood - Naramata (BC) - 20/3/2018,2,Weather related,3,Hydrological,10,Flood,13,,2,2,,,
@@ -4596,7 +4596,7 @@ AUS,Australia,2018,2018-03-26,Day,2018-03-27,Day,Australia: Cyclone Nora - Queen
 COD,Democratic Republic of the Congo,2018,2018-03-27,Day,2018-03-28,Day,DRC: Storm - Uvira - 27/03/2018,2,Weather related,4,Meteorological,14,Storm,21,,102,100,,,
 RUS,Russian Federation,2018,2018-03-27,Week,2018-03-31,Week,Russian Federation: ice jam floods - Altai; Tuva; Khakassia - 27/03/2018,2,Weather related,3,Hydrological,10,Flood,13,,1506,1500,,,
 MYS,Malaysia,2018,2018-03-28,Day,2018-03-28,Week,Malaysia: Flood - Selangor - 28/3/2018,2,Weather related,3,Hydrological,10,Flood,13,,117,120,,,
-SWZ,Kingdom of Eswatini,2018,2018-03-28,Day,2018-03-28,Day,Swaziland: Storm - Ntfonjeni - 28/03/2018,2,Weather related,4,Meteorological,14,Storm,21,,2,2,,,
+SWZ,Eswatini,2018,2018-03-28,Day,2018-03-28,Day,Swaziland: Storm - Ntfonjeni - 28/03/2018,2,Weather related,4,Meteorological,14,Storm,21,,2,2,,,
 MMR,Myanmar,2018,2018-03-28,Day,2018-03-31,Day,Myanmar: Riverbank erosion - Magway region - 28/03/2018,2,Weather related,3,Hydrological,11,Mass Movement,14,,13,13,,,
 CAN,Canada,2018,2018-03-29,Day,2018-03-29,Day,Canada: Mudslide - Trail (BC) - 29/3/2018,2,Weather related,3,Hydrological,11,Mass Movement,14,,1,1,,,
 AFG,Afghanistan,2017,2018-03-29,Day,2018-03-30,Day,Afghanistan: landslide - Bamyan - 29/03/2017,2,Weather related,3,Hydrological,11,Mass Movement,14,,22,22,,,
@@ -4692,7 +4692,7 @@ NPL,Nepal,2018,2018-04-18,Day,2018-04-18,Day,Nepal: Storm - Loharpatti Municipal
 NAM,Namibia,2018,2018-04-18,Week,2018-04-19,Week,Namibia: Flood: Windhoek - 18/04/2018,2,Weather related,3,Hydrological,10,Flood,13,,1,1,,,
 AFG,Afghanistan,2018,2018-04-19,Day,2018-04-19,Day,Afghanistan: Flood - Kunar - 19/04/2018 (IOM; OCHA event),2,Weather related,3,Hydrological,10,Flood,13,,37,37,,,
 MMR,Myanmar,2018,2018-04-19,Day,2018-04-19,Day,Myanmar: Storm - Rakhine - 19/04/2018,2,Weather related,4,Meteorological,14,Storm,21,,129,130,,,
-SWZ,Kingdom of Eswatini,2018,2018-04-19,Day,2018-04-19,Day,Swaziland: Storm - Ludzeludze - 19/04/2018,2,Weather related,4,Meteorological,14,Storm,21,,7,7,,,
+SWZ,Eswatini,2018,2018-04-19,Day,2018-04-19,Day,Swaziland: Storm - Ludzeludze - 19/04/2018,2,Weather related,4,Meteorological,14,Storm,21,,7,7,,,
 CHN,China,2018,2018-04-19,Day,2018-04-25,Day,"China: Flood - Chongqing, Hubei - 19/4/2018",2,Weather related,3,Hydrological,10,Flood,13,,3600,3600,,,
 AFG,Afghanistan,2018,2018-04-20,Day,2018-04-20,Day,Afghanistan: Flash flood - Laghman - 20/04/2018 (IOM; OCHA event),2,Weather related,3,Hydrological,10,Flood,13,,163,160,,,
 AFG,Afghanistan,2018,2018-04-20,Day,2018-04-20,Day,Afghanistan: Flood - Takhar - 25/04/2018 (IOM; OCHA event),2,Weather related,3,Hydrological,10,Flood,13,,577,580,,,
@@ -4888,7 +4888,7 @@ MYS,Malaysia,2018,2018-05-27,Day,2018-05-27,Week,Malaysia: Flood - Negeri Sembil
 MYS,Malaysia,2018,2018-05-27,Day,2018-05-27,Week,Malaysia: Flood - Penang - 27/5/2018,2,Weather related,3,Hydrological,10,Flood,13,,776,780,,,
 MYS,Malaysia,2018,2018-05-27,Day,2018-05-27,Week,Malaysia: Flood - Perak - 27/5/2018,2,Weather related,3,Hydrological,10,Flood,13,,1343,1300,,,
 MYS,Malaysia,2018,2018-05-27,Day,2018-05-27,Week,Malaysia: Flood - Selangor - 27/5/2018,2,Weather related,3,Hydrological,10,Flood,13,,139,140,,,
-SWZ,Kingdom of Eswatini,2018,2018-05-27,Day,2018-05-27,Day,Swaziland: Tornado - Nkhaba - 27/05/2018,2,Weather related,4,Meteorological,14,Storm,23,,24,24,,,
+SWZ,Eswatini,2018,2018-05-27,Day,2018-05-27,Day,Swaziland: Tornado - Nkhaba - 27/05/2018,2,Weather related,4,Meteorological,14,Storm,23,,24,24,,,
 USA,United States of America,2018,2018-05-27,Day,2018-05-29,Day,USA: Flood - Baltimore (Maryland) - 27/5/2018,2,Weather related,3,Hydrological,10,Flood,13,,6,6,,,
 USA,United States of America,2018,2018-05-27,Day,2018-05-30,Day,USA: Flood - Ellicott City (Maryland) - 27/5/2018,2,Weather related,3,Hydrological,10,Flood,13,,60,60,,,
 FRA,France,2018,2018-05-28,Day,2018-05-28,Day,France: mudslide - Marcilly - 28/05/2018,2,Weather related,3,Hydrological,11,Mass Movement,15,,2,2,,,
@@ -5460,7 +5460,7 @@ USA,United States of America,2018,2018-09-06,Day,2018-09-13,Week,"USA: Wildfire 
 BGD,Bangladesh,2018,2018-09-06,Day,2018-09-20,Day,Bangladesh: Riverbank erosion - Dhaka (Shariatpur)  - 06/09/2018,2,Weather related,3,Hydrological,11,Mass Movement,14,,43550,44000,,,OT-2018-000157-BGD
 AFG,Afghanistan,2018,2018-09-07,Day,2018-09-07,Day,Afghanistan: Flash flood - Kunar - 07/09/2018,2,Weather related,3,Hydrological,10,Flood,13,,7,7,,,
 CAN,Canada,2018,2018-09-07,Day,2018-09-08,Week,Canada: Landslide Risk - Zeballos (British Columbia) - 7/9/2018,2,Weather related,3,Hydrological,11,Mass Movement,15,,23,23,,,
-SWZ,Kingdom of Eswatini,2018,2018-09-07,Day,2018-09-09,Day,eSwatini: Hailstorm - 07/09/2018,2,Weather related,4,Meteorological,14,Storm,19,,10,10,,,
+SWZ,Eswatini,2018,2018-09-07,Day,2018-09-09,Day,eSwatini: Hailstorm - 07/09/2018,2,Weather related,4,Meteorological,14,Storm,19,,10,10,,,
 CHN,China,2018,2018-09-07,Day,2018-09-17,Week,"China, Guam, Northern Mariana Islands, Philippines, Thailand: Typhoon Mangkhut - 7/9/2018",2,Weather related,4,Meteorological,14,Storm,24,,1610000,1610000,,,"TC-2018-000149-PHL	,TC-2018-000152-CHN,TC-2018-000151-VNM"
 GUM,Guam,2018,2018-09-07,Day,2018-09-17,Week,"China, Guam, Northern Mariana Islands, Philippines, Thailand: Typhoon Mangkhut - 7/9/2018",2,Weather related,4,Meteorological,14,Storm,24,,2143,2100,,,"TC-2018-000149-PHL	,TC-2018-000152-CHN,TC-2018-000151-VNM"
 HKG,"China, Hong Kong Special Administrative Region",2018,2018-09-07,Day,2018-09-17,Week,"China, Guam, Northern Mariana Islands, Philippines, Thailand: Typhoon Mangkhut - 7/9/2018",2,Weather related,4,Meteorological,14,Storm,24,,1400,1400,,,"TC-2018-000149-PHL	,TC-2018-000152-CHN,TC-2018-000151-VNM"
@@ -7126,7 +7126,7 @@ CAN,Canada,2019,2019-08-26,Day,2019-09-07,Day,"Barbados, Canada, Grenada, Saint 
 GRD,Grenada,2019,2019-08-26,Day,2019-09-07,Day,"Barbados, Canada, Grenada, Saint Lucia, St Vincent and the Grenadines, Bahamas, United States: Tropical storm / Hurricane Dorian - 26/08/2019 ",2,Weather related,4,Meteorological,14,Storm,21,,26,26,,,"TC-2019-000099-BHS,TC-2019-000095-DOM"
 LCA,Saint Lucia,2019,2019-08-26,Day,2019-09-07,Day,"Barbados, Canada, Grenada, Saint Lucia, St Vincent and the Grenadines, Bahamas, United States: Tropical storm / Hurricane Dorian - 26/08/2019 ",2,Weather related,4,Meteorological,14,Storm,21,,25,25,8,8,"TC-2019-000099-BHS,TC-2019-000095-DOM"
 USA,United States of America,2019,2019-08-26,Day,2019-09-07,Day,"Barbados, Canada, Grenada, Saint Lucia, St Vincent and the Grenadines, Bahamas, United States: Tropical storm / Hurricane Dorian - 26/08/2019 ",2,Weather related,4,Meteorological,14,Storm,21,,453903,454000,1,1,"TC-2019-000099-BHS,TC-2019-000095-DOM"
-VCT,Saint Vincent and The Grenadines,2019,2019-08-26,Day,2019-09-07,Day,"Barbados, Canada, Grenada, Saint Lucia, St Vincent and the Grenadines, Bahamas, United States: Tropical storm / Hurricane Dorian - 26/08/2019 ",2,Weather related,4,Meteorological,14,Storm,21,,232,230,,,"TC-2019-000099-BHS,TC-2019-000095-DOM"
+VCT,Saint Vincent and the Grenadines,2019,2019-08-26,Day,2019-09-07,Day,"Barbados, Canada, Grenada, Saint Lucia, St Vincent and the Grenadines, Bahamas, United States: Tropical storm / Hurricane Dorian - 26/08/2019 ",2,Weather related,4,Meteorological,14,Storm,21,,232,230,,,"TC-2019-000099-BHS,TC-2019-000095-DOM"
 ECU,Ecuador,2019,2019-08-26,Day,2019-09-09,Day,Ecuador: Wildfire - Loja (Quilanga) - 26/08/2019,2,Weather related,2,Climatological,9,Wildfire,11,,60,60,,,
 MRT,Mauritania,2019,2019-08-26,Day,2019-09-19,Week,Mauritania - Floods - Guidimakha Wilaya - 24/08/2019 ,2,Weather related,3,Hydrological,10,Flood,13,,6630,6600,,,
 BRA,Brazil,2019,2019-08-27,Day,2019-12-29,Day,Brazil: Floods - Pará -27/08/2019,2,Weather related,3,Hydrological,10,Flood,13,,121,120,,,
@@ -8230,10 +8230,10 @@ LKA,Sri Lanka,2020,2020-04-19,Day,2020-04-19,Day,Sri Lanka: Storm - Sabaragamuwa
 BDI,Burundi,2020,2020-04-19,Day,2020-04-24,Day,"Burundi: Flash floods - Bubanza, Muyinga, Rumonge, Ruyigi- 19/04/2020",2,Weather related,3,Hydrological,10,Flood,13,,834,830,,,
 BGD,Bangladesh,2020,2020-04-19,Week,2020-05-03,Week,Bangladesh: River erosion - Tangail - April 2020,2,Weather related,3,Hydrological,11,Mass Movement,15,,8,8,8,8,
 AGO,Angola,2020,2020-04-20,Day,2020-04-20,Day,Angola: Riverine floods- Cuanza Sul province (Libolo)- 20/04/2020,2,Weather related,3,Hydrological,10,Flood,13,,89,89,,,
-NLD,Netherlands,2020,2020-04-20,Day,2020-04-20,Day,Netherlands: Wildfires - Liessel - 20/04/2020 ,2,Weather related,2,Climatological,9,Wildfire,11,,3,3,,,
+NLD,Netherlands (Kingdom of the),2020,2020-04-20,Day,2020-04-20,Day,Netherlands: Wildfires - Liessel - 20/04/2020 ,2,Weather related,2,Climatological,9,Wildfire,11,,3,3,,,
 UGA,Uganda,2020,2020-04-20,Day,2020-04-20,Day,Uganda: Flood- Central Region (Nakasongola district)- 20/04/2020,2,Weather related,3,Hydrological,10,Flood,13,,1000,1000,,,
 LKA,Sri Lanka,2020,2020-04-20,Day,2020-04-21,Day,Sri Lanka: Storm - Western (Gampaha/Dompe) - 20/04/2020,2,Weather related,4,Meteorological,14,Storm,21,,3,3,3,3,
-NLD,Netherlands,2020,2020-04-20,Day,2020-04-22,Day,Netherlands: Wildifires - Herkenbosch - 20/04/2020,2,Weather related,2,Climatological,9,Wildfire,11,,4000,4000,,,
+NLD,Netherlands (Kingdom of the),2020,2020-04-20,Day,2020-04-22,Day,Netherlands: Wildifires - Herkenbosch - 20/04/2020,2,Weather related,2,Climatological,9,Wildfire,11,,4000,4000,,,
 CAN,Canada,2020,2020-04-21,Day,2020-04-21,Week,Canada: Flood - Alberta (Duncan's First Nation) - 21/04/2020,2,Weather related,3,Hydrological,10,Flood,13,,1,1,,,
 CAN,Canada,2020,2020-04-21,Day,2020-04-21,Week,Canada: Flood - Alberta (Kehewin Cree Nation) - 21/04/2020,2,Weather related,3,Hydrological,10,Flood,13,,4,4,,,
 CAN,Canada,2020,2020-04-21,Day,2020-04-21,Week,Canada: Flood - Alberta (Sucker Creek) - 21/04/2020,2,Weather related,3,Hydrological,10,Flood,13,,8,8,,,
@@ -9768,7 +9768,7 @@ COL,Colombia,2021,2021-01-21,Day,2021-01-22,Day,"Colombia: Floods - Chocó (Medi
 ISL,Iceland,2021,2021-01-23,Day,2021-01-24,Day,Iceland: Avalanches – Westfjords Region (Flateyri) - 23/01/2021,2,Weather related,3,Hydrological,11,Mass Movement,14,,10,10,,,
 FRA,France,2021,2021-01-24,Day,2021-01-24,Day,France: Landslide - Cantal (Vic-sur-Cère) - 24/01/2021,2,Weather related,3,Hydrological,11,Mass Movement,15,,12,12,,,
 AUS,Australia,2021,2021-01-24,Day,2021-01-25,Day,"Australia: Adelaide Hills Fire - South Australia (Cherry Gardens, Echunga) - 24/01/2021",2,Weather related,2,Climatological,9,Wildfire,11,,20,20,,,
-SWZ,Kingdom of Eswatini,2021,2021-01-24,Day,2021-01-26,Day,Eswatini: Tropical storm - 26/01/2021,2,Weather related,4,Meteorological,14,Storm,21,,105,100,,,
+SWZ,Eswatini,2021,2021-01-24,Day,2021-01-26,Day,Eswatini: Tropical storm - 26/01/2021,2,Weather related,4,Meteorological,14,Storm,21,,105,100,,,
 USA,United States of America,2021,2021-01-24,Week,2021-01-28,Week,"USA: Storms and landslides - California (Monterey, San Mateo, and Santa Cruz counties) - 24/01/2021",2,Weather related,4,Meteorological,14,Storm,21,,15000,15000,,,
 NZL,New Zealand,2021,2021-01-25,Day,2021-01-25,Day,New Zealand: Wildfire - South Island (Christchurch) - 25/01/2021,2,Weather related,2,Climatological,9,Wildfire,11,,14,14,,,
 YEM,Yemen,2021,2021-01-25,Day,2021-01-25,Day,"Yemen: Drought, Desertification, Heatwave - Hadramaut - 25/01//2021",2,Weather related,2,Climatological,5,Drought,7,,12,12,,,
@@ -9965,7 +9965,7 @@ AFG,Afghanistan,2021,2021-04-07,Day,2021-04-07,Week,Afghanistan: Floods - Paktya
 AFG,Afghanistan,2021,2021-04-07,Day,2021-05-07,Week,Afghanistan: Floods - Takhar (Farkhar/Chashim Garmak) - 07/04/2021,2,Weather related,3,Hydrological,10,Flood,13,,7,7,,,
 ARG,Argentina,2021,2021-04-08,Day,2021-04-08,Day,Argentina: Floods - Santa Fe (Venado Tuerto) - 08/04/2021,2,Weather related,3,Hydrological,10,Flood,13,,79,79,,,
 USA,United States of America,2021,2021-04-08,Day,2021-04-12,Week,USA: Wildfire (Margo) - Arizona (Dudleyville) - 08/04/2021,2,Weather related,2,Climatological,9,Wildfire,11,,200,200,,,
-VCT,Saint Vincent and The Grenadines,2021,2021-04-08,Day,2021-04-22,Day,St Vincent and the Grenadines: La Soufriere Volcanic Eruption - Saint Vincent Island - 08/04/2021,1,Geophysical,1,Geophysical,3,Volcanic activity,5,,23032,23000,1767,1800,VO-2021-000034-VCT
+VCT,Saint Vincent and the Grenadines,2021,2021-04-08,Day,2021-04-22,Day,St Vincent and the Grenadines: La Soufriere Volcanic Eruption - Saint Vincent Island - 08/04/2021,1,Geophysical,1,Geophysical,3,Volcanic activity,5,,23032,23000,1767,1800,VO-2021-000034-VCT
 ARG,Argentina,2021,2021-04-09,Day,2021-04-10,Day,Argentina: Floods - Córdoba (Marcos Juarez) - 09/04/2021,2,Weather related,3,Hydrological,10,Flood,13,,48,48,,,
 NOR,Norway,2021,2021-04-09,Day,2021-05-31,Week,Norway: Avalanche - Svalbard (Spitsbergen - Nybyen) - 09/04/2021,2,Weather related,3,Hydrological,11,Mass Movement,14,,117,120,,,
 PHL,Philippines,2021,2021-04-10,Day,2021-04-10,Day,"Philippines: Flash flood - Soccskargen (Cotabato/ Makilala, M'lang) - 10/04/2021",2,Weather related,3,Hydrological,10,Flood,13,,228,230,0,,
@@ -10321,7 +10321,7 @@ FRA,France,2021,2021-07-14,Day,2021-07-15,Day,France: Flood - La Marne and Aisne
 DEU,Germany,2021,2021-07-14,Day,2021-07-16,Day,"Germany: Storm Bernd Floods - Nordrhein-Westfalen, Rheinland-Pfalz - 14/07/2021",2,Weather related,3,Hydrological,10,Flood,13,,16047,16000,740,740,
 KHM,Cambodia,2021,2021-07-14,Day,2021-07-16,Day,Cambodia: Flood - Battambang - 14/07/2021,2,Weather related,3,Hydrological,10,Flood,13,,184,180,,,
 LUX,Luxembourg,2021,2021-07-14,Week,2021-07-16,Week,Luxembourg: Floods - Echternach - 14/07/2021,2,Weather related,3,Hydrological,10,Flood,13,,560,560,,,
-NLD,Netherlands,2021,2021-07-14,Day,2021-07-16,Day,Netherlands: Floods - Limburg - 14/07/2021,2,Weather related,3,Hydrological,10,Flood,13,,51343,51000,,,
+NLD,Netherlands (Kingdom of the),2021,2021-07-14,Day,2021-07-16,Day,Netherlands: Floods - Limburg - 14/07/2021,2,Weather related,3,Hydrological,10,Flood,13,,51343,51000,,,
 IRN,Iran (Islamic Republic of),2021,2021-07-14,Day,2021-07-21,Week,Iran: Storms - countrywide - 14/07/2021,2,Weather related,4,Meteorological,14,Storm,21,,610,610,,,
 CHN,China,2021,2021-07-14,Day,2021-07-31,Day,"China, Philippines, Taiwan: Typhoon ""In-Fa"" / ""Fabian "" - 9 Provinces (CHN), 8 Regions (PHL),  New Taipei, Taoyuan and Hsinchu (TWN) - 14/07/2021",2,Weather related,4,Meteorological,14,Storm,24,,1430000,1430000,1500,1500,TC-2021-000094-CHN
 PHL,Philippines,2021,2021-07-14,Day,2021-07-31,Day,"China, Philippines, Taiwan: Typhoon ""In-Fa"" / ""Fabian "" - 9 Provinces (CHN), 8 Regions (PHL),  New Taipei, Taoyuan and Hsinchu (TWN) - 14/07/2021",2,Weather related,4,Meteorological,14,Storm,24,,214603,215000,35755,36000,TC-2021-000094-CHN
@@ -10383,7 +10383,7 @@ PHL,Philippines,2021,2021-07-29,Day,2021-07-31,Day,"Philippines: Flood [Southwes
 MMR,Myanmar,2021,2021-07-30,Day,2021-07-30,Day,Myanmar: Tornado - Rakhine State (Mrauk-U District) - 30/07/2021,2,Weather related,4,Meteorological,14,Storm,23,,32,32,32,32,
 VNM,Viet Nam,2021,2021-07-30,Day,2021-07-30,Day,Viet Nam: Thunderstorm - Ca Mau - 30/07/2021,2,Weather related,4,Meteorological,14,Storm,21,,4,4,4,4,
 USA,United States of America,2021,2021-07-30,Day,2021-08-04,Week,USA: Wildfire (Mana Road Fire) - Hawaii (Hawaii County) - 30/07/2021	,2,Weather related,2,Climatological,9,Wildfire,11,,7000,7000,5,5,
-MKD,Republic of North Macedonia,2021,2021-07-30,Week,2021-08-07,Week,"North Macedonia: Wildfire - Berovo/Pehchevo, Kumanovo, Delchevo, Kochani, Kriva Palanka - 30/07/2021	",2,Weather related,2,Climatological,9,Wildfire,11,,80,80,,,2021-000109
+MKD,North Macedonia,2021,2021-07-30,Week,2021-08-07,Week,"North Macedonia: Wildfire - Berovo/Pehchevo, Kumanovo, Delchevo, Kochani, Kriva Palanka - 30/07/2021	",2,Weather related,2,Climatological,9,Wildfire,11,,80,80,,,2021-000109
 USA,United States of America,2021,2021-07-30,Day,2021-11-01,Week,USA: Wildfire (Monument Fire) - California (Trinity County) - 30/07/2021	,2,Weather related,2,Climatological,9,Wildfire,11,,15324,15000,52,52,
 TUR,Türkiye,2021,2021-07-31,Day,2021-08-01,Day,Turkey: Flood - Van (Başkale district - Esenyamaç) - 31/07/2021,2,Weather related,3,Hydrological,10,Flood,13,,130,130,130,130,
 VNM,Viet Nam,2021,2021-07-31,Day,2021-08-01,Day,Viet Nam: Thunderstorm - Yen Bai - 31/07/2021,2,Weather related,4,Meteorological,14,Storm,21,,4,4,4,4,
@@ -12191,7 +12191,7 @@ USA,United States of America,2022,2022-07-29,,2022-10-01,Month,USA: Wildfire (Mc
 UGA,Uganda,2022,2022-07-30,Day,2022-07-31,Day,Uganda: Floods - Eastern Region - July 2022,2,Weather related,3,Hydrological,10,Flood,13,,6630,6600,,,FL-2022-000275-UGA
 IDN,Indonesia,2022,2022-07-31,Day,2022-07-31,Day,Indonesia: Landslide - Maluku (West Seram) - 31/07/2022,2,Weather related,3,Hydrological,11,Mass Movement,15,,24,24,24,24,
 NPL,Nepal,2022,2022-07-31,Day,2022-07-31,Day,Nepal: Earthquake - Kosi/Province No. 1 (Solokhumbu) - 31/07/2022,1,Geophysical,1,Geophysical,1,Earthquake,1,,4,4,4,4,
-VCT,Saint Vincent and The Grenadines,2022,2022-07-31,Day,2022-07-31,Week,"VCT, GRD: Storm – 31/07/2022",2,Weather related,4,Meteorological,14,Storm,21,,3,3,3,3,
+VCT,Saint Vincent and the Grenadines,2022,2022-07-31,Day,2022-07-31,Week,"VCT, GRD: Storm – 31/07/2022",2,Weather related,4,Meteorological,14,Storm,21,,3,3,3,3,
 VNM,Viet Nam,2022,2022-07-31,Day,2022-07-31,Day,Viet Nam: Thunderstorm - An Giang - 31/07/2022,2,Weather related,4,Meteorological,14,Storm,21,,5,5,5,5,
 FRA,France,2022,2022-07-31,Day,2022-08-02,Day,France: Wildfire - Landes (Mano) - 31/07/2022,2,Weather related,2,Climatological,9,Wildfire,11,,40,40,,,
 USA,United States of America,2022,2022-07-31,,2022-08-10,Week,USA: Wildfire (Fish Fire) - Wyoming (Crook County) - 31/07/2022,2,Weather related,2,Climatological,9,Wildfire,11,,50,50,,,
@@ -12842,7 +12842,7 @@ MYS,Malaysia,2022,2022-11-04,,2022-11-15,,Malaysia: Flood - Kedah (Baling) - 04/
 MYS,Malaysia,2022,2022-11-04,,2022-11-27,,"Malaysia: Flood - Perak (Larut, Matang dan Selema) - 04/11/2022",2,Weather related,3,Hydrological,10,Flood,13,,628,630,0,,
 MYS,Malaysia,2022,2022-11-05,,2022-11-05,,Malaysia: Flood - Pahang (Pekan) - 05/11/2022,2,Weather related,3,Hydrological,10,Flood,13,,6,6,,,
 USA,United States of America,2022,2022-11-05,,2022-11-05,,United States: Storm (Severe winds) - Illinois (Cook County - Elk Grove Village) - 05/11/2022,2,Weather related,4,Meteorological,14,Storm,21,,149,150,,,
-SWZ,Kingdom of Eswatini,2022,2022-11-05,Week,2022-11-07,Week,Eswatini: Hailstorms - Shiselweni - 05/11/2022,2,Weather related,4,Meteorological,14,Storm,19,,361,360,361,360,OT-2022-000361-SWZ
+SWZ,Eswatini,2022,2022-11-05,Week,2022-11-07,Week,Eswatini: Hailstorms - Shiselweni - 05/11/2022,2,Weather related,4,Meteorological,14,Storm,19,,361,360,361,360,OT-2022-000361-SWZ
 MYS,Malaysia,2022,2022-11-05,,2022-11-25,,Malaysia: Flood - Perak (Perak Tengah) - 05/11/2022,2,Weather related,3,Hydrological,10,Flood,13,,343,340,,,
 BDI,Burundi,2022,2022-11-06,Day,2022-11-06,Day,Burundi: Strong Winds - Bururi - 09/11/2022,2,Weather related,4,Meteorological,14,Storm,21,,11,11,,,
 IDN,Indonesia,2022,2022-11-06,Day,2022-11-06,Day,Indonesia: Storm - Central Java (Pati) - 06/11/2022,2,Weather related,4,Meteorological,14,Storm,21,,19,19,19,19,
