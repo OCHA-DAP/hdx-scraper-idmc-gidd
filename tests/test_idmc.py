@@ -255,7 +255,7 @@ class TestIDMC:
                 compare(
                     dataset,
                     {
-                        "name": "idmc-idp-data-for-afg",
+                        "name": "idmc-idp-data-afg",
                         "title": "Afghanistan - Internal displacements (New Displacements) - IDPs",
                         "maintainer": "196196be-6037-4488-8b71-d786adf4c081",
                         "owner_org": "647d9d8c-4cac-4c33-b639-649aad1c2893",
@@ -301,5 +301,5 @@ class TestIDMC:
                     ],
                     suffix="_AFG"
                 )
-                assert showcase == {'name': 'idmc-idp-data-for-afg-showcase', 'title': 'IDMC Afghanistan Summary Page', 'notes': 'Click the image to go to the IDMC summary page for the Afghanistan dataset', 'url': 'http://www.internal-displacement.org/countries/Afghanistan/', 'image_url': 'https://www.internal-displacement.org/sites/default/files/logo_0.png', 'tags': [{'name': 'hxl', 'vocabulary_id': '4e61d464-4943-4e97-973a-84673c1aaa87'}, {'name': 'displacement', 'vocabulary_id': '4e61d464-4943-4e97-973a-84673c1aaa87'}, {'name': 'internally displaced persons-idp', 'vocabulary_id': '4e61d464-4943-4e97-973a-84673c1aaa87'}, {'name': 'conflict-violence', 'vocabulary_id': '4e61d464-4943-4e97-973a-84673c1aaa87'}]}
+                assert showcase == {'name': 'idmc-idp-data-afg-showcase', 'title': 'IDMC Afghanistan Summary Page', 'notes': 'Click the image to go to the IDMC summary page for the Afghanistan dataset', 'url': 'http://www.internal-displacement.org/countries/Afghanistan/', 'image_url': 'https://www.internal-displacement.org/sites/default/files/logo_0.png', 'tags': [{'name': 'hxl', 'vocabulary_id': '4e61d464-4943-4e97-973a-84673c1aaa87'}, {'name': 'displacement', 'vocabulary_id': '4e61d464-4943-4e97-973a-84673c1aaa87'}, {'name': 'internally displaced persons-idp', 'vocabulary_id': '4e61d464-4943-4e97-973a-84673c1aaa87'}, {'name': 'conflict-violence', 'vocabulary_id': '4e61d464-4943-4e97-973a-84673c1aaa87'}]}
                 assert bites_disabled == [False, False]

@@ -60,7 +60,7 @@ indicators:
       - "iso3"
       - "event_name"
 country_dataset:
-  name: "IDMC IDP data for "
+  name: "IDMC IDP data "
   title: "Internal displacements (New Displacements) - IDPs"
 tags:
   - "hxl"
