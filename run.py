@@ -7,37 +7,45 @@ import logging
 from os.path import expanduser, join
 
 from hdx.api.configuration import Configuration
-from hdx.facades.simple import facade
+from hdx.facades.infer_arguments import facade
 from hdx.utilities.downloader import Download
 from hdx.utilities.path import progress_storing_folder, wheretostart_tempdir_batch
-from idmc import (
-    generate_country_dataset_and_showcase,
-    generate_indicator_datasets_and_showcase,
-)
+from hdx.utilities.retriever import Retrieve
+from idmc import IDMC
 
 logger = logging.getLogger(__name__)
 
 lookup = "hdx-scraper-idmc"
 
 
-def main():
-    """Generate dataset and create it in HDX"""
+def main(save: bool = False, use_saved: bool = False) -> None:
+    """Generate datasets and create them in HDX
 
-    with Download() as downloader:
-        with wheretostart_tempdir_batch(lookup) as info:
+    Args:
+        save (bool): Save downloaded data. Defaults to False.
+        use_saved (bool): Use saved data. Defaults to False.
+
+    Returns:
+        None
+    """
+
+    with wheretostart_tempdir_batch(lookup) as info:
+        folder = info["folder"]
+        with Download(
+            extra_params_yaml=join(expanduser("~"), ".extraparams.yml"),
+            extra_params_lookup=lookup,
+        ) as downloader:
+            retriever = Retrieve(
+                downloader, folder, "saved_data", folder, save, use_saved
+            )
             folder = info["folder"]
             batch = info["batch"]
-            indicators = Configuration.read()["indicators"]
-            tags = Configuration.read()["tags"]
-            (
-                datasets,
-                showcase,
-                headersdata,
-                countriesdata,
-            ) = generate_indicator_datasets_and_showcase(
-                downloader, folder, indicators, tags
-            )
-            countries = [{"iso3": x} for x in sorted(countriesdata)]
+            configuration = Configuration.read()
+            idmc = IDMC(configuration, retriever, folder)
+            idmc.download_indicators()
+            countries = idmc.get_countryiso3s()
+            indicators = idmc.get_indicators()
+            datasets, showcase = idmc.generate_indicator_datasets_and_showcase()
 
             logger.info(f"Number of indicator datasets to upload: {len(indicators)}")
             logger.info(f"Number of country datasets to upload: {len(countries)}")
@@ -62,19 +70,13 @@ def main():
 
             for _, nextdict in progress_storing_folder(info, countries, "iso3"):
                 countryiso = nextdict["iso3"]
-                countrydata = countriesdata[countryiso]
                 (
                     dataset,
                     showcase,
                     bites_disabled,
-                ) = generate_country_dataset_and_showcase(
-                    downloader,
-                    folder,
-                    headersdata,
+                ) = idmc.generate_country_dataset_and_showcase(
                     countryiso,
-                    countrydata,
                     datasets,
-                    tags,
                 )
                 if dataset:
                     dataset.update_from_yaml()
@@ -89,7 +91,7 @@ def main():
                     resource_ids = [
                         x["id"]
                         for x in sorted(
-                            resources, key=lambda x: len(x["name"]), reverse=True
+                            resources, key=lambda x: len(x["name"])
                         )
                     ]
                     dataset.reorder_resources(resource_ids, hxl_update=False)

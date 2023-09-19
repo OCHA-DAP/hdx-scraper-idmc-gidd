@@ -1,0 +1,16 @@
+iso3,country_name,year,new_displacement,new_displacement_rounded,total_displacement,total_displacement_rounded
+#country+code,#country+name,#date+year,#affected+idps+ind+new+conflict,,#affected+idps+ind+total+conflict,
+AFG,Afghanistan,2009,0,,297000,297000
+AFG,Afghanistan,2010,102000,102000,352000,352000
+AFG,Afghanistan,2011,186000,186000,450000,450000
+AFG,Afghanistan,2012,100400,100000,492000,492000
+AFG,Afghanistan,2013,124000,124000,631000,631000
+AFG,Afghanistan,2014,156193,156000,805409,805000
+AFG,Afghanistan,2015,335409,335000,1174306,1174000
+AFG,Afghanistan,2016,652594,653000,1200000,1200000
+AFG,Afghanistan,2017,473892,474000,1286483,1286000
+AFG,Afghanistan,2018,371779,372000,2597897,2598000
+AFG,Afghanistan,2019,460692,461000,2993384,2993000
+AFG,Afghanistan,2020,404139,404000,3546858,3547000
+AFG,Afghanistan,2021,723082,723000,4314287,4314000
+AFG,Afghanistan,2022,32424,32000,4393749,4394000
