@@ -62,6 +62,7 @@ indicators:
 country_dataset:
   name: "IDMC IDP data "
   title: "Internal displacements (New Displacements) - IDPs"
+  quickcharts: "displacement"
 tags:
   - "hxl"
   - "displacement"

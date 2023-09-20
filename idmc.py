@@ -149,12 +149,13 @@ class IDMC:
             for row in rows:
                 year = row["year"]
                 years.add(year)
-                total_displacement = row["total_displacement"]
-                if total_displacement:
-                    bites_disabled[0] = False
-                new_displacement = row["new_displacement"]
-                if new_displacement:
-                    bites_disabled[1] = False
+                if key == country_dataset["quickcharts"]:
+                    total_displacement = row["total_displacement"]
+                    if total_displacement:
+                        bites_disabled[0] = False
+                    new_displacement = row["new_displacement"]
+                    if new_displacement:
+                        bites_disabled[1] = False
             rows.insert(0, indicator["hxltags"])
             resourcedata = {
                 "name": name,
