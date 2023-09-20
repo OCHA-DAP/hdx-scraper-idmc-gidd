@@ -51,7 +51,7 @@ def main(save: bool = False, use_saved: bool = False) -> None:
             logger.info(f"Number of country datasets to upload: {len(countries)}")
 
             showcase_not_added = True
-            for _, nextdict in progress_storing_folder(info, indicators, "name"):
+            for nextdict in indicators:
                 if showcase_not_added:
                     showcase.create_in_hdx()
                     showcase_not_added = False
