@@ -15,7 +15,7 @@ from idmc import IDMC
 
 logger = logging.getLogger(__name__)
 
-lookup = "hdx-scraper-idmc"
+lookup = "hdx-scraper-idmc-gidd"
 
 
 def main(save: bool = False, use_saved: bool = False) -> None:
