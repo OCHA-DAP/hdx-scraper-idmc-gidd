@@ -80,10 +80,7 @@ def main(save: bool = False, use_saved: bool = False) -> None:
                 )
                 if dataset:
                     dataset.update_from_yaml()
-                    if bites_disabled == [True, True]:
-                        dataset.preview_off()
-                    else:
-                        dataset.generate_quickcharts(bites_disabled=bites_disabled)
+                    dataset.generate_quickcharts(bites_disabled=bites_disabled)
                     dataset.create_in_hdx(
                         remove_additional_resources=True,
                         hxl_update=False,
