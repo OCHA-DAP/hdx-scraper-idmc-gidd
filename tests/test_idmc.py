@@ -77,7 +77,7 @@ class TestIDMC:
         Configuration._create(
             hdx_read_only=True,
             user_agent="test",
-            project_config_yaml=join("config", "project_configuration.yml"),
+            project_config_yaml=join("config", "project_configuration.yaml"),
         )
         UserAgent.set_global("test")
         Country.countriesdata(use_live=False)
@@ -93,6 +93,7 @@ class TestIDMC:
             "conflict-violence",
             "displacement",
             "internally displaced persons-idp",
+            "natural disasters",
         )
         Vocabulary._tags_dict = {tag: {"Action to Take": "ok"} for tag in tags}
         tags = [{"name": tag} for tag in tags]
@@ -138,8 +139,8 @@ class TestIDMC:
                 compare(
                     datasets["displacement"],
                     {
-                        "name": "idmc-internally-displaced-persons-idps",
-                        "title": "Internally displaced persons - IDPs",
+                        "name": "idmc-internal-displacements-new-displacements-idps",
+                        "title": "Internal Displacements (New Displacements) – IDPs",
                         "maintainer": "196196be-6037-4488-8b71-d786adf4c081",
                         "owner_org": "647d9d8c-4cac-4c33-b639-649aad1c2893",
                         "data_update_frequency": "365",
@@ -147,6 +148,10 @@ class TestIDMC:
                         "tags": [
                             {
                                 "name": "hxl",
+                                "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
+                            },
+                            {
+                                "name": "conflict-violence",
                                 "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
                             },
                             {
@@ -158,18 +163,18 @@ class TestIDMC:
                                 "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
                             },
                             {
-                                "name": "conflict-violence",
+                                "name": "natural disasters",
                                 "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
                             },
                         ],
-                        "notes": 'Internally displaced persons are defined according to the 1998 Guiding Principles (https://www.internal-displacement.org/publications/ocha-guiding-principles-on-internal-displacement) as people or groups of people who have been forced or obliged to flee or to leave their homes or places of habitual residence, in particular as a result of armed conflict, or to avoid the effects of armed conflict, situations of generalized violence, violations of human rights, or natural or human-made disasters and who have not crossed an international border.\n\n\n"Internally displaced persons - IDPs" refers to the number of people living in displacement as of the end of each year.\n\n\nContains data from IDMC\'s [Global Internal Displacement Database](http://www.internal-displacement.org/database/displacement-data).\n',
+                        "notes": 'Internally displaced persons are defined according to [the 1998 Guiding Principles](https://www.internal-displacement.org/internal-displacement/guiding-principles-on-internal-displacement) as people or groups of people who have been forced or obliged to flee or to leave their homes or places of habitual residence, in particular as a result of armed conflict, or to avoid the effects of armed conflict, situations of generalized violence, violations of human rights, or natural or human-made disasters and who have not crossed an international border.\n\n\n"Internally displaced persons - IDPs" refers to the number of people living in displacement as of the end of each year.\n\n\nContains data from IDMC\'s [Global Internal Displacement Database](http://www.internal-displacement.org/database/displacement-data).\n',
                         "groups": [{"name": "world"}],
                         "dataset_date": "[2009-01-01T00:00:00 TO 2022-12-31T23:59:59]",
                     },
                     [
                         {
-                            "name": "Internally displaced persons - IDPs",
-                            "description": "Internally displaced persons - IDPs",
+                            "name": "Internal Displacements (New Displacements) – IDPs",
+                            "description": "Internal Displacements (New Displacements) – IDPs",
                             "format": "csv",
                             "resource_type": "file.upload",
                             "url_type": "upload",
@@ -192,6 +197,10 @@ class TestIDMC:
                                 "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
                             },
                             {
+                                "name": "conflict-violence",
+                                "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
+                            },
+                            {
                                 "name": "displacement",
                                 "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
                             },
@@ -200,11 +209,11 @@ class TestIDMC:
                                 "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
                             },
                             {
-                                "name": "conflict-violence",
+                                "name": "natural disasters",
                                 "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
                             },
                         ],
-                        "notes": 'Internally displaced persons are defined according to the 1998 Guiding Principles (https://www.internal-displacement.org/publications/ocha-guiding-principles-on-internal-displacement) as people or groups of people who have been forced or obliged to flee or to leave their homes or places of habitual residence, in particular as a result of armed conflict, or to avoid the effects of armed conflict, situations of generalized violence, violations of human rights, or natural or human-made disasters and who have not crossed an international border.\n\n\n"Internal displacements (New Displacements)" refers to the number of new cases or incidents of displacement recorded, rather than the number of people displaced. This is done because people may have been displaced more than once.\n\n\nContains data from IDMC\'s [Global Internal Displacement Database](http://www.internal-displacement.org/database/displacement-data).\n',
+                        "notes": 'Internally displaced persons are defined according to [the 1998 Guiding Principles](https://www.internal-displacement.org/internal-displacement/guiding-principles-on-internal-displacement) as people or groups of people who have been forced or obliged to flee or to leave their homes or places of habitual residence, in particular as a result of armed conflict, or to avoid the effects of armed conflict, situations of generalized violence, violations of human rights, or natural or human-made disasters and who have not crossed an international border.\n\n\n"Internal displacements (New Displacements)" refers to the number of new cases or incidents of displacement recorded, rather than the number of people displaced. This is done because people may have been displaced more than once.\n\n\nContains data from IDMC\'s [Global Internal Displacement Database](http://www.internal-displacement.org/database/displacement-data).\n',
                         "groups": [{"name": "world"}],
                         "dataset_date": "[2008-01-01T00:00:00 TO 2022-12-31T23:59:59]",
                     },
@@ -230,6 +239,10 @@ class TestIDMC:
                             "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
                         },
                         {
+                            "name": "conflict-violence",
+                            "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
+                        },
+                        {
                             "name": "displacement",
                             "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
                         },
@@ -238,7 +251,7 @@ class TestIDMC:
                             "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
                         },
                         {
-                            "name": "conflict-violence",
+                            "name": "natural disasters",
                             "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
                         },
                     ],
@@ -256,7 +269,7 @@ class TestIDMC:
                     dataset,
                     {
                         "name": "idmc-idp-data-afg",
-                        "title": "Afghanistan - Internal displacements (New Displacements) - IDPs",
+                        "title": "Afghanistan - Internal Displacements (New Displacements) Disasters Data",
                         "maintainer": "196196be-6037-4488-8b71-d786adf4c081",
                         "owner_org": "647d9d8c-4cac-4c33-b639-649aad1c2893",
                         "data_update_frequency": "365",
@@ -264,6 +277,10 @@ class TestIDMC:
                         "tags": [
                             {
                                 "name": "hxl",
+                                "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
+                            },
+                            {
+                                "name": "conflict-violence",
                                 "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
                             },
                             {
@@ -275,18 +292,18 @@ class TestIDMC:
                                 "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
                             },
                             {
-                                "name": "conflict-violence",
+                                "name": "natural disasters",
                                 "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
                             },
                         ],
                         "groups": [{"name": "afg"}],
-                        "notes": 'Internally displaced persons are defined according to the 1998 Guiding Principles (https://www.internal-displacement.org/publications/ocha-guiding-principles-on-internal-displacement) as people or groups of people who have been forced or obliged to flee or to leave their homes or places of habitual residence, in particular as a result of armed conflict, or to avoid the effects of armed conflict, situations of generalized violence, violations of human rights, or natural or human-made disasters and who have not crossed an international border.\n\n\n"Internally displaced persons - IDPs" refers to the number of people living in displacement as of the end of each year.\n\n\n"Internal displacements (New Displacements)" refers to the number of new cases or incidents of displacement recorded, rather than the number of people displaced. This is done because people may have been displaced more than once.\n\n\nContains data from IDMC\'s [Global Internal Displacement Database](http://www.internal-displacement.org/database/displacement-data).\n',
+                        "notes": 'Internally displaced persons are defined according to [the 1998 Guiding Principles](https://www.internal-displacement.org/internal-displacement/guiding-principles-on-internal-displacement) as people or groups of people who have been forced or obliged to flee or to leave their homes or places of habitual residence, in particular as a result of armed conflict, or to avoid the effects of armed conflict, situations of generalized violence, violations of human rights, or natural or human-made disasters and who have not crossed an international border.\n\n\n"Internally displaced persons - IDPs" refers to the number of people living in displacement as of the end of each year.\n\n\n"Internal displacements (New Displacements)" refers to the number of new cases or incidents of displacement recorded, rather than the number of people displaced. This is done because people may have been displaced more than once.\n\n\nContains data from IDMC\'s [Global Internal Displacement Database](http://www.internal-displacement.org/database/displacement-data).\n',
                         "dataset_date": "[2008-01-01T00:00:00 TO 2022-12-31T23:59:59]",
                     },
                     [
                         {
-                            "name": "Internally displaced persons - IDPs",
-                            "description": "Internally displaced persons - IDPs for Afghanistan",
+                            "name": "Internal Displacements (New Displacements) – IDPs",
+                            "description": "Internal Displacements (New Displacements) – IDPs for Afghanistan",
                             "format": "csv",
                             "resource_type": "file.upload",
                             "url_type": "upload",
@@ -301,5 +318,5 @@ class TestIDMC:
                     ],
                     suffix="_AFG"
                 )
-                assert showcase == {'name': 'idmc-idp-data-afg-showcase', 'title': 'IDMC Afghanistan Summary Page', 'notes': 'Click the image to go to the IDMC summary page for the Afghanistan dataset', 'url': 'http://www.internal-displacement.org/countries/Afghanistan/', 'image_url': 'https://www.internal-displacement.org/sites/default/files/logo_0.png', 'tags': [{'name': 'hxl', 'vocabulary_id': '4e61d464-4943-4e97-973a-84673c1aaa87'}, {'name': 'displacement', 'vocabulary_id': '4e61d464-4943-4e97-973a-84673c1aaa87'}, {'name': 'internally displaced persons-idp', 'vocabulary_id': '4e61d464-4943-4e97-973a-84673c1aaa87'}, {'name': 'conflict-violence', 'vocabulary_id': '4e61d464-4943-4e97-973a-84673c1aaa87'}]}
+                assert showcase == {'name': 'idmc-idp-data-afg-showcase', 'title': 'IDMC Afghanistan Summary Page', 'notes': 'Click the image to go to the IDMC summary page for the Afghanistan dataset', 'url': 'http://www.internal-displacement.org/countries/Afghanistan/', 'image_url': 'https://www.internal-displacement.org/sites/default/files/logo_0.png', 'tags': [{'name': 'hxl', 'vocabulary_id': '4e61d464-4943-4e97-973a-84673c1aaa87'}, {'name': 'conflict-violence', 'vocabulary_id': '4e61d464-4943-4e97-973a-84673c1aaa87'}, {'name': 'displacement', 'vocabulary_id': '4e61d464-4943-4e97-973a-84673c1aaa87'}, {'name': 'internally displaced persons-idp', 'vocabulary_id': '4e61d464-4943-4e97-973a-84673c1aaa87'}, {'name': 'natural disasters', 'vocabulary_id': '4e61d464-4943-4e97-973a-84673c1aaa87'}]}
                 assert bites_disabled == [False, False]

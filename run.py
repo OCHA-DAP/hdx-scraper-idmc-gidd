@@ -32,7 +32,7 @@ def main(save: bool = False, use_saved: bool = False) -> None:
     with wheretostart_tempdir_batch(lookup) as info:
         folder = info["folder"]
         with Download(
-            extra_params_yaml=join(expanduser("~"), ".extraparams.yml"),
+            extra_params_yaml=join(expanduser("~"), ".extraparams.yaml"),
             extra_params_lookup=lookup,
         ) as downloader:
             retriever = Retrieve(
@@ -100,8 +100,7 @@ def main(save: bool = False, use_saved: bool = False) -> None:
 if __name__ == "__main__":
     facade(
         main,
-        hdx_site="feature",
-        user_agent_config_yaml=join(expanduser("~"), ".useragents.yml"),
+        user_agent_config_yaml=join(expanduser("~"), ".useragents.yaml"),
         user_agent_lookup=lookup,
-        project_config_yaml=join("config", "project_configuration.yml"),
+        project_config_yaml=join("config", "project_configuration.yaml"),
     )

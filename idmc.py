@@ -103,7 +103,7 @@ class IDMC:
             dataset.generate_resource_from_rows(self.folder, filename, rows, resourcedata)
 
             years = sorted(years)
-            dataset.set_reference_period_year_range(years[0], years[-1])
+            dataset.set_time_period_year_range(years[0], years[-1])
             datasets[key] = dataset
 
         title = "IDMC Global Report on Internal Displacement"
@@ -164,7 +164,7 @@ class IDMC:
             filename = f"{name}_{countryiso}.csv"
             dataset.generate_resource_from_rows(self.folder, filename, rows, resourcedata)
         years = sorted(years)
-        dataset.set_reference_period_year_range(years[0], years[-1])
+        dataset.set_time_period_year_range(years[0], years[-1])
         internal_countryname = self.countrymapping[countryiso]
         url = f"http://www.internal-displacement.org/countries/{internal_countryname.replace(' ', '-')}/"
         try:
