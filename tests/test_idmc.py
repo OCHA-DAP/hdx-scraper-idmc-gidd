@@ -223,7 +223,7 @@ class TestIDMC:
                     "name": "idmc-global-report-on-internal-displacement",
                     "title": "IDMC Global Report on Internal Displacement",
                     "notes": "Click the image to go to the IDMC Global Report on Internal Displacement",
-                    "url": "https://www.internal-displacement.org/global-report/grid2023/",
+                    "url": "https://www.internal-displacement.org/global-report/grid2024/",
                     "image_url": "https://www.internal-displacement.org/sites/default/files/styles/optimized/public/2023_Internal_Displacement_Monitoring_Centre_IDMC_2023_GRID_Preview.png?itok=apWZ2Y_K",
                     "tags": [
                         {
