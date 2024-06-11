@@ -9,6 +9,11 @@ notes:
   last_part: >
     Contains data from IDMC's [Global Internal Displacement Database](http://www.internal-displacement.org/database/displacement-data).
 
+tags:
+  - "hxl"
+  - "displacement"
+  - "internally displaced persons-idp"
+
 indicators:
   - name: "displacement"
     url: "https://helix-tools-api.idmcdb.org/external-api/gidd/conflicts/?format=json&limit=100"
@@ -26,6 +31,8 @@ indicators:
     sort:
       - "year"
       - "iso3"
+    tags:
+      - "conflict-violence"
   - name: "disaster"
     url: "https://helix-tools-api.idmcdb.org/external-api/gidd/disasters/?format=json&limit=100"
     resourceview: "hdx_resource_view_static_disaster.yaml"
@@ -59,13 +66,10 @@ indicators:
       - "end_date"
       - "iso3"
       - "event_name"
+    tags:
+      - "natural disasters"
+
 country_dataset:
   name: "IDMC IDP data "
-  title: "Internal Displacements (New Displacements) Disasters Data"
+  title: "Internal Displacements (New Displacements) – IDPs"
   quickcharts: "displacement"
-tags:
-  - "hxl"
-  - "conflict-violence"
-  - "displacement"
-  - "internally displaced persons-idp"
-  - "natural disasters"

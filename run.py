@@ -76,7 +76,6 @@ def main(save: bool = False, use_saved: bool = False) -> None:
                     bites_disabled,
                 ) = idmc.generate_country_dataset_and_showcase(
                     countryiso,
-                    datasets,
                 )
                 if dataset:
                     dataset.update_from_yaml()

@@ -7,6 +7,7 @@ Reads IDMC HXLated csvs and creates datasets.
 
 """
 import logging
+from copy import copy
 from operator import itemgetter
 
 from hdx.data.dataset import Dataset
@@ -30,14 +31,13 @@ class IDMC:
         self.countrymapping = {}
 
     @staticmethod
-    def get_dataset(title, tags, name):
+    def get_dataset(title, name):
         logger.info(f"Creating dataset: {title}")
         dataset = Dataset({"name": slugify(name).lower(), "title": title})
         dataset.set_maintainer("196196be-6037-4488-8b71-d786adf4c081")
         dataset.set_organization("647d9d8c-4cac-4c33-b639-649aad1c2893")
         dataset.set_expected_update_frequency("Every year")
         dataset.set_subnational(False)
-        dataset.add_tags(tags)
         return dataset
 
     def download_data(self, url, basename):
@@ -76,7 +76,8 @@ class IDMC:
         return self.configuration["indicators"]
 
     def generate_indicator_datasets_and_showcase(self):
-        tags = self.configuration["tags"]
+        orig_tags = self.configuration["tags"]
+        tags = copy(orig_tags)
         notes_lookup = self.configuration["notes"]
         first_part = notes_lookup["first_part"]
         last_part = notes_lookup["last_part"]
@@ -84,7 +85,7 @@ class IDMC:
         for indicator in self.get_indicators():
             name = indicator["title"]
             title = name
-            dataset = self.get_dataset(title, tags, f"idmc-{name}")
+            dataset = self.get_dataset(title, f"idmc-{name}")
             key = indicator["name"]
             notes = f"{first_part}\n\n{notes_lookup[key]}\n\n{last_part}"
             dataset["notes"] = notes
@@ -101,7 +102,9 @@ class IDMC:
             resourcedata = {"name": name, "description": title}
             filename = f"{name}.csv"
             dataset.generate_resource_from_rows(self.folder, filename, rows, resourcedata)
-
+            indicator_tags = indicator["tags"]
+            dataset.add_tags(orig_tags + indicator_tags)
+            tags += indicator_tags
             years = sorted(years)
             dataset.set_time_period_year_range(years[0], years[-1])
             datasets[key] = dataset
@@ -121,15 +124,15 @@ class IDMC:
         return datasets, showcase
 
     def generate_country_dataset_and_showcase(self,
-        countryiso, indicator_datasets
+        countryiso
     ):
-        tags = self.configuration["tags"]
+        tags = copy(self.configuration["tags"])
         country_dataset = self.configuration["country_dataset"]
         countryname = Country.get_country_name_from_iso3(countryiso)
         name = country_dataset["name"]
         title = country_dataset["title"]
         dataset = self.get_dataset(
-            f"{countryname} - {title}", tags, f"{name}{countryiso}"
+            f"{countryname} - {title}", f"{name}{countryiso}"
         )
         try:
             dataset.add_country_location(countryiso)
@@ -163,6 +166,8 @@ class IDMC:
             }
             filename = f"{name}_{countryiso}.csv"
             dataset.generate_resource_from_rows(self.folder, filename, rows, resourcedata)
+            tags += indicator["tags"]
+        dataset.add_tags(tags)
         years = sorted(years)
         dataset.set_time_period_year_range(years[0], years[-1])
         internal_countryname = self.countrymapping[countryiso]
