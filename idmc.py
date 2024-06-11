@@ -117,7 +117,7 @@ class IDMC:
                 "title": title,
                 "notes": f"Click the image to go to the {title}",
                 "url": "https://www.internal-displacement.org/global-report/grid2024/",
-                "image_url": "https://www.internal-displacement.org/sites/default/files/styles/optimized/public/2023_Internal_Displacement_Monitoring_Centre_IDMC_2023_GRID_Preview.png?itok=apWZ2Y_K",
+                "image_url": "https://api.internal-displacement.org/sites/default/files/publications/images/idmc-2024-grid-cover-image.jpg",
             }
         )
         showcase.add_tags(tags)
