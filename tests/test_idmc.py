@@ -1,21 +1,23 @@
 #!/usr/bin/python
 """
-Unit tests for scrapername.
+Unit tests for IDMC GIDD.
 
 """
+
 from os.path import join
 
 import pytest
+
 from hdx.api.configuration import Configuration
 from hdx.api.locations import Locations
 from hdx.data.vocabulary import Vocabulary
 from hdx.location.country import Country
+from hdx.scraper.idmc.gidd.idmc import IDMC
 from hdx.utilities.compare import assert_files_same
 from hdx.utilities.downloader import Download
 from hdx.utilities.path import temp_dir
 from hdx.utilities.retriever import Retrieve
 from hdx.utilities.useragent import UserAgent
-from idmc import IDMC
 
 
 class TestIDMC:
@@ -307,7 +309,35 @@ class TestIDMC:
                             "url_type": "upload",
                         },
                     ],
-                    suffix="_AFG"
+                    suffix="_AFG",
                 )
-                assert showcase == {'name': 'idmc-idp-data-afg-showcase', 'title': 'IDMC Afghanistan Summary Page', 'notes': 'Click the image to go to the IDMC summary page for the Afghanistan dataset', 'url': 'http://www.internal-displacement.org/countries/Afghanistan/', 'image_url': 'https://www.internal-displacement.org/sites/default/files/logo_0.png', 'tags': [{'name': 'hxl', 'vocabulary_id': '4e61d464-4943-4e97-973a-84673c1aaa87'}, {'name': 'displacement', 'vocabulary_id': '4e61d464-4943-4e97-973a-84673c1aaa87'}, {'name': 'internally displaced persons-idp', 'vocabulary_id': '4e61d464-4943-4e97-973a-84673c1aaa87'}, {'name': 'conflict-violence', 'vocabulary_id': '4e61d464-4943-4e97-973a-84673c1aaa87'}, {'name': 'natural disasters', 'vocabulary_id': '4e61d464-4943-4e97-973a-84673c1aaa87'}]}
+                assert showcase == {
+                    "name": "idmc-idp-data-afg-showcase",
+                    "title": "IDMC Afghanistan Summary Page",
+                    "notes": "Click the image to go to the IDMC summary page for the Afghanistan dataset",
+                    "url": "http://www.internal-displacement.org/countries/Afghanistan/",
+                    "image_url": "https://www.internal-displacement.org/sites/default/files/logo_0.png",
+                    "tags": [
+                        {
+                            "name": "hxl",
+                            "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
+                        },
+                        {
+                            "name": "displacement",
+                            "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
+                        },
+                        {
+                            "name": "internally displaced persons-idp",
+                            "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
+                        },
+                        {
+                            "name": "conflict-violence",
+                            "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
+                        },
+                        {
+                            "name": "natural disasters",
+                            "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
+                        },
+                    ],
+                }
                 assert bites_disabled == [False, False]

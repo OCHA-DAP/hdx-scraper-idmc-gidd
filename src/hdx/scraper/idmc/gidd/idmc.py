@@ -6,9 +6,12 @@ IDMC:
 Reads IDMC HXLated csvs and creates datasets.
 
 """
+
 import logging
 from copy import copy
 from operator import itemgetter
+
+from slugify import slugify
 
 from hdx.data.dataset import Dataset
 from hdx.data.hdxobject import HDXError
@@ -16,7 +19,6 @@ from hdx.data.showcase import Showcase
 from hdx.location.country import Country
 from hdx.utilities.dictandlist import dict_of_lists_add
 from hdx.utilities.downloader import DownloadError
-from slugify import slugify
 
 logger = logging.getLogger(__name__)
 
@@ -67,7 +69,10 @@ class IDMC:
             url = indicator["url"]
             name = indicator["name"]
             rows, rows_by_country = self.download_data(url, name)
-            self.indicator_data[name] = {"rows": rows, "rows_by_country": rows_by_country}
+            self.indicator_data[name] = {
+                "rows": rows,
+                "rows_by_country": rows_by_country,
+            }
 
     def get_countryiso3s(self):
         return [{"iso3": countryiso} for countryiso in sorted(self.countries)]
@@ -96,12 +101,12 @@ class IDMC:
             for row in rows:
                 year = row["year"]
                 years.add(year)
-                for header in indicator["flatten"]:
-                    row[header] = ",".join(row[header])
             rows.insert(0, indicator["hxltags"])
             resourcedata = {"name": name, "description": title}
             filename = f"{name}.csv"
-            dataset.generate_resource_from_rows(self.folder, filename, rows, resourcedata)
+            dataset.generate_resource_from_rows(
+                self.folder, filename, rows, resourcedata
+            )
             indicator_tags = indicator["tags"]
             dataset.add_tags(orig_tags + indicator_tags)
             tags += indicator_tags
@@ -123,17 +128,13 @@ class IDMC:
         showcase.add_tags(tags)
         return datasets, showcase
 
-    def generate_country_dataset_and_showcase(self,
-        countryiso
-    ):
+    def generate_country_dataset_and_showcase(self, countryiso):
         tags = copy(self.configuration["tags"])
         country_dataset = self.configuration["country_dataset"]
         countryname = Country.get_country_name_from_iso3(countryiso)
         name = country_dataset["name"]
         title = country_dataset["title"]
-        dataset = self.get_dataset(
-            f"{countryname} - {title}", f"{name}{countryiso}"
-        )
+        dataset = self.get_dataset(f"{countryname} - {title}", f"{name}{countryiso}")
         try:
             dataset.add_country_location(countryiso)
         except HDXError as e:
@@ -165,7 +166,9 @@ class IDMC:
                 "description": f"{name} for {countryname}",
             }
             filename = f"{name}_{countryiso}.csv"
-            dataset.generate_resource_from_rows(self.folder, filename, rows, resourcedata)
+            dataset.generate_resource_from_rows(
+                self.folder, filename, rows, resourcedata
+            )
             tags += indicator["tags"]
         dataset.add_tags(tags)
         years = sorted(years)
