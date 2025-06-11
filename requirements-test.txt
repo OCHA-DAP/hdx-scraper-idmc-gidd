@@ -240,7 +240,7 @@ referencing==0.36.2
     #   -c requirements.txt
     #   jsonschema
     #   jsonschema-specifications
-requests==2.32.3
+requests==2.32.4
     # via
     #   -c requirements.txt
     #   ckanapi
@@ -265,7 +265,7 @@ rpds-py==0.25.1
     #   -c requirements.txt
     #   jsonschema
     #   referencing
-ruamel-yaml==0.18.13
+ruamel-yaml==0.18.14
     # via
     #   -c requirements.txt
     #   hdx-python-utilities

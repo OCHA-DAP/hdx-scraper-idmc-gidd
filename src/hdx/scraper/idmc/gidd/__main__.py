@@ -7,14 +7,17 @@ Top level script. Calls other functions that generate datasets that this script 
 import logging
 from os.path import expanduser, join
 
-from idmc import IDMC
-
 from hdx.api.configuration import Configuration
 from hdx.data.user import User
 from hdx.facades.infer_arguments import facade
 from hdx.scraper.idmc.gidd._version import __version__
+from hdx.scraper.idmc.gidd.pipeline import Pipeline
 from hdx.utilities.downloader import Download
-from hdx.utilities.path import progress_storing_folder, wheretostart_tempdir_batch
+from hdx.utilities.path import (
+    progress_storing_folder,
+    script_dir_plus_file,
+    wheretostart_tempdir_batch,
+)
 from hdx.utilities.retriever import Retrieve
 
 logger = logging.getLogger(__name__)
@@ -49,11 +52,11 @@ def main(save: bool = False, use_saved: bool = False) -> None:
             )
             folder = info["folder"]
             batch = info["batch"]
-            idmc = IDMC(configuration, retriever, folder)
-            idmc.download_indicators()
-            countries = idmc.get_countryiso3s()
-            indicators = idmc.get_indicators()
-            datasets, showcase = idmc.generate_indicator_datasets_and_showcase()
+            pipeline = Pipeline(configuration, retriever, folder)
+            pipeline.download_indicators()
+            countries = pipeline.get_countryiso3s()
+            indicators = pipeline.get_indicators()
+            datasets, showcase = pipeline.generate_indicator_datasets_and_showcase()
 
             logger.info(f"Number of indicator datasets to upload: {len(indicators)}")
             logger.info(f"Number of country datasets to upload: {len(countries)}")
@@ -64,9 +67,15 @@ def main(save: bool = False, use_saved: bool = False) -> None:
                     showcase.create_in_hdx()
                     showcase_not_added = False
                 dataset = datasets[nextdict["name"]]
-                dataset.update_from_yaml()
+                dataset.update_from_yaml(
+                    script_dir_plus_file(
+                        join("config", "hdx_dataset_static.yaml"), main
+                    )
+                )
                 dataset.generate_quickcharts(
-                    path=join("config", nextdict["resourceview"])
+                    path=script_dir_plus_file(
+                        join("config", nextdict["resourceview"]), main
+                    )
                 )
                 dataset.create_in_hdx(
                     remove_additional_resources=True,
@@ -82,12 +91,21 @@ def main(save: bool = False, use_saved: bool = False) -> None:
                     dataset,
                     showcase,
                     bites_disabled,
-                ) = idmc.generate_country_dataset_and_showcase(
+                ) = pipeline.generate_country_dataset_and_showcase(
                     countryiso,
                 )
                 if dataset:
-                    dataset.update_from_yaml()
-                    dataset.generate_quickcharts(bites_disabled=bites_disabled)
+                    dataset.update_from_yaml(
+                        script_dir_plus_file(
+                            join("config", "hdx_dataset_static.yaml"), main
+                        )
+                    )
+                    dataset.generate_quickcharts(
+                        path=script_dir_plus_file(
+                            join("config", "hdx_resource_view_static.yaml"), main
+                        ),
+                        bites_disabled=bites_disabled,
+                    )
                     dataset.create_in_hdx(
                         remove_additional_resources=True,
                         hxl_update=False,
@@ -106,5 +124,7 @@ if __name__ == "__main__":
         main,
         user_agent_config_yaml=join(expanduser("~"), ".useragents.yaml"),
         user_agent_lookup=lookup,
-        project_config_yaml=join("config", "project_configuration.yaml"),
+        project_config_yaml=script_dir_plus_file(
+            join("config", "project_configuration.yaml"), main
+        ),
     )

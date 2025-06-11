@@ -6,18 +6,11 @@ Unit tests for IDMC GIDD.
 
 from os.path import join
 
-import pytest
-
-from hdx.api.configuration import Configuration
-from hdx.api.locations import Locations
-from hdx.data.vocabulary import Vocabulary
-from hdx.location.country import Country
-from hdx.scraper.idmc.gidd.idmc import IDMC
+from hdx.scraper.idmc.gidd.pipeline import Pipeline
 from hdx.utilities.compare import assert_files_same
 from hdx.utilities.downloader import Download
 from hdx.utilities.path import temp_dir
 from hdx.utilities.retriever import Retrieve
-from hdx.utilities.useragent import UserAgent
 
 
 class TestIDMC:
@@ -66,46 +59,6 @@ class TestIDMC:
         },
     ]
 
-    @pytest.fixture(scope="function")
-    def fixtures(self):
-        return join("tests", "fixtures")
-
-    @pytest.fixture(scope="function")
-    def input_folder(self, fixtures):
-        return join(fixtures, "input")
-
-    @pytest.fixture(scope="function")
-    def configuration(self):
-        Configuration._create(
-            hdx_read_only=True,
-            user_agent="test",
-            project_config_yaml=join("config", "project_configuration.yaml"),
-        )
-        UserAgent.set_global("test")
-        Country.countriesdata(use_live=False)
-        Locations.set_validlocations(
-            [
-                {"name": "afg", "title": "Afghanistan"},
-                {"name": "tza", "title": "Tanzania"},
-                {"name": "world", "title": "World"},
-            ]
-        )
-        tags = (
-            "hxl",
-            "conflict-violence",
-            "displacement",
-            "internally displaced persons-idp",
-            "natural disasters",
-        )
-        Vocabulary._tags_dict = {tag: {"Action to Take": "ok"} for tag in tags}
-        tags = [{"name": tag} for tag in tags]
-        Vocabulary._approved_vocabulary = {
-            "tags": tags,
-            "id": "4e61d464-4943-4e97-973a-84673c1aaa87",
-            "name": "approved",
-        }
-        return Configuration.read()
-
     def test_generate_datasets_and_showcase(
         self, configuration, fixtures, input_folder
     ):
@@ -126,18 +79,23 @@ class TestIDMC:
                     downloader, folder, input_folder, folder, False, True
                 )
                 # indicator dataset test
-                idmc = IDMC(configuration, retriever, folder)
-                indicators = idmc.get_indicators()
+                pipeline = Pipeline(configuration, retriever, folder)
+                indicators = pipeline.get_indicators()
                 assert len(indicators) == 2
-                idmc.download_indicators()
-                assert len(idmc.indicator_data["displacement"]["rows"]) == 830
-                assert len(idmc.indicator_data["displacement"]["rows_by_country"]) == 85
-                assert len(idmc.indicator_data["disaster"]["rows"]) == 13117
-                assert len(idmc.indicator_data["disaster"]["rows_by_country"]) == 205
-                countries = idmc.get_countryiso3s()
+                pipeline.download_indicators()
+                assert len(pipeline.indicator_data["displacement"]["rows"]) == 830
+                assert (
+                    len(pipeline.indicator_data["displacement"]["rows_by_country"])
+                    == 85
+                )
+                assert len(pipeline.indicator_data["disaster"]["rows"]) == 13117
+                assert (
+                    len(pipeline.indicator_data["disaster"]["rows_by_country"]) == 205
+                )
+                countries = pipeline.get_countryiso3s()
                 assert len(countries) == 207
                 assert countries[1] == {"iso3": "AFG"}
-                datasets, showcase = idmc.generate_indicator_datasets_and_showcase()
+                datasets, showcase = pipeline.generate_indicator_datasets_and_showcase()
                 compare(
                     datasets["displacement"],
                     {
@@ -255,7 +213,7 @@ class TestIDMC:
                     dataset,
                     showcase,
                     bites_disabled,
-                ) = idmc.generate_country_dataset_and_showcase(
+                ) = pipeline.generate_country_dataset_and_showcase(
                     "AFG",
                 )
                 compare(

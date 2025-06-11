@@ -23,7 +23,7 @@ from hdx.utilities.downloader import DownloadError
 logger = logging.getLogger(__name__)
 
 
-class IDMC:
+class Pipeline:
     def __init__(self, configuration, retriever, folder):
         self.configuration = configuration
         self.retriever = retriever
