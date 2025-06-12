@@ -85,14 +85,13 @@ class Pipeline:
         tags = copy(orig_tags)
         notes_lookup = self.configuration["notes"]
         first_part = notes_lookup["first_part"]
-        last_part = notes_lookup["last_part"]
         datasets = dict()
         for indicator in self.get_indicators():
             name = indicator["title"]
             title = name
             dataset = self.get_dataset(title, f"idmc-{name}")
             key = indicator["name"]
-            notes = f"{first_part}\n\n{notes_lookup[key]}\n\n{last_part}"
+            notes = f"{first_part}\n\n{notes_lookup[key]}"
             dataset["notes"] = notes
             dataset.add_other_location("world")
             rows = self.indicator_data[key]["rows"]

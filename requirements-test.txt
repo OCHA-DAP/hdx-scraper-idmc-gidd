@@ -31,7 +31,7 @@ click==8.2.1
     # via
     #   -c requirements.txt
     #   typer
-coverage==7.8.2
+coverage==7.9.0
     # via pytest-cov
 cydifflib==1.2.0
     # via hdx-scraper-idmc-gidd (pyproject.toml)
@@ -205,7 +205,7 @@ pytest==8.4.0
     #   pytest-cov
 pytest-check==2.5.3
     # via hdx-scraper-idmc-gidd (pyproject.toml)
-pytest-cov==6.1.1
+pytest-cov==6.2.0
     # via hdx-scraper-idmc-gidd (pyproject.toml)
 python-dateutil==2.9.0.post0
     # via
