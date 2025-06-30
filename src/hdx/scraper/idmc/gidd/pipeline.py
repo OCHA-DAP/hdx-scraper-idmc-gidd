@@ -152,6 +152,8 @@ class Pipeline:
             for row in rows:
                 year = row["year"]
                 years.add(year)
+                for header in indicator["flatten"]:
+                    row[header] = ",".join(row[header])
                 if key == country_dataset["quickcharts"]:
                     total_displacement = row["total_displacement"]
                     if total_displacement:

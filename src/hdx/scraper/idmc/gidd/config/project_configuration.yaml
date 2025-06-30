@@ -19,6 +19,7 @@ indicators:
   - name: "displacement"
     url: "https://helix-tools-api.idmcdb.org/external-api/gidd/conflicts/?format=json&limit=100"
     resourceview: "hdx_resource_view_static.yaml"
+    flatten: []
     hxltags:
       iso3: "#country+code"
       country_name: "#country+name"
@@ -36,6 +37,8 @@ indicators:
   - name: "disaster"
     url: "https://helix-tools-api.idmcdb.org/external-api/gidd/disasters/?format=json&limit=100"
     resourceview: "hdx_resource_view_static_disaster.yaml"
+    flatten:
+      - event_codes
     hxltags:
       iso3: "#country+code"
       country_name: "#country+name"
@@ -57,6 +60,7 @@ indicators:
       new_displacement_rounded: ~
       total_displacement: "#affected+idps+ind+total+disaster"
       total_displacement_rounded: ~
+      event_codes: "#crisis+code"
     title: "Internal displacements (new displacements) associated with disasters"
     sort:
       - "start_date"
