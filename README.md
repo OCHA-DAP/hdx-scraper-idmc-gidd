@@ -1,6 +1,6 @@
 # Collector for IDMC Datasets
-[![Build Status](https://github.com/OCHA-DAP/hdx-scraper-idmc.gidd/actions/workflows/run-python-tests.yaml/badge.svg)](https://github.com/OCHA-DAP/hdx-scraper-idmc.gidd/actions/workflows/run-python-tests.yaml)
-[![Coverage Status](https://coveralls.io/repos/github/OCHA-DAP/hdx-scraper-idmc.gidd/badge.svg?branch=main&ts=1)](https://coveralls.io/github/OCHA-DAP/hdx-scraper-idmc.gidd?branch=main)
+[![Build Status](https://github.com/OCHA-DAP/hdx-scraper-idmc-gidd/actions/workflows/run-python-tests.yaml/badge.svg)](https://github.com/OCHA-DAP/hdx-scraper-idmc-gidd/actions/workflows/run-python-tests.yaml)
+[![Coverage Status](https://coveralls.io/repos/github/OCHA-DAP/hdx-scraper-idmc-gidd/badge.svg?branch=main&ts=1)](https://coveralls.io/github/OCHA-DAP/hdx-scraper-idmc-gidd?branch=main)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 
 This pipeline connects to the [IDMC API](https://api.idmcdb.org/) and extracts data for 2 endpoints country by country creating a dataset per country in HDX. It makes 2 reads from IDMC and 1000 read/writes (API calls) to HDX in a one hour period. It creates around 500 temporary files each a few Kb which it uploads into HDX. It is run every year.
