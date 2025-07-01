@@ -83,17 +83,17 @@ class TestIDMC:
                 indicators = pipeline.get_indicators()
                 assert len(indicators) == 2
                 pipeline.download_indicators()
-                assert len(pipeline.indicator_data["displacement"]["rows"]) == 830
+                assert len(pipeline.indicator_data["displacement"]["rows"]) == 961
                 assert (
                     len(pipeline.indicator_data["displacement"]["rows_by_country"])
-                    == 85
+                    == 88
                 )
-                assert len(pipeline.indicator_data["disaster"]["rows"]) == 13117
+                assert len(pipeline.indicator_data["disaster"]["rows"]) == 22119
                 assert (
-                    len(pipeline.indicator_data["disaster"]["rows_by_country"]) == 205
+                    len(pipeline.indicator_data["disaster"]["rows_by_country"]) == 211
                 )
                 countries = pipeline.get_countryiso3s()
-                assert len(countries) == 207
+                assert len(countries) == 212
                 assert countries[1] == {"iso3": "AFG"}
                 datasets, showcase = pipeline.generate_indicator_datasets_and_showcase()
                 compare(
@@ -125,7 +125,7 @@ class TestIDMC:
                         ],
                         "notes": 'The [Global Internal Displacement Database (GIDD)](http://www.internal-displacement.org/database/displacement-data), maintained by the [Internal Displacement Monitoring Centre (IDMC)](https://www.internal-displacement.org/), provides comprehensive, validated annual estimates of internal displacement worldwide. It defines internally displaced persons (IDPs) in line with the [1998 Guiding Principles](https://www.internal-displacement.org/internal-displacement/guiding-principles-on-internal-displacement/), as people or groups of people who have been forced or obliged to flee or to leave their homes or places of habitual residence, in particular as a result of armed conflict, or to avoid the effects of armed conflict, situations of generalized violence, violations of human rights, or natural or human-made disasters and who have not crossed an international border.\n\n\nThe GIDD tracks two primary metrics: "People Displaced" or population "Stock" figures, which represent the total number of people living in displacement at year-end, and "New Displacement," which counts new displacement incidents (population Flows) rather than individual people, accounting for potential multiple displacements by the same person. This dataset serves as a crucial resource for understanding long-term trends and validated displacement figures globally. For further detailed information and complete API specifications, users are encouraged to consult the official documentation at https://www.internal-displacement.org/database/api-documentation/.\n\n\n"Internally displaced persons - IDPs" refers to the number of people living in displacement as of the end of each year.\n',
                         "groups": [{"name": "world"}],
-                        "dataset_date": "[2009-01-01T00:00:00 TO 2022-12-31T23:59:59]",
+                        "dataset_date": "[2009-01-01T00:00:00 TO 2024-12-31T23:59:59]",
                     },
                     [
                         {
@@ -167,7 +167,7 @@ class TestIDMC:
                         ],
                         "notes": 'The [Global Internal Displacement Database (GIDD)](http://www.internal-displacement.org/database/displacement-data), maintained by the [Internal Displacement Monitoring Centre (IDMC)](https://www.internal-displacement.org/), provides comprehensive, validated annual estimates of internal displacement worldwide. It defines internally displaced persons (IDPs) in line with the [1998 Guiding Principles](https://www.internal-displacement.org/internal-displacement/guiding-principles-on-internal-displacement/), as people or groups of people who have been forced or obliged to flee or to leave their homes or places of habitual residence, in particular as a result of armed conflict, or to avoid the effects of armed conflict, situations of generalized violence, violations of human rights, or natural or human-made disasters and who have not crossed an international border.\n\n\nThe GIDD tracks two primary metrics: "People Displaced" or population "Stock" figures, which represent the total number of people living in displacement at year-end, and "New Displacement," which counts new displacement incidents (population Flows) rather than individual people, accounting for potential multiple displacements by the same person. This dataset serves as a crucial resource for understanding long-term trends and validated displacement figures globally. For further detailed information and complete API specifications, users are encouraged to consult the official documentation at https://www.internal-displacement.org/database/api-documentation/.\n\n\n"Internal displacements (New Displacements)" refers to the number of new cases or incidents of displacement recorded, rather than the number of people displaced. This is done because people may have been displaced more than once.\n',
                         "groups": [{"name": "world"}],
-                        "dataset_date": "[2008-01-01T00:00:00 TO 2022-12-31T23:59:59]",
+                        "dataset_date": "[2008-01-01T00:00:00 TO 2024-12-31T23:59:59]",
                     },
                     [
                         {
@@ -249,7 +249,7 @@ class TestIDMC:
                         ],
                         "groups": [{"name": "afg"}],
                         "notes": 'The [Global Internal Displacement Database (GIDD)](http://www.internal-displacement.org/database/displacement-data), maintained by the [Internal Displacement Monitoring Centre (IDMC)](https://www.internal-displacement.org/), provides comprehensive, validated annual estimates of internal displacement worldwide. It defines internally displaced persons (IDPs) in line with the [1998 Guiding Principles](https://www.internal-displacement.org/internal-displacement/guiding-principles-on-internal-displacement/), as people or groups of people who have been forced or obliged to flee or to leave their homes or places of habitual residence, in particular as a result of armed conflict, or to avoid the effects of armed conflict, situations of generalized violence, violations of human rights, or natural or human-made disasters and who have not crossed an international border.\n\n\nThe GIDD tracks two primary metrics: "People Displaced" or population "Stock" figures, which represent the total number of people living in displacement at year-end, and "New Displacement," which counts new displacement incidents (population Flows) rather than individual people, accounting for potential multiple displacements by the same person. This dataset serves as a crucial resource for understanding long-term trends and validated displacement figures globally. For further detailed information and complete API specifications, users are encouraged to consult the official documentation at https://www.internal-displacement.org/database/api-documentation/.\n\n\n"Internally displaced persons - IDPs" refers to the number of people living in displacement as of the end of each year.\n\n\n"Internal displacements (New Displacements)" refers to the number of new cases or incidents of displacement recorded, rather than the number of people displaced. This is done because people may have been displaced more than once.\n',
-                        "dataset_date": "[2008-01-01T00:00:00 TO 2022-12-31T23:59:59]",
+                        "dataset_date": "[2008-01-01T00:00:00 TO 2024-12-31T23:59:59]",
                     },
                     [
                         {
