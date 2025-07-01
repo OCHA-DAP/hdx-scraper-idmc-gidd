@@ -47,4 +47,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: public.ecr.aws/unocha/hdx-scraper-idmc:${{ steps.tag_info.outputs.IMAGE_TAG }}
+          tags: public.ecr.aws/unocha/hdx-scraper-idmc-gidd:${{ steps.tag_info.outputs.IMAGE_TAG }}
