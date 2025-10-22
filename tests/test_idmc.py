@@ -69,7 +69,9 @@ class TestIDMC:
             for resource in resources:
                 resource_name = resource["name"]
                 filename = f"{resource_name}{suffix}.csv"
-                assert_files_same(join(fixtures, filename), resource.file_to_upload)
+                assert_files_same(
+                    join(fixtures, filename), resource.get_file_to_upload()
+                )
 
         with temp_dir(
             "test_idmc", delete_on_success=True, delete_on_failure=False
@@ -132,8 +134,6 @@ class TestIDMC:
                             "name": "Internal Displacements (New Displacements) – IDPs",
                             "description": "Internal Displacements (New Displacements) – IDPs",
                             "format": "csv",
-                            "resource_type": "file.upload",
-                            "url_type": "upload",
                         }
                     ],
                 )
@@ -174,8 +174,6 @@ class TestIDMC:
                             "name": "Internal displacements (new displacements) associated with disasters",
                             "description": "Internal displacements (new displacements) associated with disasters",
                             "format": "csv",
-                            "resource_type": "file.upload",
-                            "url_type": "upload",
                         }
                     ],
                 )
@@ -256,15 +254,11 @@ class TestIDMC:
                             "name": "Internal Displacements (New Displacements) – IDPs",
                             "description": "Internal Displacements (New Displacements) – IDPs for Afghanistan",
                             "format": "csv",
-                            "resource_type": "file.upload",
-                            "url_type": "upload",
                         },
                         {
                             "name": "Internal displacements (new displacements) associated with disasters",
                             "description": "Internal displacements (new displacements) associated with disasters for Afghanistan",
                             "format": "csv",
-                            "resource_type": "file.upload",
-                            "url_type": "upload",
                         },
                     ],
                     suffix="_AFG",
