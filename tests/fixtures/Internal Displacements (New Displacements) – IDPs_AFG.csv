@@ -1,5 +1,4 @@
 iso3,country_name,year,new_displacement,new_displacement_rounded,total_displacement,total_displacement_rounded
-#country+code,#country+name,#date+year,#affected+idps+ind+new+conflict,,#affected+idps+ind+total+conflict,
 AFG,Afghanistan,2009,0,,297000,297000
 AFG,Afghanistan,2010,102000,102000,352000,352000
 AFG,Afghanistan,2011,186000,186000,450000,450000

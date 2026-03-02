@@ -40,7 +40,6 @@ def configuration():
     )
     Country.countriesdata(use_live=False)
     tags = (
-        "hxl",
         "conflict-violence",
         "displacement",
         "internally displaced persons-idp",

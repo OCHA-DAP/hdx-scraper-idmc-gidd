@@ -3,7 +3,7 @@
 IDMC:
 ------------
 
-Reads IDMC HXLated csvs and creates datasets.
+Reads IDMC csvs and creates datasets.
 
 """
 
@@ -100,11 +100,10 @@ class Pipeline:
             for row in rows:
                 year = row["year"]
                 years.add(year)
-            rows.insert(0, indicator["hxltags"])
             resourcedata = {"name": name, "description": title}
             filename = f"{name}.csv"
-            dataset.generate_resource_from_rows(
-                self.folder, filename, rows, resourcedata
+            dataset.generate_resource(
+                self.folder, filename, rows, resourcedata, indicator["headers"]
             )
             indicator_tags = indicator["tags"]
             dataset.add_tags(orig_tags + indicator_tags)
@@ -141,7 +140,6 @@ class Pipeline:
             return None, None, None
         dataset["notes"] = "\n\n".join(self.configuration["notes"].values())
         years = set()
-        bites_disabled = [True, True]
         for indicator in self.get_indicators():
             name = indicator["title"]
             key = indicator["name"]
@@ -154,21 +152,13 @@ class Pipeline:
                 years.add(year)
                 for header in indicator["flatten"]:
                     row[header] = ",".join(row[header])
-                if key == country_dataset["quickcharts"]:
-                    total_displacement = row["total_displacement"]
-                    if total_displacement:
-                        bites_disabled[0] = False
-                    new_displacement = row["new_displacement"]
-                    if new_displacement:
-                        bites_disabled[1] = False
-            rows.insert(0, indicator["hxltags"])
             resourcedata = {
                 "name": name,
                 "description": f"{name} for {countryname}",
             }
             filename = f"{name}_{countryiso}.csv"
-            dataset.generate_resource_from_rows(
-                self.folder, filename, rows, resourcedata
+            dataset.generate_resource(
+                self.folder, filename, rows, resourcedata, indicator["headers"]
             )
             tags += indicator["tags"]
         dataset.add_tags(tags)
@@ -179,7 +169,7 @@ class Pipeline:
         try:
             self.retriever.downloader.setup(url)
         except DownloadError:
-            return dataset, None, bites_disabled
+            return dataset, None
         showcase = Showcase(
             {
                 "name": f"{dataset['name']}-showcase",
@@ -190,4 +180,4 @@ class Pipeline:
             }
         )
         showcase.add_tags(tags)
-        return dataset, showcase, bites_disabled
+        return dataset, showcase

@@ -11,7 +11,6 @@ notes:
     "Internal displacements (New Displacements)" refers to the number of new cases or incidents of displacement recorded, rather than the number of people displaced. This is done because people may have been displaced more than once.
 
 tags:
-  - "hxl"
   - "displacement"
   - "internally displaced persons-idp"
 
@@ -20,14 +19,14 @@ indicators:
     url: "https://helix-tools-api.idmcdb.org/external-api/gidd/conflicts/?format=json&limit=100"
     resourceview: "hdx_resource_view_static.yaml"
     flatten: []
-    hxltags:
-      iso3: "#country+code"
-      country_name: "#country+name"
-      year: "#date+year"
-      new_displacement: "#affected+idps+ind+new+conflict"
-      new_displacement_rounded: ~
-      total_displacement: "#affected+idps+ind+total+conflict"
-      total_displacement_rounded: ~
+    headers:
+      - iso3
+      - country_name
+      - year
+      - new_displacement
+      - new_displacement_rounded
+      - total_displacement
+      - total_displacement_rounded
     title: "Internal Displacements (New Displacements) – IDPs"
     sort:
       - "year"
@@ -39,28 +38,28 @@ indicators:
     resourceview: "hdx_resource_view_static_disaster.yaml"
     flatten:
       - event_codes
-    hxltags:
-      iso3: "#country+code"
-      country_name: "#country+name"
-      year: "#date+year"
-      start_date: "#date+start"
-      start_date_accuracy: "#accuracy+date+start"
-      end_date: "#date+end"
-      end_date_accuracy: "#accuracy+date+end"
-      event_name: "#event+name"
-      hazard_category: "#crisis+category+code"
-      hazard_category_name: "#crisis+category+name"
-      hazard_sub_category: "#crisis+subcategory+code"
-      hazard_sub_category_name: "#crisis+subcategory+name"
-      hazard_type: "#crisis+type+code"
-      hazard_type_name: "#crisis+type+name"
-      hazard_sub_type: "#crisis+subtype+code"
-      hazard_subtype_name: "#crisis+subtype+name"
-      new_displacement: "#affected+idps+ind+new+disaster"
-      new_displacement_rounded: ~
-      total_displacement: "#affected+idps+ind+total+disaster"
-      total_displacement_rounded: ~
-      event_codes: "#crisis+code"
+    headers:
+      - iso3
+      - country_name
+      - year
+      - start_date
+      - start_date_accuracy
+      - end_date
+      - end_date_accuracy
+      - event_name
+      - hazard_category
+      - hazard_category_name
+      - hazard_sub_category
+      - hazard_sub_category_name
+      - hazard_type
+      - hazard_type_name
+      - hazard_sub_type
+      - hazard_subtype_name
+      - new_displacement
+      - new_displacement_rounded
+      - total_displacement
+      - total_displacement_rounded
+      - event_codes
     title: "Internal displacements (new displacements) associated with disasters"
     sort:
       - "start_date"
