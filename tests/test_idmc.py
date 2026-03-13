@@ -22,7 +22,6 @@ class TestIDMC:
         "data_update_frequency": "365",
         "subnational": "0",
         "tags": [
-            {"name": "hxl", "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87"},
             {
                 "name": "displacement",
                 "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
@@ -109,10 +108,6 @@ class TestIDMC:
                         "subnational": "0",
                         "tags": [
                             {
-                                "name": "hxl",
-                                "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
-                            },
-                            {
                                 "name": "displacement",
                                 "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
                             },
@@ -149,10 +144,6 @@ class TestIDMC:
                         "subnational": "0",
                         "tags": [
                             {
-                                "name": "hxl",
-                                "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
-                            },
-                            {
                                 "name": "displacement",
                                 "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
                             },
@@ -185,10 +176,6 @@ class TestIDMC:
                     "image_url": "https://api.internal-displacement.org/sites/default/files/publications/images/idmc-2024-grid-cover-image.jpg",
                     "tags": [
                         {
-                            "name": "hxl",
-                            "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
-                        },
-                        {
                             "name": "displacement",
                             "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
                         },
@@ -210,7 +197,6 @@ class TestIDMC:
                 (
                     dataset,
                     showcase,
-                    bites_disabled,
                 ) = pipeline.generate_country_dataset_and_showcase(
                     "AFG",
                 )
@@ -224,10 +210,6 @@ class TestIDMC:
                         "data_update_frequency": "365",
                         "subnational": "0",
                         "tags": [
-                            {
-                                "name": "hxl",
-                                "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
-                            },
                             {
                                 "name": "displacement",
                                 "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
@@ -271,10 +253,6 @@ class TestIDMC:
                     "image_url": "https://www.internal-displacement.org/sites/default/files/logo_0.png",
                     "tags": [
                         {
-                            "name": "hxl",
-                            "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
-                        },
-                        {
                             "name": "displacement",
                             "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
                         },
@@ -292,4 +270,3 @@ class TestIDMC:
                         },
                     ],
                 }
-                assert bites_disabled == [False, False]

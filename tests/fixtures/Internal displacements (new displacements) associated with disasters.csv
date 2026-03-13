@@ -1,5 +1,4 @@
 iso3,country_name,year,start_date,start_date_accuracy,end_date,end_date_accuracy,event_name,hazard_category,hazard_category_name,hazard_sub_category,hazard_sub_category_name,hazard_type,hazard_type_name,hazard_sub_type,hazard_subtype_name,new_displacement,new_displacement_rounded,total_displacement,total_displacement_rounded,event_codes
-#country+code,#country+name,#date+year,#date+start,#accuracy+date+start,#date+end,#accuracy+date+end,#event+name,#crisis+category+code,#crisis+category+name,#crisis+subcategory+code,#crisis+subcategory+name,#crisis+type+code,#crisis+type+name,#crisis+subtype+code,#crisis+subtype+name,#affected+idps+ind+new+disaster,,#affected+idps+ind+total+disaster,,#crisis+code
 PHL,Philippines,2008,2008-01-01,Month,2008-06-23,Day,Philippines: Storm - 01/01/2008,2,Weather related,4,Meteorological,14,Storm,21,,2039155,2039000,,,[]
 IDN,Indonesia,2008,2008-01-02,Day,2008-02-06,Day,Indonesia: Flood - 02/01/2008,2,Weather related,3,Hydrological,10,Flood,13,,49653,50000,,,[]
 TGO,Togo,2008,2008-01-07,Day,2008-08-08,Day,Togo: Flood - 07/01/2008,2,Weather related,3,Hydrological,10,Flood,13,,2000,2000,,,[]

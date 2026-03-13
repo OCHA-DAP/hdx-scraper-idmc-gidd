@@ -1,5 +1,4 @@
 iso3,country_name,year,start_date,start_date_accuracy,end_date,end_date_accuracy,event_name,hazard_category,hazard_category_name,hazard_sub_category,hazard_sub_category_name,hazard_type,hazard_type_name,hazard_sub_type,hazard_subtype_name,new_displacement,new_displacement_rounded,total_displacement,total_displacement_rounded,event_codes
-#country+code,#country+name,#date+year,#date+start,#accuracy+date+start,#date+end,#accuracy+date+end,#event+name,#crisis+category+code,#crisis+category+name,#crisis+subcategory+code,#crisis+subcategory+name,#crisis+type+code,#crisis+type+name,#crisis+subtype+code,#crisis+subtype+name,#affected+idps+ind+new+disaster,,#affected+idps+ind+total+disaster,,#crisis+code
 AFG,Afghanistan,2008,2008-04-17,Day,2008-04-17,Day,Afghanistan: Earthquake - 17/04/2008,1,Geophysical,1,Geophysical,1,Earthquake,1,,3250,3200,,,
 AFG,Afghanistan,2008,2008-08-01,Month,2008-08-01,Month,Afghanistan: Flood - 01/08/2008,2,Weather related,3,Hydrological,10,Flood,13,,180,180,,,
 AFG,Afghanistan,2009,2009-01-01,Month,,,Afghanistan: Earthquake - 01/01/2009,1,Geophysical,1,Geophysical,1,Earthquake,1,,3250,3200,,,

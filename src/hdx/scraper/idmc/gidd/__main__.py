@@ -79,14 +79,8 @@ def main(save: bool = False, use_saved: bool = False) -> None:
                         join("config", "hdx_dataset_static.yaml"), main
                     )
                 )
-                dataset.generate_quickcharts(
-                    path=script_dir_plus_file(
-                        join("config", nextdict["resourceview"]), main
-                    )
-                )
                 dataset.create_in_hdx(
                     remove_additional_resources=True,
-                    hxl_update=False,
                     updated_by_script="HDX Scraper: IDMC",
                     batch=batch,
                 )
@@ -97,7 +91,6 @@ def main(save: bool = False, use_saved: bool = False) -> None:
                 (
                     dataset,
                     showcase,
-                    bites_disabled,
                 ) = pipeline.generate_country_dataset_and_showcase(
                     countryiso,
                 )
@@ -107,15 +100,8 @@ def main(save: bool = False, use_saved: bool = False) -> None:
                             join("config", "hdx_dataset_static.yaml"), main
                         )
                     )
-                    dataset.generate_quickcharts(
-                        path=script_dir_plus_file(
-                            join("config", "hdx_resource_view_static.yaml"), main
-                        ),
-                        bites_disabled=bites_disabled,
-                    )
                     dataset.create_in_hdx(
                         remove_additional_resources=True,
-                        hxl_update=False,
                         updated_by_script="HDX Scraper: IDMC GIDD",
                         batch=batch,
                     )
@@ -123,7 +109,7 @@ def main(save: bool = False, use_saved: bool = False) -> None:
                     resource_ids = [
                         x["id"] for x in sorted(resources, key=lambda x: len(x["name"]))
                     ]
-                    dataset.reorder_resources(resource_ids, hxl_update=False)
+                    dataset.reorder_resources(resource_ids)
 
 
 if __name__ == "__main__":
