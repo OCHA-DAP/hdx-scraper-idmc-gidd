@@ -11,6 +11,7 @@ import logging
 from copy import copy
 from operator import itemgetter
 
+from hdx.utilities.url import get_url_params_for_post, get_url_for_get
 from slugify import slugify
 
 from hdx.data.dataset import Dataset
@@ -60,7 +61,11 @@ class Pipeline:
                 rows.append(row)
                 dict_of_lists_add(rows_by_country, countryiso, row)
             url = json["next"]
-            i += 1
+            if url:
+                url, params = get_url_params_for_post(url)
+                params.pop("client_id", None)
+                url = get_url_for_get(url, params)
+                i += 1
         return rows, rows_by_country
 
     def download_indicators(self):
@@ -137,7 +142,7 @@ class Pipeline:
             dataset.add_country_location(countryiso)
         except HDXError as e:
             logger.exception(f"{countryname} has a problem! {e}")
-            return None, None, None
+            return None, None
         dataset["notes"] = "\n\n".join(self.configuration["notes"].values())
         years = set()
         for indicator in self.get_indicators():

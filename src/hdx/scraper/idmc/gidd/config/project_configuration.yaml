@@ -17,7 +17,6 @@ tags:
 indicators:
   - name: "displacement"
     url: "https://helix-tools-api.idmcdb.org/external-api/gidd/conflicts/?format=json&limit=100"
-    resourceview: "hdx_resource_view_static.yaml"
     flatten: []
     headers:
       - iso3
@@ -35,7 +34,6 @@ indicators:
       - "conflict-violence"
   - name: "disaster"
     url: "https://helix-tools-api.idmcdb.org/external-api/gidd/disasters/?format=json&limit=100"
-    resourceview: "hdx_resource_view_static_disaster.yaml"
     flatten:
       - event_codes
     headers:
@@ -72,4 +70,3 @@ indicators:
 country_dataset:
   name: "IDMC IDP data "
   title: "Internal Displacements (New Displacements) – IDPs"
-  quickcharts: "displacement"
