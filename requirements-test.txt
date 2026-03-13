@@ -19,11 +19,11 @@ certifi==2026.2.25
     # via
     #   -c requirements.txt
     #   requests
-chardet==6.0.0.post1
+chardet==7.1.0
     # via
     #   -c requirements.txt
     #   frictionless
-charset-normalizer==3.4.4
+charset-normalizer==3.4.5
     # via
     #   -c requirements.txt
     #   requests
@@ -182,7 +182,7 @@ pytest==9.0.2
     #   hdx-scraper-idmc-gidd (pyproject.toml)
     #   pytest-check
     #   pytest-cov
-pytest-check==2.7.2
+pytest-check==2.7.6
     # via hdx-scraper-idmc-gidd (pyproject.toml)
 pytest-cov==7.0.0
     # via hdx-scraper-idmc-gidd (pyproject.toml)
@@ -238,7 +238,7 @@ ruamel-yaml==0.19.1
     # via
     #   -c requirements.txt
     #   hdx-python-utilities
-setuptools==82.0.0
+setuptools==82.0.1
     # via
     #   -c requirements.txt
     #   ckanapi
@@ -246,7 +246,7 @@ shellingham==1.5.4
     # via
     #   -c requirements.txt
     #   typer
-simpleeval==1.0.3
+simpleeval==1.0.4
     # via
     #   -c requirements.txt
     #   frictionless
@@ -269,7 +269,7 @@ tableschema-to-template==0.0.13
     # via
     #   -c requirements.txt
     #   hdx-python-utilities
-tabulate==0.9.0
+tabulate==0.10.0
     # via
     #   -c requirements.txt
     #   frictionless

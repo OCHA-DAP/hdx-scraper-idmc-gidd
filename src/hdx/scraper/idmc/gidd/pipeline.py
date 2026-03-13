@@ -11,7 +11,6 @@ import logging
 from copy import copy
 from operator import itemgetter
 
-from hdx.utilities.url import get_url_params_for_post, get_url_for_get
 from slugify import slugify
 
 from hdx.data.dataset import Dataset
@@ -20,6 +19,7 @@ from hdx.data.showcase import Showcase
 from hdx.location.country import Country
 from hdx.utilities.dictandlist import dict_of_lists_add
 from hdx.utilities.downloader import DownloadError
+from hdx.utilities.url import get_url_for_get, get_url_params_for_post
 
 logger = logging.getLogger(__name__)
 
